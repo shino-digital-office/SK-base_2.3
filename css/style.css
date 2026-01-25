@@ -353,14 +353,23 @@
   padding-bottom: 276.67px;
   padding-inline: 20px;
 }
-.section--about .inner {
+.section--about .inner--flex {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 24px;
+  text-align: center;
   background: #fff;
   padding-inline: 12px;
   padding-block: 40px;
   border-radius: 24px;
   overflow: hidden;
 }
-
+.section--about .section__subtitle {
+  font-weight: 700;
+  font-size: 14px;
+}
 /* ================================
    footer
    ================================ */
@@ -578,4 +587,21 @@
 .section-head .section-head__subtitle {
   font-size: 16px;
   color: #ccc;
+}
+
+/* ================================
+   テキスト装飾
+   =============================== */
+.underline {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
+
+.bold {
+  font-weight: 700;
 }

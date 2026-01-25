@@ -405,12 +405,21 @@
   padding-bottom: calc(36px + 240.67px);
   padding-inline: 20px;
 
-  .inner {
+  .inner--flex {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
     background: $color-White;
     padding-inline: 12px;
     padding-block: 40px;
     border-radius: 24px;
     overflow: hidden;
+  }
+  .section__subtitle {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .section__text {
   }
 }
 
@@ -484,6 +493,8 @@
   justify-content: space-between;
   padding-block: $space-sm; //上下の余白
 }
+
+// 以下、ページをとおしての共通事項
 
 /* =====================================
     トップに戻るボタン
@@ -633,4 +644,19 @@
     font-size: 16px;
     color: $color-Dark-Gray;
   }
+}
+
+/* ================================
+   テキスト装飾
+   =============================== */
+.underline {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
+.bold {
+  font-weight: 700;
 }
