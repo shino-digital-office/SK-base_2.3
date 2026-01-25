@@ -159,7 +159,7 @@
 .drawer-overlay {
   position: fixed;
   inset: 0;
-  z-index: variables.$z-header + 1; // header より上に表示;
+  z-index: variables.$z-header - 1; // header より上に表示;
 
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;

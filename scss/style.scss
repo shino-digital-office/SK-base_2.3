@@ -42,6 +42,13 @@
 @use "foundation/variables" as *;
 @use "foundation/breakpoints" as *;
 
+.bg--base {
+  position: fixed;
+  inset: 0;
+  background: $color-Light-Blue;
+  z-index: -1;
+}
+
 /* ================================
    Header Layout
    ================================ */
@@ -53,11 +60,9 @@
 
   margin: 0 auto;
   max-width: $layout-max-width; // 紙面型の場合に有効
-  color: $color-white;
-
-  /* Header Background Layer */
+  color: $color-White;
   .bg {
-    background: #393939;
+    background: $color-White;
   }
 }
 /* ================================
@@ -68,7 +73,8 @@
   align-items: center;
   justify-content: space-between;
   gap: $space-xs;
-  padding-block: $space-sm;
+  padding-block: $space-md;
+  height: 64px;
 }
 
 /* ================================
@@ -77,7 +83,7 @@
 
 .brand {
   width: 100%;
-  max-width: 270px;
+  max-width: 210px;
   font-weight: $font-weight-bold;
 
   img {
@@ -93,53 +99,61 @@
 
 //Drawer Icon 上書き用
 
-// .drawer-icon--in-header {
-//   position: relative;
-//   width: 32px;
-//   height: 32px;
+.drawer-icon--in-header {
+  position: relative;
+  width: 32px;
+  height: 24px;
 
-//   .drawer-icon__bar {
-//     position: absolute;
-//     left: 0;
-//     width: 32px;
-//     height: 3px;
-//     border-radius: 3px;
-//     background: #fff;
-//     transition:
-//       transform 0.3s linear,
-//       top 0.3s linear;
+  .drawer-icon__bar {
+    position: absolute;
+    left: 0;
+    width: 32px;
+    height: 3px;
+    border-radius: 3px;
+    background: $color-Blown;
+    transition:
+      transform 0.3s linear,
+      top 0.3s linear;
 
-//     &:nth-of-type(1) {
-//       top: 2px;
-//     }
-//     &:nth-of-type(2) {
-//       top: 15px;
-//     }
-//     &:nth-of-type(3) {
-//       top: 28px;
-//     }
-//   }
+    &:nth-of-type(1) {
+      top: 0px;
+      width: 25.6px;
+    }
+    &:nth-of-type(2) {
+      top: 0px;
+      right: 0;
+      left: auto;
+      width: 4.8px;
+    }
+    &:nth-of-type(3) {
+      top: 10.5px;
+    }
+    &:nth-of-type(4) {
+      top: 21px;
+    }
+  }
 
-//   &.is-checked {
-//     .drawer-icon__bar {
-//       &:nth-of-type(1) {
-//         top: 15px;
-//         transform: rotate(45deg);
-//       }
-//       &:nth-of-type(2) {
-//         display: none;
-//       }
-//       &:nth-of-type(3) {
-//         top: 15px;
-//         transform: rotate(-45deg);
-//       }
-//     }
-//   }
+  &.is-checked {
+    .drawer-icon__bar {
+      &:nth-of-type(1),
+      &:nth-of-type(2) {
+        display: none;
+      }
+      &:nth-of-type(3) {
+        top: 10.5px;
+        transform: rotate(45deg);
+      }
+      &:nth-of-type(4) {
+        top: 10.5px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
 
-//   @include mq(md) {
-//     display: none;
-//   }
-// }
+  @include mq(md) {
+    display: none;
+  }
+}
 
 // Drawer Content 上書き用
 /*
@@ -148,104 +162,26 @@
     背景は直接 drawer-content に指定する
 */
 
-// .drawer-content--in-header {
-//   position: fixed;
-//   top: 56px; // header 高さ分下げる
-//   right: 0;
+.drawer-content--in-header {
+  position: fixed;
+  top: 64px; // header 高さ分下げる
+  right: 0;
 
-//   width: $drawer-width;//ドロワー幅。_variable.scssで指定可。値を直接入力してもよい（100%(全画面)またはpx指定）
-//   height: calc(100% - 56px);// header 高さ分引く。固定フッターは重なるものとして割り切る
+  width: $drawer-width; //ドロワー幅。_variable.scssで指定可。値を直接入力してもよい（100%(全画面)またはpx指定）
+  height: calc(
+    100% - 64px
+  ); // header 高さ分引く。固定フッターは重なるものとして割り切る
 
-//   background-color: #0060a0; // .bg は使わない（意図的な例外）
-//   text-align: center;
+  background-color: $color-White; // .bg は使わない（意図的な例外）
+  text-align: center;
 
-//   transform: translateX(100%);// 100%:右端に隠す -100%:左端に隠す 0:表示
-//   transition: transform 0.3s linear;
+  transform: translateX(100%); // 100%:右端に隠す -100%:左端に隠す 0:表示
+  transition: transform 0.3s linear;
 
-//   &.is-checked {
-//     transform: translateX(0);
-//   }
-// }
-
-/* ================================
-   out-of-header:ヘッダーに属さない
-   （独立した）ドロワー
-   ================================ */
-
-//Drawer Icon 上書き用
-
-// .drawer-icon--out-of-header {
-//   position: relative;
-//   width: 32px;
-//   height: 32px;
-
-//   .drawer-icon__bar {
-//     position: absolute;
-//     left: 0;
-//     width: 32px;
-//     height: 3px;
-//     border-radius: 3px;
-//     background: #fff;
-//     transition:
-//       transform 0.3s linear,
-//       top 0.3s linear;
-
-//     &:nth-of-type(1) {
-//       top: 2px;
-//     }
-//     &:nth-of-type(2) {
-//       top: 15px;
-//     }
-//     &:nth-of-type(3) {
-//       top: 28px;
-//     }
-//   }
-
-//   &.is-checked {
-//     display: none;
-//   }
-
-//   @include breakpoints.mq(md) {
-//     display: none;
-//   }
-// }
-
-// Drawer Content 上書き用
-
-// .drawer-content--out-of-header {
-//   position: fixed;
-//   top: 0;
-//   right: 0;
-//   z-index: variables.$z-header + 2; // drawer-overlay より上に表示
-
-//   width: variables.$drawer-width;
-//   height: 100%;
-
-//   background-color: #0060a0; // .bg は使わない（意図的な例外）
-//   text-align: center;
-
-//   transform: translateX(100%);
-//   transition: transform 0.3s linear;
-
-//   &.is-checked {
-//     transform: translateX(0);
-//     .drawer-icon--out-of-header {
-//       .drawer-icon__bar {
-//         &:nth-of-type(1) {
-//           top: 15px;
-//           transform: rotate(45deg);
-//         }
-//         &:nth-of-type(2) {
-//           display: none;
-//         }
-//         &:nth-of-type(3) {
-//           top: 15px;
-//           transform: rotate(-45deg);
-//         }
-//       }
-//     }
-//   }
-// }
+  &.is-checked {
+    transform: translateX(0);
+  }
+}
 
 /* ================================
    Drawer Navigation (Mobile)
@@ -253,79 +189,22 @@
 
 .drawer-nav.inner--flex {
   height: 100%;
-  padding-bottom: 60px; // 固定フッター分
   justify-content: center;
   align-items: center;
 }
 
-.nav-content {
-  color: var(--color-base, #fff);
+.drawer-nav .nav-content {
+  color: $color-Blown;
+  width: auto;
+  flex-direction: column;
+  gap: 40px;
 
-  .nav-unit {
+  .nav-menu {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 255px;
-    padding: 15px 0;
-
-    font-family: "Rounded Mplus 1c";
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 150%;
-
-    border-top: 1px dashed var(--color-base, #fff);
-
-    &:last-child {
-      border-bottom: 1px dashed var(--color-base, #fff);
-    }
-
-    &__main {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    &__icon svg,
-    &__arrow svg {
-      display: block;
-    }
-
-    &__icon svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    &__arrow svg {
-      width: 14px;
-      height: 14px;
-    }
+    flex-direction: column;
+    gap: 40px;
   }
 }
-
-/* ================================
-   Drawer Overlay 上書き用
-   ================================ */
-/*
-  - header の外に配置
-  - header / footer より上または下(z-index調整)
-  - drawer-content より下
-*/
-
-// .drawer-overlay {
-//   position: fixed;
-//   inset: 0;
-//   z-index:$z-header + 1; // headerより上か下かによって数値を調整;
-
-//   background: rgba(0, 0, 0, 0.5);
-//   opacity: 0;
-//   pointer-events: none;
-//   transition: opacity 0.3s linear;
-
-//   &.is-visible {
-//     opacity: 1;
-//     pointer-events: auto;
-//   }
-// }
 
 /* ================================
    Desktop Navigation
@@ -340,7 +219,7 @@
     align-items: center;
 
     a {
-      color: $color-white;
+      color: $color-White;
       font-size: 14px;
 
       &:hover {
@@ -383,6 +262,123 @@
   max-width: $layout-max-width; //紙面幅の指定。無効化すればfvが画面幅いっぱいに広がる。
   margin: 0 auto;
 }
+.fv {
+  position: relative;
+  overflow: hidden;
+  height: auto; // 画像に合わせて伸びる
+}
+
+.fv__bg {
+  border-radius: 0 0 24px 24px;
+  overflow: hidden;
+  height: 554px;
+}
+.fv__frame {
+  position: static;
+  display: block;
+  padding-top: 17px;
+  inset: auto;
+}
+.fv__caption {
+  text-align: center;
+  font-family: "Kiwi Maru", serif;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.fv-title_img {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  img {
+    display: block;
+    margin: 0 auto;
+
+    &:nth-child(1) {
+      width: 335px;
+      height: auto;
+    }
+    &:nth-child(2) {
+      width: 240px;
+      height: auto;
+    }
+  }
+  img + img {
+    margin-top: 12px;
+  }
+}
+.fv__bottom-img {
+  max-width: 335px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.ui-apply {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  width: 160px;
+  height: 154px;
+  border-radius: 12.8px;
+  overflow: hidden;
+  background: $color-White;
+
+  .ui-title {
+    color: $color-White;
+    text-align: center;
+    font-size: 12.8px;
+    font-weight: 700;
+    padding: 6.4px 9.6px;
+    margin-bottom: 12.8px;
+    background: linear-gradient(
+      265deg,
+      #ac3790 -3.52%,
+      #d65a5c 44.94%,
+      #f4c06d 92.38%
+    );
+  }
+  .ui-period__title {
+    position: relative;
+    width: fit-content;
+    font-size: 12px;
+    margin-bottom: 3.2px;
+    margin-left: auto;
+    margin-right: auto;
+    &::after {
+      position: absolute;
+      content: "";
+
+      // 位置
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      // サイズ
+      width: 100%;
+      height: 2.4px;
+
+      // 装飾
+      background: $color-Red;
+    }
+  }
+  .ui-period {
+    position: relative;
+    text-align: center;
+    margin-bottom: 12.8px;
+
+    time {
+      font-weight: 700;
+    }
+  }
+  .ui-button {
+    display: block;
+    margin: 0 auto;
+  }
+}
 
 /* ================================
    Main Body Layout
@@ -395,67 +391,7 @@
   @include mq(md) {
     max-width: $layout-max-width; //紙面幅の指定。無効化すればfvが画面幅いっぱいに広がる。
     margin: 0 auto;
-    display: flex;
-    flex-direction: row-reverse; // sidebarを右側に配置
-    align-items: flex-start;
   }
-}
-
-/* ================================
-   Sidebar
-   ================================ */
-.sidebar {
-  display: none;
-
-  @include mq(md) {
-    .bg {
-      background: $color-gray-sidebar;
-    }
-
-    display: block;
-    width: $sidebar-width;
-    // background: $color-gray-sidebar;
-    border-right: 1px solid #eee;
-    padding: $space-xl $space-md;
-    position: sticky;
-    // top: $header-height-pc; // sidebarの始まりの位置はtopで調整
-    height: fit-content; //中身の量によって伸びる
-
-    // display: none;
-  }
-}
-
-/* ================================
-   Sidebar詳細
-   ================================ */
-.sidebar-section {
-  margin-bottom: $space-2xl;
-}
-
-.sidebar-title {
-  font-size: 14px;
-  font-weight: $font-weight-bold;
-  margin-bottom: $space-sm;
-}
-
-.sidebar-text {
-  font-size: 12px;
-  line-height: 1.6;
-  color: #666;
-}
-
-/* ================================
-   Main Content Column
-   ================================ */
-.main-content {
-  flex: 1;
-  min-width: 0;
-}
-
-/* 紙面型では中央寄せしない */
-.main-content .container {
-  max-width: none;
-  margin: 0;
 }
 
 /* =====================================
@@ -463,6 +399,20 @@
 
 ===================================== */
 //ここから書き始めてください↓
+
+.section--about {
+  padding-top: 32px;
+  padding-bottom: calc(36px + 240.67px);
+  padding-inline: 20px;
+
+  .inner {
+    background: $color-White;
+    padding-inline: 12px;
+    padding-block: 40px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+}
 
 /* ================================
    footer
@@ -562,5 +512,125 @@
   @include mq(md) {
     right: 20px;
     bottom: 40px;
+  }
+}
+
+/* ===============================
+  Button
+=============================== */
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 40px;
+  background: $color-White;
+  color: $color-Blown;
+
+  font-family: "Noto Sans JP", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.6;
+
+  border-style: solid;
+  border-color: $color-Blown;
+  box-shadow: 0 4px 0 0 $color-Blown;
+
+  /* -----------------------------
+    size: small
+  ----------------------------- */
+  &--small {
+    height: 32px;
+    padding: calc(6px - 2px) calc(24px - 2px) calc(8px - 2px);
+    font-size: 14px;
+    border-width: 2px;
+  }
+
+  /* -----------------------------
+    size: middle
+  ----------------------------- */
+  &--middle {
+    height: 40px;
+    padding: calc(6px - 2px) calc(24px - 2px) calc(8px - 2px);
+    font-size: 16px;
+    border-width: 2px;
+
+    font-feature-settings: "pref" on;
+  }
+
+  /* -----------------------------
+    size: large
+  ----------------------------- */
+  &--large {
+    height: 56px;
+    padding: calc(10px - 2px) calc(40px - 2px) calc(12px - 2px);
+    font-size: 20px;
+    border-width: 3px;
+  }
+  &:hover {
+    background: $color-Yellow;
+  }
+}
+
+/* ================================
+   section-head
+   =============================== */
+
+.section-head {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-inline: 15px;
+  text-align: center;
+  padding-bottom: 12px;
+
+  .section-head__icon {
+    margin: 0 auto;
+    display: block;
+    width: 37.333px;
+    height: 37.333px;
+    color: $color-Blue;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .section-head__en {
+    display: block;
+    font-size: 16px;
+    line-height: 1.25;
+    font-family: "Courgette", cursive;
+  }
+  h2 {
+    position: relative;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "Kiwi Maru", serif;
+    width: fit-content;
+    margin: 0 auto;
+    padding-bottom: 12px;
+    &::after {
+      position: absolute;
+      content: "";
+
+      // 位置
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      // サイズ
+      width: 100%;
+      height: 6px;
+
+      // 装飾
+      background: $color-Yellow;
+    }
+  }
+
+  .section-head__subtitle {
+    font-size: 16px;
+    color: $color-Dark-Gray;
   }
 }

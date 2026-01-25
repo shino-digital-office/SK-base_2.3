@@ -144,7 +144,14 @@ body {
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.6;
   background-color: #fff;
-  color: #333;
+  color: #4a3636;
+  font-size: 12px;
+  font-weight: 400;
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
 }
 
 h1 {
@@ -163,7 +170,7 @@ h3 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 14px;
 }
 
@@ -183,13 +190,13 @@ a:hover {
 }
 
 .inner {
-  max-width: 1280px;
+  max-width: 1024px;
   padding: 0 20px;
   margin: 0 auto;
 }
 
 .inner--flex {
-  max-width: 1280px;
+  max-width: 1024px;
   padding: 0 20px;
   margin: 0 auto;
   display: -webkit-box;
@@ -234,6 +241,15 @@ a:hover {
 .flex-layout > ol,
 .flex-layout > dl {
   margin-bottom: 0;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
 }
 
 /* ----------------------
@@ -796,7 +812,7 @@ a:hover {
   position: fixed;
   top: 56px;
   right: 0;
-  width: 80%;
+  width: 100%;
   height: calc(100% - 56px);
   background-color: #0060a0;
   text-align: center;
@@ -856,7 +872,7 @@ a:hover {
   top: 0;
   right: 0;
   z-index: 62;
-  width: 80%;
+  width: 100%;
   height: 100%;
   background-color: #0060a0;
   text-align: center;
@@ -896,7 +912,7 @@ a:hover {
 .drawer-overlay {
   position: fixed;
   inset: 0;
-  z-index: 61;
+  z-index: 59;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;

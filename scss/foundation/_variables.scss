@@ -1,16 +1,14 @@
 // Colors
-$color-bg: #ffffff;
-$color-text: #222;
-$color-accent: #2f3942;
-$color-white: #fff;
-$color-gray-dark: #555;
-$color-gray-light: #f7f7f7;
-$color-gray-sidebar: #fde7d9; // warm peach tone
-$color-accent-secondary: #ee5a6d;
-
-$color-main: #1391e6;
-$color-base: #fff;
-$color-main-light: #dff1fd;
+$color-Blue: #9ed0e0;
+$color-Dark-Blue: #67b0c7;
+$color-Blue-Gray: #cce1e4;
+$color-Light-Blue: #e9f6f8;
+$color-Red: #ce2073;
+$color-Yellow: #ffee56;
+$color-Blown: #4a3636;
+$color-Dark-Gray: #ccc;
+$color-Gray: #f5f5f5;
+$color-White: #fff;
 
 // Spacing
 $space-xs: 8px;
@@ -36,8 +34,8 @@ $font-weight-bold: 700;
 $header-height: 56px; // ヘッダー高さの目安 (現在は JS で動的取得)
 $header-height-pc: 40px; // PC 用ヘッダー高さの目安 (現在は JS で動的取得)
 $sidebar-width: 240px; //サイドバーの横幅
-$drawer-width: 80%; //ドロワー幅。100%(全画面)またはpx指定
-$container-max-width: 1100px;
+$drawer-width: 100%; //ドロワー幅。100%(全画面)またはpx指定
+$container-max-width: 1024px;
 
 // Z-index
 $z-header: 60; // ヘッダーおよびヘッダーに属するドロワー要素
@@ -59,4 +57,4 @@ $radius-md: 12px;
 // Transitions
 $transition-default: 0.28s ease;
 
-$layout-max-width: 1280px;
+$layout-max-width: 1512px;
