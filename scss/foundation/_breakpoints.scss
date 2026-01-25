@@ -1,0 +1,25 @@
+@use "sass:map";
+
+// -----------------------------
+// Breakpoints
+// -----------------------------
+$breakpoints: (
+  sp: "screen and (max-width: 767px)",
+  // スマホ
+  md: "screen and (min-width: 768px)",
+  // タブレット / MD
+  lg: "screen and (min-width: 1024px)", // PC / LG
+);
+
+// -----------------------------
+// Media Query Mixin
+// -----------------------------
+// SPベースで作成
+// MDでLGカンプ値を上書き
+// LGでデザインカンプ通りに戻す
+// 例外的な文字詰まり等はMDで個別調整
+@mixin mq($breakpoint: md) {
+  @media #{map.get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SK-base v2.2｜bgカタログ見本</title>
+    <link rel="stylesheet" href="../css/entry.css" />
+    <link rel="stylesheet" href="../css/style-examples.css" />
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="site-header">
+      <div class="inner">
+        <h1 class="site-title">SK-base v2.2｜bgカタログ見本</h1>
+        <nav class="site-nav">
+          <ul>
+            <li><a href="#fv-basic">fv</a></li>
+            <li><a href="#section--center">center</a></li>
+            <li><a href="#section--fullwidth">fullwidth</a></li>
+            <li><a href="#section--bleed-vertical">bleed-vertical</a></li>
+            <li><a href="#section--wave">wave</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="ex ex-cat-bg">
+      <!-- fvのimgをbgとして使う型 -->
+      <section id="fv-basic" class="fv">
+        <div class="bg fv__bg">
+          <picture>
+            <!-- pc -->
+            <source
+              media="(min-width: 768px)"
+              srcset="../assets/images/fv-pc.jpg"
+            />
+            <!-- sp -->
+            <img src="../assets/images/fv-sp.jpg" alt="" />
+          </picture>
+        </div>
+        <div class="fv__frame">
+          <div class="fv__container">
+            <h1>fv__bg</h1>
+
+            <p class="fv__caption">p　キャッチコピーなど</p>
+          </div>
+        </div>
+      </section>
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>fvのimgをbgとして使う型</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+&lt;section class=&quot;fv&quot;&gt;
+  &lt;div class=&quot;bg fv__bg&quot;&gt;
+    &lt;picture&gt;
+      &lt;source media=&quot;(min-width: 768px)&quot; srcset=&quot;assets/images/fv-pc.jpg&quot; /&gt;
+      &lt;img src=&quot;assets/images/fv-sp.jpg&quot; alt=&quot;&quot; /&gt;
+    &lt;/picture&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;fv__frame&quot;&gt;
+    &lt;div class=&quot;fv__container&quot;&gt;
+      &lt;h1&gt;このページのタイトル&lt;/h1&gt;
+      &lt;p class=&quot;fv__caption&quot;&gt;キャッチコピーなど&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+            </code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+.fv {
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 60px); //全画面　‐　ヘッダー
+}
+
+/* 背景＝紙 */
+.fv__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.fv__frame {
+  position: absolute;
+  inset: 0 20px; // ← ここが「配置用フレーム」。innerもここで取る。
+  display: grid;
+  place-items: center; // 中央に“置く”
+}
+
+/* コンテナを親要素内に自在に配置 */
+.fv__container {
+  position: relative;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  max-width: 760px;
+
+  background: rgba(0, 0, 0, 0.55);
+  color: #aaffcc;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+
+  h1 {
+  }
+
+  p {
+  }
+}
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              基本構造。ここを起点にバリエーションをつくる。<br />
+              基本構造の特徴：fv画像を背景(bg)で実現。このbgは親sectionのサイズ・位置と一致(inset:0で実現)<br />
+              もと画像の縦横比は維持(object-fit:
+              cover;)。中心を起点に配置され、はみ出た部分はカットされる。<br />
+              vf__frameは、親sectionのサイズ・位置と一致(inset:0で実現)。<br />
+              innerとりたい場合はinset 0 20px;などとすればよい。<br />
+              fv__containerにmas-width設定して、横の広がりを抑えた。
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="section--center" class="section section--center">
+        <div class="bg bg--center">
+          <img src="../assets/images/bg-deco.png" alt="" />
+        </div>
+        <div class="inner">
+          <div class="content-section-text">
+            <h2>bg--center</h2>
+
+            <p>
+              個別配置用背景レイヤー(中央にピン止め・サイズ固定＋微調整対応、左右見切れ対応)
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>bg--center</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+&lt;section class="section section--bg-center"&gt;
+  &lt;div class="bg bg--center"&gt;
+    &lt;img src="./assets/images/bg-deco.png" alt="" /&gt;
+  &lt;/div&gt;
+  &lt;div class="inner"&gt;
+    &lt;div class="content-section-text"&gt;
+      &lt;h2&gt;bg--center&lt;/h2&gt;
+
+      &lt;p&gt;
+        個別配置用背景レイヤー(中央にピン止め・サイズ固定＋微調整対応、左右見切れ対応)
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+.bg--center {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  top: 50%;
+  left: 50%;
+  width: 300px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+  height: auto;
+  transform: translate(-50%, -50%);
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* 微調整が必要な場合は margin で offset */
+  // margin-top: -20px;
+  // margin-left: 10px;
+}
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              中心を起点に背景(bg--center)を配置。<br />
+              レスポンシブ表示で背景の大きさは不変。中心で位置固定され、左右が見切れる。<br />
+              使い方：htmlはbg--centerを親オブジェクトの直下に置き、img画像のパスを書く。<br />
+              scssではwidth,heightを指定する。親要素の最大幅を超えてはいけない。(つっぱる原因)<br />
+              背景が親をはみ出る場合は親要素にoverflow:hiddenが設定されているかを確認する。<br />
+              背景の位置の調整はmargin-top,bottomで行う<br />
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="section--fullwidth" class="section section--fullwidth">
+        <div class="bg bg--fullwidth">
+          <img src="../assets/images/bg-deco.png" alt="" />
+        </div>
+        <div class="inner">
+          <div class="content-section-text">
+            <h2>bg--fullwidth</h2>
+
+            <p>
+              個別配置用背景レイヤー(フル幅背景、横幅いっぱいに広げたい場合)
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>bg--center</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+&lt;section class="section section--bg-center"&gt;
+  &lt;div class="bg bg--center"&gt;
+    &lt;img src="./assets/images/bg-deco.png" alt="" /&gt;
+  &lt;/div&gt;
+  &lt;div class="inner"&gt;
+    &lt;div class="content-section-text"&gt;
+      &lt;h2&gt;bg--center&lt;/h2&gt;
+
+      &lt;p&gt;
+        個別配置用背景レイヤー(中央にピン止め・サイズ固定＋微調整対応、左右見切れ対応)
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+.bg--fullwidth {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  width: 100%; // 親要素幅いっぱい
+  max-width: 1200px; //紙面幅の最大値
+  margin: 0 auto; //中央配置
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+  }
+}
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              親要素いっぱいに背景(bg--fullwidth)を配置。<br />
+              レスポンシブ表示で背景の大きさが拡大縮小される。親要素より大きくなることはない。<br />
+              max-widthで紙面幅の最大値を指定すると、それ以上背景は大きくならない。<br />
+              使い方：htmlはbg--fullwidthを親オブジェクトの直下に置き、img画像のパスを書く。<br />
+              scssではmax-widthを指定する。あとは基本書き換えない。<br />
+              背景が親をはみ出る場合は親要素にoverflow:hiddenが設定されているかを確認する。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="section--bleed-vertical"
+        class="section section--bleed-vertical"
+      >
+        <div class="bg bg--bleed-vertical"></div>
+        <div class="inner">
+          <h2>bg--bleed-vertical</h2>
+
+          <p>
+            inner幅に色がついてその上下にフチ飾りがあるようにみえる配置。<br />
+            レスポンシブ表示で縮めると左右が見切れる。（innerとは別の動き）<br />
+            中身の量によって、自然に高さが決まる。<br />
+            フチをどれだけはみ出させるかを指定できる。
+          </p>
+        </div>
+      </section>
+
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>bg--bleed-vertical</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+&lt;section class="section section--bleed-vertical"&gt;
+  &lt;div class="bg bg--bleed-vertical"&gt;&lt;/div&gt;
+  &lt;div class="inner"&gt;
+    &lt;div class="content-section-text"&gt;
+      &lt;h2&gt;bg--bleed-vertical&lt;/h2&gt;
+
+      &lt;p&gt;
+        個別配置用背景レイヤー(上下装飾用のモディファイヤー、レスポンシブ表示で左右に見切れる)
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+.bg--bleed-vertical {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  left: 50%;
+  transform: translateX(-50%);
+  width: 375px; //紙のwidthはここで
+  background: #dff1fd;
+  background-size: cover;
+
+  top: 88px; //beforeのはみ出し分を内側に縮める
+  bottom: 27px; //afterのはみ出し分を内側に縮める
+  overflow: visible; //beforeとafterが見えるようにする
+
+  &::before,
+  &::after {
+    top: auto;
+    position: absolute;
+    left: 50%;
+    width: 375px; //紙のwidth
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+  &::before {
+    content: "";
+    top: -88px; //上装飾はみ出し分
+    height: 88px; //上装飾の高さ
+    background: url("../assets/images/bg-top.png") no-repeat center center;
+    background-size: cover;
+  }
+
+  &::after {
+    content: "";
+    bottom: -27px; //下装飾はみ出し分
+    height: 82px; //下装飾の高さ
+    background: url("../assets/images/bg-bottom.png") no-repeat center center;
+    background-size: cover;
+  }
+}
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              inner幅に色がついてその上下にフチ飾りがあるようにみえる配置。<br />
+              実際はinnerと兄弟要素のbgにて実現している<br />
+              レスポンシブ表示で背景やフチ飾りの大きさが保たれる。innerとは別のうごきになる。<br />
+              widthで紙面幅の最大値を指定すると、それが常に保持される<br />
+              使い方：htmlはbg--bleed-verticalを親オブジェクトの直下に置く。<br />
+              scssではwidthを指定する。backgroundを指定する。<br />
+              装飾ではみ出る部分をtopとbottomで指定する。(内側に収めるイメージ)<br />
+              overflow:visibleにする(重要！！overflow:visibleはなるべく末端に指定した方が事故が少ないため、ここで指定する。)<br />
+              疑似要素で、フチ飾りの高さとはみ出し分と画像を指定する。<br />
+              装飾部分と前のセクションとの間に隙間を作りたい場合は、親のsectionのmarginで取る
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="section--wave" class="section section--wave">
+        <div class="bg bg--wave"></div>
+        <div class="inner">
+          <h2>bg--wave</h2>
+          <p>sectionのヘリにフチ飾り</p>
+        </div>
+      </section>
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>bg--wave</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+&lt;section class="section section--wave"&gt;
+  &lt;div class="bg bg--wave"&gt;&lt;/div&gt;
+  &lt;div class="inner"&gt;
+    &lt;div class="content-section-text"&gt;
+      &lt;h2&gt;bg--wave&lt;/h2&gt;
+
+      &lt;p&gt;
+        個別配置用背景レイヤー(上下装飾用のモディファイヤー、レスポンシブ表示で左右に見切れる)
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+.section--wave {
+  overflow: visible;
+}
+.bg--wave {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  background: #dff1fd;
+  background-size: cover;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    max-width: 1200px;
+    height: 32px;
+
+    transform: translateX(-50%);
+
+    background-repeat: repeat-x;
+    background-position: left top;
+    background-size: 84px 32px; // ← ★波一個の単位の大きさをここで指定
+    z-index: -1;
+
+    /* ★位相調整 */
+    background-position: 42px top; // ← 84px / 2
+  }
+  &::before {
+    top: -32px; //上装飾はみ出し分
+    height: 32px; //上装飾の高さ
+    background-image: url("../assets/images/deco-wave.png");
+  }
+
+  &::after {
+    bottom: -32px; //下装飾はみ出し分
+    height: 32px; //下装飾の高さ
+    background-image: url("../assets/images/deco-wave-down.png");
+  }
+}
+
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              sectionに色がついてその上下にフチ飾りがある配置。<br />
+              secitonをoverflow:visibleにしている<br />
+              widthで紙面幅の最大値を指定する<br />
+              使い方：htmlはbg--waveを親オブジェクトの直下に置く。<br />
+              scssではmax-widthを指定する。backgroundを指定する。<br />
+              装飾ではみ出る部分をtopとbottomで指定する。(sectionの外にはみ出すイメージ)<br />
+              親要素にoverflow:visibleを指定する<br />
+              (重要！！overflow:visibleはなるべく末端に指定した方が事故が少ないが、波の単位の幅が小さいので問題ないとの判断で、ここで指定する。)<br />
+              疑似要素で、フチ飾りの高さとはみ出し分と画像を指定する。<br />
+              前後のセクションのbackgroundは透明でないと、波が裏にかくれてしまう。<br />
+              前後のセクションにbackground色を付けたい場合はbgで行うこと。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- フッター -->
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; 2026 Your Name</p>
+      </div>
+    </footer>
+
+    <script src="../js/modules/copy.js" defer></script>
+  </body>
+</html>

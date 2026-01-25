@@ -1,0 +1,317 @@
+.ex-cat-bg {
+  .bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .flex-layout {
+    display: flex;
+    gap: 16px;
+    /* 直下に来たテキスト要素だけ margin-bottom を殺す */
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6,
+    > p,
+    > ul,
+    > ol,
+    > dl {
+      margin-bottom: 0;
+    }
+  }
+  /* ----------------------
+   bg 基本構造(再掲)
+   ---------------------- */
+
+  .bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  /* ----------------------
+   fvのimgをbgとして使う型
+   ---------------------- */
+
+  .fv__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    img {
+      //imgの縦横の縮尺比率は変えないが、imgの大きさは親要素に合わせる
+      //つまり、親要素をカバーしたうえで、余ったimgは切り取られる
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center; //中央配置
+    }
+  }
+
+  // fvのheightは基本的に指定しておくこと。そうしないと、bgの高さが出ない。
+  .fv {
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - 60px); //全画面　‐　ヘッダー
+  }
+  .fv__frame {
+    position: absolute;
+    inset: 0 20px; // ← ここが「配置用フレーム」。innerもここで取る。
+    display: grid;
+    place-items: center; // 中央に“置く”
+  }
+
+  /* コンテナを親要素内に自在に配置 */
+  .fv__container {
+    position: relative;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    max-width: 760px;
+
+    background: rgba(0, 0, 0, 0.55);
+    color: #aaffcc;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+
+    h1 {
+    }
+
+    p {
+    }
+  }
+
+  /* ----------------------
+   bgを中心にピン止め型
+   ---------------------- */
+
+  // 個別配置用背景レイヤー(中央にピン止め・サイズ固定＋微調整対応、左右見切れ対応)
+  .bg--center {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    top: 50%;
+    left: 50%;
+    width: 300px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+    height: auto;
+    transform: translate(-50%, -50%);
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* 微調整が必要な場合は margin で offset */
+    // margin-top: -20px;
+    // margin-left: 10px;
+  }
+
+  /* ----------------------
+   bgはフル幅背景
+   ---------------------- */
+  // 個別配置用背景レイヤー(フル幅背景、横幅いっぱいに広げたい場合）
+
+  .bg--fullwidth {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    width: 100%; // 親要素幅いっぱい
+    max-width: 1200px; //紙面幅の最大値
+    margin: 0 auto; //中央配置
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  //個別配置用背景レイヤー(上下装飾用のモディファイヤー、レスポンシブ表示で左右に見切れる)
+  .bg--bleed-vertical {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    left: 50%;
+    transform: translateX(-50%);
+    width: 375px; //紙のwidthはここで
+    background: #dff1fd;
+    background-size: cover;
+
+    top: 88px; //beforeのはみ出し分を内側に縮める
+    bottom: 27px; //afterのはみ出し分を内側に縮める
+    overflow: visible; //beforeとafterが見えるようにする
+
+    &::before,
+    &::after {
+      top: auto;
+      position: absolute;
+      left: 50%;
+      width: 375px; //紙のwidth
+      transform: translateX(-50%);
+      z-index: -1;
+    }
+    &::before {
+      content: "";
+      top: -88px; //上装飾はみ出し分
+      height: 88px; //上装飾の高さ
+      background: url("../assets/images/bg-top.png") no-repeat center center;
+      background-size: cover;
+    }
+
+    &::after {
+      content: "";
+      bottom: -27px; //下装飾はみ出し分
+      height: 82px; //下装飾の高さ
+      background: url("../assets/images/bg-bottom.png") no-repeat center center;
+      background-size: cover;
+    }
+  }
+
+  .section--bleed-vertical {
+    .inner {
+      max-width: 375px;
+    }
+  }
+
+  .section--wave {
+    overflow: visible;
+  }
+  .bg--wave {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1280px;
+    background: #dff1fd;
+    background-size: cover;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 100%;
+      max-width: 1280px;
+      height: 32px;
+
+      transform: translateX(-50%);
+
+      background-repeat: repeat-x;
+      background-position: left top;
+      background-size: 84px 32px; // ← ★波一個の単位の大きさをここで指定
+      z-index: -1;
+
+      /* ★位相調整 */
+      background-position: 42px top; // ← 84px / 2
+    }
+    &::before {
+      top: -32px; //上装飾はみ出し分
+      height: 32px; //上装飾の高さ
+      background-image: url("../assets/images/deco-wave.png");
+    }
+
+    &::after {
+      bottom: -32px; //下装飾はみ出し分
+      height: 32px; //下装飾の高さ
+      background-image: url("../assets/images/deco-wave-down.png");
+    }
+  }
+}
+/* ヘッダー */
+.site-header {
+  background-color: #f8f8f8;
+  padding: 1rem 0;
+
+  .site-title {
+    font-size: 1.5rem;
+  }
+
+  .site-nav ul {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.section--explanation {
+  // background: rgb(237, 219, 222);
+  .explanation__container {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    border-radius: 16px;
+    color: #aaffcc;
+    font-family: ui-monospace, monospace;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+    h1 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .flex-layout {
+      display: flex;
+      min-width: 0;
+      gap: 10px;
+    }
+    .code-wrapper {
+      flex: 1;
+      overflow-x: auto;
+      overflow-y: auto;
+      position: relative;
+    }
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fff;
+      color: #000;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #fff;
+    }
+    pre {
+      width: 100%;
+      height: 300px;
+      background: #000;
+      padding: 0.75rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      overflow-y: auto;
+      margin-bottom: 0.75rem;
+    }
+
+    .explanation__caption {
+      height: 100px;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      background: #000;
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+  }
+}
+
+/* フッター */
+.site-footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+// .is-overflow {
+//   overflow-y: visible;
+// }

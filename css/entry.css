@@ -1,0 +1,909 @@
+@charset "UTF-8";
+/* ----------------------------------------
+  Reset
+  - ブラウザ差異の吸収
+  - 依存関係は持たせない
+---------------------------------------- */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 共通リセット（最小限） */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* 共通決めごと */
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+h3 {
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+p {
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.inner {
+  max-width: 1280px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.inner--flex {
+  max-width: 1280px;
+  padding: 0 20px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* 直下に来たテキスト要素だけ margin-bottom を殺す */
+}
+.inner--flex > h1,
+.inner--flex > h2,
+.inner--flex > h3,
+.inner--flex > h4,
+.inner--flex > h5,
+.inner--flex > h6,
+.inner--flex > p,
+.inner--flex > ul,
+.inner--flex > ol,
+.inner--flex > dl {
+  margin-bottom: 0;
+}
+
+.flex-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+  /* 直下に来たテキスト要素だけ margin-bottom を殺す */
+}
+.flex-layout > h1,
+.flex-layout > h2,
+.flex-layout > h3,
+.flex-layout > h4,
+.flex-layout > h5,
+.flex-layout > h6,
+.flex-layout > p,
+.flex-layout > ul,
+.flex-layout > ol,
+.flex-layout > dl {
+  margin-bottom: 0;
+}
+
+/* ----------------------
+   bg 基本構造(再掲)
+   ---------------------- */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ----------------------
+   bgを中心にピン止め型
+   ---------------------- */
+.bg--center {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: auto;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  /* 微調整が必要な場合は margin で offset */
+}
+.bg--center img {
+  width: 100%;
+  height: auto;
+}
+
+/* ----------------------
+   bgはフル幅背景
+   ---------------------- */
+.bg--fullwidth {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.bg--fullwidth img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+}
+
+.bg--bleed-vertical {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 375px;
+  background: #dff1fd;
+  background-size: cover;
+  top: 88px;
+  bottom: 27px;
+  overflow: visible;
+}
+.bg--bleed-vertical::before, .bg--bleed-vertical::after {
+  top: auto;
+  position: absolute;
+  left: 50%;
+  width: 375px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: -1;
+}
+.bg--bleed-vertical::before {
+  content: "";
+  top: -88px;
+  height: 88px;
+  background: url("../assets/images/bg-top.png") no-repeat center center;
+  background-size: cover;
+}
+.bg--bleed-vertical::after {
+  content: "";
+  bottom: -27px;
+  height: 82px;
+  background: url("../assets/images/bg-bottom.png") no-repeat center center;
+  background-size: cover;
+}
+
+.section--bleed-vertical .inner {
+  max-width: 375px;
+}
+
+.section--wave {
+  overflow: visible;
+}
+
+.bg--wave {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  background: #dff1fd;
+  background-size: cover;
+}
+.bg--wave::before, .bg--wave::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  max-width: 1200px;
+  height: 32px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: 84px 32px;
+  z-index: -1;
+  /* ★位相調整 */
+  background-position: 42px top;
+}
+.bg--wave::before {
+  top: -32px;
+  height: 32px;
+  background-image: url("../assets/images/deco-wave.png");
+}
+.bg--wave::after {
+  bottom: -32px;
+  height: 32px;
+  background-image: url("../assets/images/deco-wave-down.png");
+}
+
+/* ----------------------
+   fvのimgをbgとして使う型
+   ---------------------- */
+.fv__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.fv__bg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.fv {
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 60px);
+}
+
+.fv__frame {
+  position: absolute;
+  inset: 0 20px;
+  display: grid;
+  place-items: center;
+}
+
+/* コンテナを親要素内に自在に配置 */
+.fv__container {
+  position: relative;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  max-width: 760px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #aaffcc;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+/* =====================================
+   Cards -- Basic
+   基本のカードグリッドレイアウト
+===================================== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--cards-gap, 20px);
+  justify-items: center; /* ← 中のカードだけを中央寄せ */
+}
+
+/* 縦並び */
+.cards--col {
+  grid-template-columns: 1fr;
+}
+
+/* 2カラム */
+.cards--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 3カラム */
+.cards--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* =====================================
+   Cards -- Mixed
+   1段目：2カラム / 2段目：3カラム（PC想定）
+===================================== */
+.cards--mixed {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+  /* 1段目：2枚（1/2幅） */
+  /* 2段目以降：3枚（1/3幅） */
+}
+.cards--mixed > :nth-child(-n+2) {
+  grid-column: span 3;
+}
+.cards--mixed > :nth-child(n+3) {
+  grid-column: span 2;
+}
+
+/* PCから切り替え */
+@media (min-width: 768px) {
+  .cards--pc2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cards--pc3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* =====================================
+   Cards -- Last Child
+   最後のカードを中央寄せ（SP想定）
+===================================== */
+.cards--last-child {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.cards--last-child > :last-child:nth-child(2n+1) {
+  grid-column: 1/span 2;
+  max-width: 50%;
+  justify-self: center;
+}
+
+/* =====================================
+   Card -- Base
+   カード共通ベーススタイル
+===================================== */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 100%;
+  /* 背景カード用レイヤー（構造だけ） */
+  /* split 構造 */
+}
+.card p,
+.card h3 {
+  margin: 0;
+}
+.card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: center/cover no-repeat;
+}
+.card__inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+.card--split {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.card__img {
+  display: block;
+  aspect-ratio: 133/101;
+  background: center/cover no-repeat;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.card__content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* =====================================
+   Card -- Cover (全面画像＋テキスト)
+   画像全面に背景を敷き、テキストを上に重ねるカード
+===================================== */
+.card--cover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 335px;
+  aspect-ratio: 335/210;
+  /* テキストマージンリセット */
+  /* 背景カード用レイヤー */
+  /* テキストレイヤー */
+}
+.card--cover p,
+.card--cover h3 {
+  margin: 0;
+}
+.card--cover .card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* 半透明スクリーンオーバーレイ */
+}
+.card--cover .card__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.card--cover .card__inner--overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 1rem;
+  color: #fff;
+}
+
+/* =====================================
+   Card -- Stack (上下型カード)
+   上下に画像とテキストが積まれたシンプルカード
+===================================== */
+.card--stack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 335px;
+  background: #fff;
+  /* 上段の画像 */
+  /* 下段のテキスト */
+}
+.card--stack .card__media {
+  width: 100%;
+  display: block;
+}
+.card--stack .card__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.card--stack .card__inner {
+  padding: 1rem;
+  text-align: center;
+}
+.card--stack .card__inner h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+.card--stack .card__inner p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* =====================================
+   Card -- Split (左右型カード)
+   左右に画像とテキストが並ぶUI型カード
+===================================== */
+.card--split {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #000;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  /* 左側画像 */
+  /* 右側テキスト */
+}
+.card--split .card__media {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40%;
+          flex: 0 0 40%;
+  position: relative;
+}
+.card--split .card__media img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.card--split .card__inner {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 1rem;
+}
+.card--split .card__inner h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+.card--split .card__inner p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* =====================================
+   Section -- Mixed Cards
+   cards--mixed 用のスタイル調整
+===================================== */
+.section--mixed .card--stack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  max-width: none;
+  background: #fff;
+  /* 上段の画像 */
+  /* 下段のテキスト */
+}
+.section--mixed .card--stack .card__media {
+  width: 100%;
+  display: block;
+}
+.section--mixed .card--stack .card__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.section--mixed .card--stack .card__inner {
+  padding: 1rem;
+  text-align: center;
+}
+.section--mixed .card--stack .card__inner h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+.section--mixed .card--stack .card__inner p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* ================================
+   in-header:ヘッダーに属するドロワー
+
+   ================================ */
+.drawer-icon--in-header {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.drawer-icon--in-header .drawer-icon__bar {
+  position: absolute;
+  left: 0;
+  width: 32px;
+  height: 3px;
+  border-radius: 3px;
+  background: #fff;
+  -webkit-transition: top 0.3s linear, -webkit-transform 0.3s linear;
+  transition: top 0.3s linear, -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear, top 0.3s linear;
+  transition: transform 0.3s linear, top 0.3s linear, -webkit-transform 0.3s linear;
+}
+.drawer-icon--in-header .drawer-icon__bar:nth-of-type(1) {
+  top: 2px;
+}
+.drawer-icon--in-header .drawer-icon__bar:nth-of-type(2) {
+  top: 15px;
+}
+.drawer-icon--in-header .drawer-icon__bar:nth-of-type(3) {
+  top: 28px;
+}
+.drawer-icon--in-header.is-checked .drawer-icon__bar:nth-of-type(1) {
+  top: 15px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.drawer-icon--in-header.is-checked .drawer-icon__bar:nth-of-type(2) {
+  display: none;
+}
+.drawer-icon--in-header.is-checked .drawer-icon__bar:nth-of-type(3) {
+  top: 15px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+@media screen and (min-width: 768px) {
+  .drawer-icon--in-header {
+    display: none;
+  }
+}
+
+.drawer-content--in-header {
+  position: fixed;
+  top: 56px;
+  right: 0;
+  width: 80%;
+  height: calc(100% - 56px);
+  background-color: #0060a0;
+  text-align: center;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: -webkit-transform 0.3s linear;
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+}
+.drawer-content--in-header.is-checked {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+/* ================================
+   out-of-header:ヘッダーに属さない
+   （独立した）ドロワー
+   ================================ */
+.drawer-icon--out-of-header {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.drawer-icon--out-of-header .drawer-icon__bar {
+  position: absolute;
+  left: 0;
+  width: 32px;
+  height: 3px;
+  border-radius: 3px;
+  background: #fff;
+  -webkit-transition: top 0.3s linear, -webkit-transform 0.3s linear;
+  transition: top 0.3s linear, -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear, top 0.3s linear;
+  transition: transform 0.3s linear, top 0.3s linear, -webkit-transform 0.3s linear;
+}
+.drawer-icon--out-of-header .drawer-icon__bar:nth-of-type(1) {
+  top: 2px;
+}
+.drawer-icon--out-of-header .drawer-icon__bar:nth-of-type(2) {
+  top: 15px;
+}
+.drawer-icon--out-of-header .drawer-icon__bar:nth-of-type(3) {
+  top: 28px;
+}
+.drawer-icon--out-of-header.is-checked {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .drawer-icon--out-of-header {
+    display: none;
+  }
+}
+
+.drawer-content--out-of-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 62;
+  width: 80%;
+  height: 100%;
+  background-color: #0060a0;
+  text-align: center;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: -webkit-transform 0.3s linear;
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+}
+.drawer-content--out-of-header.is-checked {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+.drawer-content--out-of-header.is-checked .drawer-icon--out-of-header .drawer-icon__bar:nth-of-type(1) {
+  top: 15px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.drawer-content--out-of-header.is-checked .drawer-icon--out-of-header .drawer-icon__bar:nth-of-type(2) {
+  display: none;
+}
+.drawer-content--out-of-header.is-checked .drawer-icon--out-of-header .drawer-icon__bar:nth-of-type(3) {
+  top: 15px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+/* ================================
+   Drawer Overlay
+   ================================ */
+/*
+  - header の外に配置
+  - header / footer より上または下(z-index調整)
+  - drawer-content より下
+*/
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 61;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+.drawer-overlay.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}

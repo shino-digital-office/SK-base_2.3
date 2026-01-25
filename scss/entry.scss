@@ -1,0 +1,18 @@
+// ------------------------
+// foundation（思想・ルール）
+// ------------------------
+@use "foundation/reset";
+@use "foundation/variables";
+@use "foundation/base";
+@use "foundation/breakpoints";
+@use "foundation/mixin";
+
+// ------------------------
+// catalog（作成済みサンプル）
+// ------------------------
+@use "catalog/bg";
+@use "catalog/fv";
+@use "catalog/card";
+@use "catalog/header";
+@use "catalog/footer";
+@use "catalog/drawer";

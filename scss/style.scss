@@ -1,0 +1,566 @@
+// ======================================================
+// style.scss
+// 案件用スタイル（上書き・調整・実験用）
+//
+// 役割
+// ------------------------------------------------------
+// ・HTML 側で entry.css の後に読み込まれる上書きレイヤー
+// ・母艦（foundation / catalog）を上書きするための層
+// ・案件ごとの共通スタイルやページ固有調整をここに書く
+//
+// 基本方針
+// ------------------------------------------------------
+// ・ここは「整理された完成形」でなくてよい
+// ・1ページ目をぶわっと組む／試行錯誤を書くのはOK
+// ・不要になった調整は動作確認後に削除する
+//
+// 書いてよいもの
+// ------------------------------------------------------
+// ・section 修飾子（.section--xxx）
+// ・既存 catalog コンポーネントの案件用上書き
+// ・header / footer など案件固有の構造
+// ・一時的な調整・検証コード
+//
+// 書かないもの（母艦に戻す）
+// ------------------------------------------------------
+// ・全ページ共通で再利用したいルール
+// ・汎用レイアウトや設計思想
+// → foundation / catalog に昇格させる
+//
+// 変数について
+// ------------------------------------------------------
+// ・variables は as * で展開して使用してよい
+// ・可読性より作業効率を優先する
+//
+// 注意
+// ------------------------------------------------------
+// ・このファイルが肥大化しても問題ない
+// ・「きれいに保とう」としすぎないこと
+// ・母艦を汚さないための隔離ゾーンとして使う
+// ======================================================
+
+@use "foundation/variables" as *;
+@use "foundation/breakpoints" as *;
+
+/* ================================
+   Header Layout
+   ================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+
+  margin: 0 auto;
+  max-width: $layout-max-width; // 紙面型の場合に有効
+  color: $color-white;
+
+  /* Header Background Layer */
+  .bg {
+    background: #393939;
+  }
+}
+/* ================================
+   Header Bar
+   ================================ */
+
+.header-bar.inner--flex {
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-xs;
+  padding-block: $space-sm;
+}
+
+/* ================================
+   Brand
+   ================================ */
+
+.brand {
+  width: 100%;
+  max-width: 270px;
+  font-weight: $font-weight-bold;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ================================
+   in-header:ヘッダーに属するドロワー
+
+   ================================ */
+
+//Drawer Icon 上書き用
+
+// .drawer-icon--in-header {
+//   position: relative;
+//   width: 32px;
+//   height: 32px;
+
+//   .drawer-icon__bar {
+//     position: absolute;
+//     left: 0;
+//     width: 32px;
+//     height: 3px;
+//     border-radius: 3px;
+//     background: #fff;
+//     transition:
+//       transform 0.3s linear,
+//       top 0.3s linear;
+
+//     &:nth-of-type(1) {
+//       top: 2px;
+//     }
+//     &:nth-of-type(2) {
+//       top: 15px;
+//     }
+//     &:nth-of-type(3) {
+//       top: 28px;
+//     }
+//   }
+
+//   &.is-checked {
+//     .drawer-icon__bar {
+//       &:nth-of-type(1) {
+//         top: 15px;
+//         transform: rotate(45deg);
+//       }
+//       &:nth-of-type(2) {
+//         display: none;
+//       }
+//       &:nth-of-type(3) {
+//         top: 15px;
+//         transform: rotate(-45deg);
+//       }
+//     }
+//   }
+
+//   @include mq(md) {
+//     display: none;
+//   }
+// }
+
+// Drawer Content 上書き用
+/*
+  - Headerに属するUIだが、視覚的には「浮かせて表示」
+  - z-index:-1 を前提とする .bg思想とは矛盾するため、
+    背景は直接 drawer-content に指定する
+*/
+
+// .drawer-content--in-header {
+//   position: fixed;
+//   top: 56px; // header 高さ分下げる
+//   right: 0;
+
+//   width: $drawer-width;//ドロワー幅。_variable.scssで指定可。値を直接入力してもよい（100%(全画面)またはpx指定）
+//   height: calc(100% - 56px);// header 高さ分引く。固定フッターは重なるものとして割り切る
+
+//   background-color: #0060a0; // .bg は使わない（意図的な例外）
+//   text-align: center;
+
+//   transform: translateX(100%);// 100%:右端に隠す -100%:左端に隠す 0:表示
+//   transition: transform 0.3s linear;
+
+//   &.is-checked {
+//     transform: translateX(0);
+//   }
+// }
+
+/* ================================
+   out-of-header:ヘッダーに属さない
+   （独立した）ドロワー
+   ================================ */
+
+//Drawer Icon 上書き用
+
+// .drawer-icon--out-of-header {
+//   position: relative;
+//   width: 32px;
+//   height: 32px;
+
+//   .drawer-icon__bar {
+//     position: absolute;
+//     left: 0;
+//     width: 32px;
+//     height: 3px;
+//     border-radius: 3px;
+//     background: #fff;
+//     transition:
+//       transform 0.3s linear,
+//       top 0.3s linear;
+
+//     &:nth-of-type(1) {
+//       top: 2px;
+//     }
+//     &:nth-of-type(2) {
+//       top: 15px;
+//     }
+//     &:nth-of-type(3) {
+//       top: 28px;
+//     }
+//   }
+
+//   &.is-checked {
+//     display: none;
+//   }
+
+//   @include breakpoints.mq(md) {
+//     display: none;
+//   }
+// }
+
+// Drawer Content 上書き用
+
+// .drawer-content--out-of-header {
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   z-index: variables.$z-header + 2; // drawer-overlay より上に表示
+
+//   width: variables.$drawer-width;
+//   height: 100%;
+
+//   background-color: #0060a0; // .bg は使わない（意図的な例外）
+//   text-align: center;
+
+//   transform: translateX(100%);
+//   transition: transform 0.3s linear;
+
+//   &.is-checked {
+//     transform: translateX(0);
+//     .drawer-icon--out-of-header {
+//       .drawer-icon__bar {
+//         &:nth-of-type(1) {
+//           top: 15px;
+//           transform: rotate(45deg);
+//         }
+//         &:nth-of-type(2) {
+//           display: none;
+//         }
+//         &:nth-of-type(3) {
+//           top: 15px;
+//           transform: rotate(-45deg);
+//         }
+//       }
+//     }
+//   }
+// }
+
+/* ================================
+   Drawer Navigation (Mobile)
+   ================================ */
+
+.drawer-nav.inner--flex {
+  height: 100%;
+  padding-bottom: 60px; // 固定フッター分
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-content {
+  color: var(--color-base, #fff);
+
+  .nav-unit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 255px;
+    padding: 15px 0;
+
+    font-family: "Rounded Mplus 1c";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+
+    border-top: 1px dashed var(--color-base, #fff);
+
+    &:last-child {
+      border-bottom: 1px dashed var(--color-base, #fff);
+    }
+
+    &__main {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    &__icon svg,
+    &__arrow svg {
+      display: block;
+    }
+
+    &__icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__arrow svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+/* ================================
+   Drawer Overlay 上書き用
+   ================================ */
+/*
+  - header の外に配置
+  - header / footer より上または下(z-index調整)
+  - drawer-content より下
+*/
+
+// .drawer-overlay {
+//   position: fixed;
+//   inset: 0;
+//   z-index:$z-header + 1; // headerより上か下かによって数値を調整;
+
+//   background: rgba(0, 0, 0, 0.5);
+//   opacity: 0;
+//   pointer-events: none;
+//   transition: opacity 0.3s linear;
+
+//   &.is-visible {
+//     opacity: 1;
+//     pointer-events: auto;
+//   }
+// }
+
+/* ================================
+   Desktop Navigation
+   ================================ */
+
+.desktop-nav {
+  display: none;
+
+  @include mq(md) {
+    display: flex;
+    gap: $space-md;
+    align-items: center;
+
+    a {
+      color: $color-white;
+      font-size: 14px;
+
+      &:hover {
+        opacity: 0.8;
+        color: rgb(184, 184, 244);
+      }
+    }
+  }
+}
+
+.desktop-nav .nav-content {
+  .nav-unit {
+    border: none;
+    width: 100%;
+
+    &__main {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__arrow svg {
+      display: none;
+    }
+  }
+}
+
+/* ================================
+   Main Layout
+   ================================ */
+.main-layout {
+  position: relative;
+  overflow-x: hidden; // 横スクロール防止
+}
+
+/* ================================
+   Main Visual / FV
+   ================================ */
+.main-hero {
+  position: relative;
+  max-width: $layout-max-width; //紙面幅の指定。無効化すればfvが画面幅いっぱいに広がる。
+  margin: 0 auto;
+}
+
+/* ================================
+   Main Body Layout
+   ================================ */
+
+//aside.sidebarと.main-contentの親
+//flex-directionでレイアウト変更ができます。
+.main-body {
+  position: relative;
+  @include mq(md) {
+    max-width: $layout-max-width; //紙面幅の指定。無効化すればfvが画面幅いっぱいに広がる。
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse; // sidebarを右側に配置
+    align-items: flex-start;
+  }
+}
+
+/* ================================
+   Sidebar
+   ================================ */
+.sidebar {
+  display: none;
+
+  @include mq(md) {
+    .bg {
+      background: $color-gray-sidebar;
+    }
+
+    display: block;
+    width: $sidebar-width;
+    // background: $color-gray-sidebar;
+    border-right: 1px solid #eee;
+    padding: $space-xl $space-md;
+    position: sticky;
+    // top: $header-height-pc; // sidebarの始まりの位置はtopで調整
+    height: fit-content; //中身の量によって伸びる
+
+    // display: none;
+  }
+}
+
+/* ================================
+   Sidebar詳細
+   ================================ */
+.sidebar-section {
+  margin-bottom: $space-2xl;
+}
+
+.sidebar-title {
+  font-size: 14px;
+  font-weight: $font-weight-bold;
+  margin-bottom: $space-sm;
+}
+
+.sidebar-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* ================================
+   Main Content Column
+   ================================ */
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 紙面型では中央寄せしない */
+.main-content .container {
+  max-width: none;
+  margin: 0;
+}
+
+/* =====================================
+   Section上書き
+
+===================================== */
+//ここから書き始めてください↓
+
+/* ================================
+   footer
+   ================================ */
+.site-footer {
+  margin: 0 auto;
+  max-width: $layout-max-width; //紙面型の場合はここを有効にする
+  text-align: center;
+  position: relative;
+
+  &__bg {
+    // 背景専用レイヤー
+    // inset:0 を基本とする
+    background: #a4ceea;
+  }
+  .bg--wave {
+    max-width: 1280px;
+    &::before {
+      max-width: 1280px;
+    }
+    &::after {
+      display: none;
+    }
+  }
+  &__main {
+    // 紙面型フッター
+    // レイアウト・余白・配色はここ
+    margin-bottom: 60px; // 下部余白（固定フッター分）
+  }
+
+  &__fixed {
+    // UI型フッター（モバイル専用）
+    // mainとは独立して制御する
+    position: fixed;
+    width: 100%;
+    max-width: $layout-max-width; //紙面型の場合はここを有効にする
+    height: 60px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: $z-footer-fixed;
+
+    .bg {
+      background: #7fbce5;
+    }
+    .inner--flex {
+      width: 100%;
+      height: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+/* ===============================
+   md以上では固定フッターを非表示
+================================ */
+@include mq(md) {
+  .site-footer__main {
+    margin-bottom: 0;
+  }
+
+  .site-footer__fixed {
+    display: none;
+  }
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  padding-block: $space-sm; //上下の余白
+}
+
+/* =====================================
+    トップに戻るボタン
+
+===================================== */
+
+.pagetop {
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  z-index: $z-footer-fixed + 1; // 固定フッターより上に表示。デザインによって変更可。
+  width: 52px;
+  height: 52px;
+  img {
+    width: 100%;
+  }
+  opacity: 1;
+  visibility: hidden;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+  &.is-show {
+    opacity: 1;
+    visibility: visible;
+  }
+  @include mq(md) {
+    right: 20px;
+    bottom: 40px;
+  }
+}

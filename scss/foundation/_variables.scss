@@ -1,0 +1,62 @@
+// Colors
+$color-bg: #ffffff;
+$color-text: #222;
+$color-accent: #2f3942;
+$color-white: #fff;
+$color-gray-dark: #555;
+$color-gray-light: #f7f7f7;
+$color-gray-sidebar: #fde7d9; // warm peach tone
+$color-accent-secondary: #ee5a6d;
+
+$color-main: #1391e6;
+$color-base: #fff;
+$color-main-light: #dff1fd;
+
+// Spacing
+$space-xs: 8px;
+$space-sm: 12px;
+$space-md: 16px;
+$space-lg: 20px;
+$space-xl: 32px;
+$space-2xl: 48px;
+$space-3xl: 60px;
+
+// Font
+$font-family:
+  "Noto Sans JP",
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  Roboto,
+  "Helvetica Neue",
+  Arial;
+$font-weight-bold: 700;
+
+// Sizes
+$header-height: 56px; // ヘッダー高さの目安 (現在は JS で動的取得)
+$header-height-pc: 40px; // PC 用ヘッダー高さの目安 (現在は JS で動的取得)
+$sidebar-width: 240px; //サイドバーの横幅
+$drawer-width: 80%; //ドロワー幅。100%(全画面)またはpx指定
+$container-max-width: 1100px;
+
+// Z-index
+$z-header: 60; // ヘッダーおよびヘッダーに属するドロワー要素
+$z-footer: auto;
+$z-sidebar: 40;
+$z-footer-fixed: 50;
+// $z-drawer-overlay: 55; // 廃止。headerより下に表示する場合はこの値を使用せず、$z-header より小さい値を直接指定してください。
+
+// Paper Layer (構造レイヤー)
+$z-paper-bg: -1; // 背景の紙
+$z-paper-overlay: 1; // オーバーレイ（半透明）
+$z-paper-content: 2; // 文字・UIの紙
+$z-paper-float: 3; // 装飾やフロートUI
+
+// Border radius
+$radius-sm: 6px;
+$radius-md: 12px;
+
+// Transitions
+$transition-default: 0.28s ease;
+
+$layout-max-width: 1280px;

@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SK-base v2.2｜カードカタログ見本</title>
+    <link rel="stylesheet" href="../css/entry.css" />
+    <link rel="stylesheet" href="../css/style-examples.css" />
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="site-header">
+      <div class="inner">
+        <h1 class="site-title">SK-base v2.2｜カードカタログ見本</h1>
+        <nav class="site-nav">
+          <ul>
+            <li><a href="#section--overlay">cover</a></li>
+            <li><a href="#section--stack">stack</a></li>
+            <li><a href="#section--split">split</a></li>
+            <li><a href="#section--mixed">mixed</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="ex ex-cat-card">
+      <!-- card--cover -->
+      <section id="section--cover" class="section section--cover">
+        <div class="bg"></div>
+        <div class="inner">
+          <h2>card--cover</h2>
+          <p>
+            カード背景がカード全体を覆うタイプ、カード背景に意味をもたせない(span)
+          </p>
+          <div class="cards cards--col">
+            <a href="" class="card card--cover">
+              <span
+                class="card__bg"
+                style="background-image: url(../assets/images/main01.jpg)"
+              ></span>
+              <div class="card__inner--overlay">
+                <h3>h3:一般診療</h3>
+                <p>p:虫歯・入れ歯・小児歯科</p>
+              </div>
+            </a>
+            <a href="" class="card card--cover">
+              <span
+                class="card__bg"
+                style="background-image: url(../assets/images/main02.jpg)"
+              ></span>
+              <div class="card__inner--overlay">
+                <h3>h3:一般診療</h3>
+                <p>p:虫歯・入れ歯・小児歯科</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>card--cover</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+
+  &lt;a href="" class="card card--cover"&gt;
+    &lt;span
+      class="card__bg"
+      style="background-image: url(./assets/images/main01.jpg)"&gt;
+    &lt;/span&gt;
+    &lt;div class="card__inner--overlay"&gt;
+      &lt;h3&gt;h3:一般診療&lt;/h3&gt;
+      &lt;p&gt;p:虫歯・入れ歯・小児歯科&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+
+
+            </code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+.card--cover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px; // 任意で変更可能
+  width: 100%; // 親幅に合わせる場合
+  max-width: 335px; // カードの最大幅
+  aspect-ratio: 335 / 210; // 高さは自動計算
+
+  /* テキストマージンリセット */
+  p,
+  h3 {
+    margin: 0;
+  }
+
+  /* 背景カード用レイヤー */
+  .card__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-position: center;
+    background-size: cover; // 画像をカード全体にカバー
+    background-repeat: no-repeat;
+
+    /* 半透明スクリーンオーバーレイ */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2); // 黒の半透明スクリーン
+      z-index: 1; // テキストより下、背景より上
+    }
+  }
+
+  /* テキストレイヤー */
+  .card__inner--overlay {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; // 横中央揃え
+    text-align: center;
+    padding: 1rem; // 内側余白（任意）
+    color: #fff; //任意。
+  }
+}
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              カード背景がカート全体を覆うタイプ。カード背景に意味をもたせない（spanタグで実装）<br />
+              カードの角丸はcard--cover本体で設定する。overflow:hiddenにしているのでbgやスクリーンオーバーレイに指定する必要なし。<br />
+              カード本体は幅100%にしておくと、レスポンシブ表示で自然に縮む。max-widthで最大幅を指定しておくと横伸びしない<br />
+              カード本体で大きさ（縦横比も含め）を決定し、card__bgはそれに追従して場を埋めるのみ<br />
+              bgイメージは中央配置。収まりきらない端はカットされる。<br />
+              z-indexはbgが-1,スクリーンオーバーレイが1,inner--overlayが2である。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- card--stack -->
+      <section id="section--stack" class="section section--stack">
+        <div class="bg"></div>
+        <div class="inner">
+          <h2>card--stack</h2>
+          <p>
+            カードが上下にstackするタイプ。画像は背景としてではなく、イメージデータとして扱う
+          </p>
+          <div class="cards cards--col">
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail02.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>card--stack</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+
+&lt;div class="card--stack"&gt;
+  &lt;div class="card__media"&gt;
+    &lt;img src="./assets/images/sample.jpg" alt="サンプル画像"&gt;
+  &lt;/div&gt;
+  &lt;div class="card__inner"&gt;
+    &lt;h3&gt;h3: サービス名&lt;/h3&gt;
+    &lt;p&gt;p: サービス説明文&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+            </code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+.card--stack {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000; //任意
+  border-radius: 16px; // 任意
+  overflow: hidden;
+  width: 100%;
+  max-width: 335px;
+  background: #fff; // 背景色
+
+  /* 上段の画像 */
+  .card__media {
+    width: 100%;
+    display: block;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  /* 下段のテキスト */
+  .card__inner {
+    padding: 1rem; // 内側余白
+    text-align: center;
+
+    h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.25rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+      color: #666;
+    }
+  }
+}
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              カードが上下にstackするタイプ。画像は背景としてではなく、イメージデータとして扱う<br />
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- card--split -->
+      <section id="section--split" class="section section--split">
+        <div class="bg"></div>
+        <div class="inner">
+          <h2>card--split</h2>
+          <p>
+            カードが左右にsplitするタイプ。画像は背景としてではなく、イメージデータとして扱う
+          </p>
+          <div class="cards cards--col">
+            <a href="" class="card card--split">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card card--split">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail02.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>card--split</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+
+&lt;div class="card--split"&gt;
+  &lt;div class="card__media"&gt;
+    &lt;img src="./assets/images/sample.jpg" alt="サンプル画像"&gt;
+  &lt;/div&gt;
+  &lt;div class="card__inner"&gt;
+    &lt;h3&gt;h3: サービス名&lt;/h3&gt;
+    &lt;p&gt;p: サービス説明文&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+            </code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              カードが左右にsplitするタイプ。画像は背景としてではなく、イメージデータとして扱う<br />
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- cards--mixed -->
+      <section id="section--mixed" class="section section--mixed">
+        <div class="bg"></div>
+        <div class="inner">
+          <h2>カード配置：cards--mixed</h2>
+          <p>上段2列、下段3列の混在レイアウト</p>
+          <div class="cards cards--mixed">
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>カード配置：cards--mixed</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+&lt;div class="cards cards--mixed"&gt;
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+
+
+
+            </code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+.cards--mixed {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(6, 1fr); // 6分割ベース
+
+  /* 1段目：2枚（1/2幅） */
+  > :nth-child(-n + 2) {
+    grid-column: span 3; // 3 / 6 = 1/2
+  }
+
+  /* 2段目以降：3枚（1/3幅） */
+  > :nth-child(n + 3) {
+    grid-column: span 2; // 2 / 6 = 1/3
+  }
+}
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              カード配置が2列と3列が混在しているタイプ<br />
+              6分割グリッドをベースに、1段目の2枚は3カラム分、2段目以降の3枚は2カラム分を占有させることで実現している。<br />
+              こうすることで、カード間の隙間(gap)が均等になる。<br />
+              なお、カードの大きさ自体はcard--stackで指定しているmax-widthに依存する。<br />
+              したがって、max-widthを変更するとカードの大きさが変わるので注意。<br />
+              例えばmax-widthを335pxから300pxに変更すると、カードの幅が300pxに変わる。<br />
+              その場合、グリッドのカラム数を増やすなどして調整する必要がある。<br />
+              例えば6分割ではなく、8分割にして、1段目は4カラム分、2段目以降は3カラム分を占有させるなど。<br />
+              つまり、カードの大きさとグリッドのカラム数・占有カラム数は連動して考える必要がある。<br />
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- cards--last-child -->
+      <section id="section--last-child" class="section section--last-child">
+        <div class="bg"></div>
+        <div class="inner">
+          <h2>カード配置：cards--last-child</h2>
+          <p>最後のカードが中央寄せされるレイアウト</p>
+          <div class="cards cards--last-child">
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+            <a href="" class="card--stack">
+              <div class="card__media">
+                <img
+                  src="../assets/images/thumbnail01.jpg"
+                  alt="サンプル画像"
+                />
+              </div>
+              <div class="card__inner">
+                <h3>h3:サービス名</h3>
+                <p>p:サービス説明文が入ります。</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="section section--explanation">
+        <div class="inner">
+          <div class="explanation__container">
+            <h2>カード配置：cards--last-child</h2>
+            <div class="flex-layout">
+              <div class="code-wrapper">
+                <span>html</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="html"><code>
+&lt;div class="cards cards--last-child"&gt;
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+  &lt;a href="" class="card--stack"&gt;
+    &lt;div class="card__media"&gt;
+      &lt;img src="./assets/images/thumbnail01.jpg" alt="サンプル画像" /&gt;
+    &lt;/div&gt;
+    &lt;div class="card__inner"&gt;
+      &lt;h3&gt;h3:サービス名&lt;/h3&gt;
+      &lt;p&gt;p:サービス説明文が入ります。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+
+
+
+            </code></pre>
+              </div>
+              <div class="code-wrapper">
+                <span>scss</span>
+                <button data-copy class="copy-btn">Copy</button>
+                <pre class="scss"><code>
+.cards--last-child {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // SP：2カラム
+  gap: 16px;
+  > :last-child:nth-child(2n + 1) {
+    grid-column: 1 / span 2; // 見た目中央
+    max-width: 50%;
+    justify-self: center;
+  }
+}
+
+          </code></pre>
+              </div>
+            </div>
+            <p class="explanation__caption">
+              最後のカードが中央寄せされるレイアウト<br />
+              2カラムグリッドをベースに、最後のカードが奇数番目の場合に限り、grid-columnで1行全体を占有させて中央寄せしている<br />
+              さらにmax-widthで幅を50%に制限し、justify-selfで中央寄せしている<br />
+              これにより、最後のカードが中央に寄せられる<br />
+              cards--mixedと同様に、カードの大きさ自体はcard--stackで指定しているmax-widthに依存する<br />
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="site-footer">
+      <div class="inner">
+        <p>&copy; 2026 Your Name</p>
+      </div>
+    </footer>
+
+    <script src="../js/modules/copy.js" defer></script>
+  </body>
+</html>

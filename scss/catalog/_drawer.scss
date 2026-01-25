@@ -1,0 +1,173 @@
+@use "../foundation/variables";
+@use "../foundation/mixin";
+@use "../foundation/breakpoints";
+
+/* ================================
+   in-header:ヘッダーに属するドロワー
+
+   ================================ */
+
+.drawer-icon--in-header {
+  position: relative;
+  width: 32px;
+  height: 32px;
+
+  .drawer-icon__bar {
+    position: absolute;
+    left: 0;
+    width: 32px;
+    height: 3px;
+    border-radius: 3px;
+    background: #fff;
+    transition:
+      transform 0.3s linear,
+      top 0.3s linear;
+
+    &:nth-of-type(1) {
+      top: 2px;
+    }
+    &:nth-of-type(2) {
+      top: 15px;
+    }
+    &:nth-of-type(3) {
+      top: 28px;
+    }
+  }
+
+  &.is-checked {
+    .drawer-icon__bar {
+      &:nth-of-type(1) {
+        top: 15px;
+        transform: rotate(45deg);
+      }
+      &:nth-of-type(2) {
+        display: none;
+      }
+      &:nth-of-type(3) {
+        top: 15px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  @include breakpoints.mq(md) {
+    display: none;
+  }
+}
+.drawer-content--in-header {
+  position: fixed;
+  top: 56px; // header 高さ分下げる
+  right: 0;
+
+  width: variables.$drawer-width;
+  height: calc(100% - 56px);
+
+  background-color: #0060a0; // .bg は使わない（意図的な例外）
+  text-align: center;
+
+  transform: translateX(100%);
+  transition: transform 0.3s linear;
+
+  &.is-checked {
+    transform: translateX(0);
+  }
+}
+
+/* ================================
+   out-of-header:ヘッダーに属さない
+   （独立した）ドロワー
+   ================================ */
+.drawer-icon--out-of-header {
+  position: relative;
+  width: 32px;
+  height: 32px;
+
+  .drawer-icon__bar {
+    position: absolute;
+    left: 0;
+    width: 32px;
+    height: 3px;
+    border-radius: 3px;
+    background: #fff;
+    transition:
+      transform 0.3s linear,
+      top 0.3s linear;
+
+    &:nth-of-type(1) {
+      top: 2px;
+    }
+    &:nth-of-type(2) {
+      top: 15px;
+    }
+    &:nth-of-type(3) {
+      top: 28px;
+    }
+  }
+
+  &.is-checked {
+    display: none;
+  }
+
+  @include breakpoints.mq(md) {
+    display: none;
+  }
+}
+.drawer-content--out-of-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: variables.$z-header + 2; // drawer-overlay より上に表示
+
+  width: variables.$drawer-width;
+  height: 100%;
+
+  background-color: #0060a0; // .bg は使わない（意図的な例外）
+  text-align: center;
+
+  transform: translateX(100%);
+  transition: transform 0.3s linear;
+
+  &.is-checked {
+    transform: translateX(0);
+    .drawer-icon--out-of-header {
+      .drawer-icon__bar {
+        &:nth-of-type(1) {
+          top: 15px;
+          transform: rotate(45deg);
+        }
+        &:nth-of-type(2) {
+          display: none;
+        }
+        &:nth-of-type(3) {
+          top: 15px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+/* ================================
+   Drawer Overlay
+   ================================ */
+/*
+  - header の外に配置
+  - header / footer より上または下(z-index調整)
+  - drawer-content より下
+*/
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: variables.$z-header + 1; // header より上に表示;
+
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s linear;
+
+  &.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

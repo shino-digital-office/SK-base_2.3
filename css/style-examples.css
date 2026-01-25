@@ -1,0 +1,841 @@
+@charset "UTF-8";
+/* =====================================
+   Cards -- Basic
+   基本のカードグリッドレイアウト
+===================================== */
+.ex-cat-card {
+  /* 縦並び */
+  /* 2カラム */
+  /* 3カラム */
+  /* =====================================
+     Cards -- Mixed
+     1段目：2カラム / 2段目：3カラム（PC想定）
+  ===================================== */
+  /* PCから切り替え */
+  /* =====================================
+     Cards -- Last Child
+     最後のカードを中央寄せ（SP想定）
+  ===================================== */
+  /* =====================================
+     Card -- Base
+     カード共通ベーススタイル
+  ===================================== */
+  /* =====================================
+     Card -- Cover (全面画像＋テキスト)
+     画像全面に背景を敷き、テキストを上に重ねるカード
+  ===================================== */
+  /* =====================================
+     Card -- Stack (上下型カード)
+     上下に画像とテキストが積まれたシンプルカード
+  ===================================== */
+  /* =====================================
+     Card -- Split (左右型カード)
+     左右に画像とテキストが並ぶUI型カード
+  ===================================== */
+  /* =====================================
+     Section -- Mixed Cards
+     cards--mixed 用のスタイル調整
+  ===================================== */
+  /* =====================================
+     Section -- last-child Cards
+     cards--last-child 用のスタイル調整
+  ===================================== */
+  /* ヘッダー */
+  /* フッター */
+}
+.ex-cat-card .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--cards-gap, 20px);
+  justify-items: center; /* ← 中のカードだけを中央寄せ */
+}
+.ex-cat-card .cards--col {
+  grid-template-columns: 1fr;
+}
+.ex-cat-card .cards--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.ex-cat-card .cards--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.ex-cat-card .cards--mixed {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+  /* 1段目：2枚（1/2幅） */
+  /* 2段目以降：3枚（1/3幅） */
+}
+.ex-cat-card .cards--mixed > :nth-child(-n+2) {
+  grid-column: span 3;
+}
+.ex-cat-card .cards--mixed > :nth-child(n+3) {
+  grid-column: span 2;
+}
+@media (min-width: 768px) {
+  .ex-cat-card .cards--pc2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ex-cat-card .cards--pc3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.ex-cat-card .cards--last-child {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.ex-cat-card .cards--last-child > :last-child:nth-child(2n+1) {
+  grid-column: 1/span 2;
+  max-width: 50%;
+  justify-self: center;
+}
+.ex-cat-card .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 100%;
+  /* 背景カード用レイヤー（構造だけ） */
+  /* split 構造 */
+}
+.ex-cat-card .card p,
+.ex-cat-card .card h3 {
+  margin: 0;
+}
+.ex-cat-card .card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: center/cover no-repeat;
+}
+.ex-cat-card .card__inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+.ex-cat-card .card--split {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.ex-cat-card .card__img {
+  display: block;
+  aspect-ratio: 133/101;
+  background: center/cover no-repeat;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.ex-cat-card .card__content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ex-cat-card .card--cover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 335px;
+  aspect-ratio: 335/210;
+  /* テキストマージンリセット */
+  /* 背景カード用レイヤー */
+  /* テキストレイヤー */
+}
+.ex-cat-card .card--cover p,
+.ex-cat-card .card--cover h3 {
+  margin: 0;
+}
+.ex-cat-card .card--cover .card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* 半透明スクリーンオーバーレイ */
+}
+.ex-cat-card .card--cover .card__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.ex-cat-card .card--cover .card__inner--overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 1rem;
+  color: #fff;
+}
+.ex-cat-card .card--stack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 335px;
+  background: #fff;
+  /* 上段の画像 */
+  /* 下段のテキスト */
+}
+.ex-cat-card .card--stack .card__media {
+  width: 100%;
+  display: block;
+}
+.ex-cat-card .card--stack .card__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.ex-cat-card .card--stack .card__inner {
+  padding: 1rem;
+  text-align: center;
+}
+.ex-cat-card .card--stack .card__inner h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+.ex-cat-card .card--stack .card__inner p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+.ex-cat-card .card--split {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #000;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  /* 左側画像 */
+  /* 右側テキスト */
+}
+.ex-cat-card .card--split .card__media {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40%;
+          flex: 0 0 40%;
+  position: relative;
+}
+.ex-cat-card .card--split .card__media img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.ex-cat-card .card--split .card__inner {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 1rem;
+}
+.ex-cat-card .card--split .card__inner h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+.ex-cat-card .card--split .card__inner p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+.ex-cat-card .section--mixed .card--stack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  max-width: none;
+  background: #fff;
+  /* 上段の画像 */
+  /* 下段のテキスト */
+}
+.ex-cat-card .section--mixed .card--stack .card__media {
+  width: 100%;
+  display: block;
+}
+.ex-cat-card .section--mixed .card--stack .card__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.ex-cat-card .section--mixed .card--stack .card__inner {
+  padding: 1rem;
+  text-align: center;
+}
+.ex-cat-card .section--mixed .card--stack .card__inner h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+.ex-cat-card .section--mixed .card--stack .card__inner p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+.ex-cat-card .section--last-child .card--stack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  max-width: none;
+  background: #fff;
+  /* 上段の画像 */
+  /* 下段のテキスト */
+}
+.ex-cat-card .section--last-child .card--stack .card__media {
+  width: 100%;
+  display: block;
+}
+.ex-cat-card .section--last-child .card--stack .card__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.ex-cat-card .section--last-child .card--stack .card__inner {
+  padding: 1rem;
+  text-align: center;
+}
+.ex-cat-card .section--last-child .card--stack .card__inner h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+.ex-cat-card .section--last-child .card--stack .card__inner p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+.ex-cat-card .site-header {
+  background-color: #f8f8f8;
+  padding: 1rem 0;
+}
+.ex-cat-card .site-header .site-title {
+  font-size: 1.5rem;
+}
+.ex-cat-card .section--explanation .explanation__container {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  color: #aaffcc;
+  font-family: ui-monospace, monospace;
+  -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.ex-cat-card .section--explanation .explanation__container h1 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+.ex-cat-card .section--explanation .explanation__container .flex-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 0;
+  gap: 10px;
+}
+.ex-cat-card .section--explanation .explanation__container .code-wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-x: auto;
+  overflow-y: auto;
+  position: relative;
+}
+.ex-cat-card .section--explanation .explanation__container span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  color: #000;
+}
+.ex-cat-card .section--explanation .explanation__container .copy-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.ex-cat-card .section--explanation .explanation__container pre {
+  width: 100%;
+  height: 300px;
+  background: #000;
+  padding: 0.75rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-bottom: 0.75rem;
+}
+.ex-cat-card .section--explanation .explanation__container .explanation__caption {
+  height: 100px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  background: #000;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.ex-cat-card .site-footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.ex-cat-bg {
+  /* ----------------------
+   bg 基本構造(再掲)
+   ---------------------- */
+  /* ----------------------
+   fvのimgをbgとして使う型
+   ---------------------- */
+  /* コンテナを親要素内に自在に配置 */
+  /* ----------------------
+   bgを中心にピン止め型
+   ---------------------- */
+  /* ----------------------
+   bgはフル幅背景
+   ---------------------- */
+}
+.ex-cat-bg .bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.ex-cat-bg .flex-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+  /* 直下に来たテキスト要素だけ margin-bottom を殺す */
+}
+.ex-cat-bg .flex-layout > h1,
+.ex-cat-bg .flex-layout > h2,
+.ex-cat-bg .flex-layout > h3,
+.ex-cat-bg .flex-layout > h4,
+.ex-cat-bg .flex-layout > h5,
+.ex-cat-bg .flex-layout > h6,
+.ex-cat-bg .flex-layout > p,
+.ex-cat-bg .flex-layout > ul,
+.ex-cat-bg .flex-layout > ol,
+.ex-cat-bg .flex-layout > dl {
+  margin-bottom: 0;
+}
+.ex-cat-bg .bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.ex-cat-bg .fv__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.ex-cat-bg .fv__bg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.ex-cat-bg .fv {
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 60px);
+}
+.ex-cat-bg .fv__frame {
+  position: absolute;
+  inset: 0 20px;
+  display: grid;
+  place-items: center;
+}
+.ex-cat-bg .fv__container {
+  position: relative;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  max-width: 760px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #aaffcc;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+.ex-cat-bg .bg--center {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: auto;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  /* 微調整が必要な場合は margin で offset */
+}
+.ex-cat-bg .bg--center img {
+  width: 100%;
+  height: auto;
+}
+.ex-cat-bg .bg--fullwidth {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ex-cat-bg .bg--fullwidth img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+}
+.ex-cat-bg .bg--bleed-vertical {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 375px;
+  background: #dff1fd;
+  background-size: cover;
+  top: 88px;
+  bottom: 27px;
+  overflow: visible;
+}
+.ex-cat-bg .bg--bleed-vertical::before, .ex-cat-bg .bg--bleed-vertical::after {
+  top: auto;
+  position: absolute;
+  left: 50%;
+  width: 375px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: -1;
+}
+.ex-cat-bg .bg--bleed-vertical::before {
+  content: "";
+  top: -88px;
+  height: 88px;
+  background: url("../assets/images/bg-top.png") no-repeat center center;
+  background-size: cover;
+}
+.ex-cat-bg .bg--bleed-vertical::after {
+  content: "";
+  bottom: -27px;
+  height: 82px;
+  background: url("../assets/images/bg-bottom.png") no-repeat center center;
+  background-size: cover;
+}
+.ex-cat-bg .section--bleed-vertical .inner {
+  max-width: 375px;
+}
+.ex-cat-bg .section--wave {
+  overflow: visible;
+}
+.ex-cat-bg .bg--wave {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100%;
+  max-width: 1280px;
+  background: #dff1fd;
+  background-size: cover;
+}
+.ex-cat-bg .bg--wave::before, .ex-cat-bg .bg--wave::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  max-width: 1280px;
+  height: 32px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: 84px 32px;
+  z-index: -1;
+  /* ★位相調整 */
+  background-position: 42px top;
+}
+.ex-cat-bg .bg--wave::before {
+  top: -32px;
+  height: 32px;
+  background-image: url("../assets/images/deco-wave.png");
+}
+.ex-cat-bg .bg--wave::after {
+  bottom: -32px;
+  height: 32px;
+  background-image: url("../assets/images/deco-wave-down.png");
+}
+
+/* ヘッダー */
+.site-header {
+  background-color: #f8f8f8;
+  padding: 1rem 0;
+}
+.site-header .site-title {
+  font-size: 1.5rem;
+}
+.site-header .site-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.section--explanation .explanation__container {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  color: #aaffcc;
+  font-family: ui-monospace, monospace;
+  -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.section--explanation .explanation__container h1 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+.section--explanation .explanation__container .flex-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 0;
+  gap: 10px;
+}
+.section--explanation .explanation__container .code-wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-x: auto;
+  overflow-y: auto;
+  position: relative;
+}
+.section--explanation .explanation__container span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  color: #000;
+}
+.section--explanation .explanation__container .copy-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+}
+.section--explanation .explanation__container pre {
+  width: 100%;
+  height: 300px;
+  background: #000;
+  padding: 0.75rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-bottom: 0.75rem;
+}
+.section--explanation .explanation__container .explanation__caption {
+  height: 100px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  background: #000;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* フッター */
+.site-footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* ----------------------
+   Fv 基本構造
+   ---------------------- */
+.ex-cat-fv {
+  /* 背景＝紙 */
+  /* コンテナを親要素内に自在に配置 */
+  /* ヘッダー */
+  /* フッター */
+}
+.ex-cat-fv .fv {
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 60px);
+}
+.ex-cat-fv .fv__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.ex-cat-fv .fv__bg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.ex-cat-fv .fv__frame {
+  position: absolute;
+  inset: 0 20px;
+  display: grid;
+  place-items: center;
+}
+.ex-cat-fv .fv__container {
+  position: relative;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  max-width: 760px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #aaffcc;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+.ex-cat-fv .section--explanation .explanation__container {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  color: #aaffcc;
+  font-family: ui-monospace, monospace;
+  -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.ex-cat-fv .section--explanation .explanation__container h1 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+.ex-cat-fv .section--explanation .explanation__container .flex-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+.ex-cat-fv .section--explanation .explanation__container pre {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #000;
+  padding: 0.75rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-bottom: 0.75rem;
+}
+.ex-cat-fv .section--explanation .explanation__container pre::after {
+  position: absolute;
+  content: "";
+  border: 1px solid white;
+  top: 5px;
+  left: 20px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.ex-cat-fv .section--explanation .explanation__container .html::after {
+  content: "html";
+}
+.ex-cat-fv .section--explanation .explanation__container .scss::after {
+  content: "scss";
+}
+.ex-cat-fv .section--explanation .explanation__container .explanation__caption {
+  height: 100px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  background: #000;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.ex-cat-fv .site-header {
+  background-color: #f8f8f8;
+  padding: 1rem 0;
+}
+.ex-cat-fv .site-header .site-title {
+  font-size: 1.5rem;
+}
+.ex-cat-fv .site-header .site-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+.ex-cat-fv .site-footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 0;
+}
