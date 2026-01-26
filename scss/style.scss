@@ -75,6 +75,7 @@
   gap: $space-xs;
   padding-block: $space-md;
   height: 64px;
+  max-width: $layout-max-width;
 }
 
 /* ================================
@@ -290,6 +291,7 @@
   display: block;
   width: 100%;
   text-align: center;
+  padding-inline: 10px;
 
   img {
     display: block;
@@ -395,16 +397,145 @@
 }
 
 /* =====================================
-   Section上書き
+   Section--about
 
 ===================================== */
-//ここから書き始めてください↓
 
+//section--aboutの背景装飾
+.section--about {
+  .bg--center {
+    position: absolute;
+    inset: auto 0;
+    z-index: -1;
+
+    top: 50%;
+    left: 50%;
+    width: 200px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+    height: auto;
+    transform: translate(-50%, -50%);
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .bg--center.bg-right {
+    border-radius: 24px;
+    overflow: hidden;
+    /* 微調整が必要な場合は margin で offset */
+    margin-top: -100px;
+    margin-left: 230px;
+  }
+  .bg--center.bg-left {
+    border-radius: 24px;
+    overflow: hidden;
+    /* 微調整が必要な場合は margin で offset */
+    margin-top: 0px;
+    margin-left: -230px;
+  }
+  .bg-buttons {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    bottom: 118px;
+    right: 0;
+  }
+  .bg-cloths {
+    position: absolute;
+    width: 133px;
+    height: 65.003px;
+    bottom: 77px;
+    right: 53px;
+  }
+  .bg-slope {
+    position: absolute;
+    width: 138px;
+    height: 215px;
+    bottom: -38.8px;
+    left: 0;
+  }
+  .bg-onomichi {
+    position: absolute;
+    max-width: 354.642px;
+    height: auto;
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    img {
+      width: 100%;
+      height: auto;
+    }
+    @include mq(md) {
+      width: 100%;
+      height: auto;
+      max-width: 890.604px;
+    }
+  }
+  .bg-pawpads {
+    position: absolute;
+    width: 54px;
+    height: 120px;
+    top: 22px;
+    right: 0;
+  }
+  @include mq(md) {
+    .bg--center {
+      position: absolute;
+      inset: auto;
+      z-index: -1;
+
+      top: 50%;
+      left: 50%;
+      width: 480px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+      height: 480px;
+      transform: translate(-50%, -50%);
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .bg--center.bg-right {
+      border-radius: 40px;
+      overflow: hidden;
+      /* 微調整が必要な場合は margin で offset */
+      margin-top: -100px;
+      margin-left: 230px;
+    }
+    .bg--center.bg-left {
+      border-radius: 40px;
+      overflow: hidden;
+      /* 微調整が必要な場合は margin で offset */
+      margin-top: 0px;
+      margin-left: -230px;
+    }
+    .bg-buttons {
+      width: 101px;
+      height: 100.047px;
+      top: 77%;
+      left: 85%;
+      transform: translate(-50%, -50%);
+    }
+    .bg-cloths {
+      width: 308px;
+      height: 150.604px;
+      top: 80%;
+      left: 63%;
+      transform: translate(-50%, -50%);
+    }
+    .bg-slope {
+      width: 427px;
+      height: 817px;
+      top: 95%;
+      left: 18%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+//section--aboutのコンテンツ
 .section--about {
   padding-top: 32px;
-  padding-bottom: calc(36px + 240.67px);
+  padding-bottom: calc(37.2px + 139.67px);
   padding-inline: 20px;
-
   .inner--flex {
     flex-direction: column;
     gap: 24px;
@@ -414,13 +545,107 @@
     padding-block: 40px;
     border-radius: 24px;
     overflow: hidden;
+    max-width: 335px;
+    @include mq(md) {
+      max-width: 848px;
+    }
   }
-  .section__subtitle {
+
+  .about__subtitle {
     font-weight: 700;
     font-size: 14px;
   }
-  .section__text {
+  .about__text {
   }
+  .about__message {
+    padding-block: 8px;
+    font-size: 14px;
+    font-weight: 700;
+
+    border-bottom: 2px dashed var(--LP-Blue, #9ed0e0);
+  }
+  .about__button {
+  }
+}
+.section--about .about__wrapper {
+  position: relative;
+  &::after {
+    position: absolute;
+    content: "";
+
+    // 位置
+    bottom: -36px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    // サイズ
+    width: 100px;
+    height: 36px;
+
+    // 装飾
+    background: url("../img/about-arrow.png") no-repeat center center / contain;
+
+    @include mq(md) {
+      bottom: -50px;
+      width: 140px;
+      height: 50px;
+      background: url("../img/pc/about-arrow.png") no-repeat center center /
+        contain;
+    }
+  }
+}
+//section--aboutのタイトル横画像
+.title__img {
+  position: absolute;
+  width: 80px;
+  height: 60px;
+  &--left {
+    top: 60px;
+    left: 50%;
+    transform: translateX(-120px);
+  }
+  &--right {
+    top: 60px;
+    right: 50%;
+    transform: translateX(120px);
+  }
+}
+
+/* =====================================
+   Section--howto
+
+===================================== */
+.section--howto {
+  .section-head {
+    margin-bottom: 32px;
+  }
+  .inner {
+    text-align: center;
+  }
+}
+.steps.flex-layout {
+  flex-direction: column;
+  gap: 34px;
+  .step {
+    text-align: center;
+    .step__img {
+      width: 100%;
+      max-width: 196px;
+      margin: 0 auto;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    p {
+      margin-bottom: 16px;
+    }
+  }
+}
+.howto__button {
+  display: block;
+  margin: 0 auto;
 }
 
 /* ================================
@@ -438,9 +663,9 @@
     background: #a4ceea;
   }
   .bg--wave {
-    max-width: 1280px;
+    max-width: $layout-max-width;
     &::before {
-      max-width: 1280px;
+      max-width: $layout-max-width;
     }
     &::after {
       display: none;
@@ -472,6 +697,7 @@
       height: 100%;
       justify-content: space-between;
       align-items: center;
+      max-width: $layout-max-width;
     }
   }
 }

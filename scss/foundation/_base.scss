@@ -33,6 +33,7 @@ body {
   color: variables.$color-Blown;
   font-size: 12px;
   font-weight: 400;
+
   @include breakpoints.mq(md) {
     font-size: 16px;
   }

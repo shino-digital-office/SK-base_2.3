@@ -34,6 +34,7 @@
   gap: 8px;
   padding-block: 16px;
   height: 64px;
+  max-width: 1512px;
 }
 
 /* ================================
@@ -252,6 +253,7 @@
   display: block;
   width: 100%;
   text-align: center;
+  padding-inline: 10px;
 }
 .fv-title_img img {
   display: block;
@@ -345,12 +347,146 @@
 }
 
 /* =====================================
-   Section上書き
+   Section--about
 
 ===================================== */
+.section--about .bg--center {
+  position: absolute;
+  inset: auto 0;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: auto;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.section--about .bg--center img {
+  width: 100%;
+  height: auto;
+}
+.section--about .bg--center.bg-right {
+  border-radius: 24px;
+  overflow: hidden;
+  /* 微調整が必要な場合は margin で offset */
+  margin-top: -100px;
+  margin-left: 230px;
+}
+.section--about .bg--center.bg-left {
+  border-radius: 24px;
+  overflow: hidden;
+  /* 微調整が必要な場合は margin で offset */
+  margin-top: 0px;
+  margin-left: -230px;
+}
+.section--about .bg-buttons {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  bottom: 118px;
+  right: 0;
+}
+.section--about .bg-cloths {
+  position: absolute;
+  width: 133px;
+  height: 65.003px;
+  bottom: 77px;
+  right: 53px;
+}
+.section--about .bg-slope {
+  position: absolute;
+  width: 138px;
+  height: 215px;
+  bottom: -38.8px;
+  left: 0;
+}
+.section--about .bg-onomichi {
+  position: absolute;
+  max-width: 354.642px;
+  height: auto;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.section--about .bg-onomichi img {
+  width: 100%;
+  height: auto;
+}
+@media screen and (min-width: 768px) {
+  .section--about .bg-onomichi {
+    width: 100%;
+    height: auto;
+    max-width: 890.604px;
+  }
+}
+.section--about .bg-pawpads {
+  position: absolute;
+  width: 54px;
+  height: 120px;
+  top: 22px;
+  right: 0;
+}
+@media screen and (min-width: 768px) {
+  .section--about .bg--center {
+    position: absolute;
+    inset: auto;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: 480px;
+    height: 480px;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .section--about .bg--center img {
+    width: 100%;
+    height: auto;
+  }
+  .section--about .bg--center.bg-right {
+    border-radius: 40px;
+    overflow: hidden;
+    /* 微調整が必要な場合は margin で offset */
+    margin-top: -100px;
+    margin-left: 230px;
+  }
+  .section--about .bg--center.bg-left {
+    border-radius: 40px;
+    overflow: hidden;
+    /* 微調整が必要な場合は margin で offset */
+    margin-top: 0px;
+    margin-left: -230px;
+  }
+  .section--about .bg-buttons {
+    width: 101px;
+    height: 100.047px;
+    top: 77%;
+    left: 85%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .section--about .bg-cloths {
+    width: 308px;
+    height: 150.604px;
+    top: 80%;
+    left: 63%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .section--about .bg-slope {
+    width: 427px;
+    height: 817px;
+    top: 95%;
+    left: 18%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
+
 .section--about {
   padding-top: 32px;
-  padding-bottom: 276.67px;
+  padding-bottom: 176.87px;
   padding-inline: 20px;
 }
 .section--about .inner--flex {
@@ -365,11 +501,104 @@
   padding-block: 40px;
   border-radius: 24px;
   overflow: hidden;
+  max-width: 335px;
 }
-.section--about .section__subtitle {
+@media screen and (min-width: 768px) {
+  .section--about .inner--flex {
+    max-width: 848px;
+  }
+}
+.section--about .about__subtitle {
   font-weight: 700;
   font-size: 14px;
 }
+.section--about .about__message {
+  padding-block: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 2px dashed var(--LP-Blue, #9ed0e0);
+}
+.section--about .about__wrapper {
+  position: relative;
+}
+.section--about .about__wrapper::after {
+  position: absolute;
+  content: "";
+  bottom: -36px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100px;
+  height: 36px;
+  background: url("../img/about-arrow.png") no-repeat center center/contain;
+}
+@media screen and (min-width: 768px) {
+  .section--about .about__wrapper::after {
+    bottom: -50px;
+    width: 140px;
+    height: 50px;
+    background: url("../img/pc/about-arrow.png") no-repeat center center/contain;
+  }
+}
+
+.title__img {
+  position: absolute;
+  width: 80px;
+  height: 60px;
+}
+.title__img--left {
+  top: 60px;
+  left: 50%;
+  -webkit-transform: translateX(-120px);
+          transform: translateX(-120px);
+}
+.title__img--right {
+  top: 60px;
+  right: 50%;
+  -webkit-transform: translateX(120px);
+          transform: translateX(120px);
+}
+
+/* =====================================
+   Section--howto
+
+===================================== */
+.section--howto .section-head {
+  margin-bottom: 32px;
+}
+.section--howto .inner {
+  text-align: center;
+}
+
+.steps.flex-layout {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 34px;
+}
+.steps.flex-layout .step {
+  text-align: center;
+}
+.steps.flex-layout .step .step__img {
+  width: 100%;
+  max-width: 196px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+.steps.flex-layout .step h3 {
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.steps.flex-layout .step p {
+  margin-bottom: 16px;
+}
+
+.howto__button {
+  display: block;
+  margin: 0 auto;
+}
+
 /* ================================
    footer
    ================================ */
@@ -383,10 +612,10 @@
   background: #a4ceea;
 }
 .site-footer .bg--wave {
-  max-width: 1280px;
+  max-width: 1512px;
 }
 .site-footer .bg--wave::before {
-  max-width: 1280px;
+  max-width: 1512px;
 }
 .site-footer .bg--wave::after {
   display: none;
@@ -417,6 +646,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  max-width: 1512px;
 }
 
 /* ===============================

@@ -124,56 +124,154 @@
       <div class="main-body">
         <div class="bg bg--main-body"></div>
         <section class="section section--about" id="about">
-          <div class="bg"></div>
-          <div class="inner inner--flex">
+          <div class="bg bg--center bg-right">
+            <picture>
+              <!-- pc -->
+              <source
+                media="(min-width: 768px)"
+                srcset="./img/pc/about-photo_Right.jpg"
+              />
+              <!-- sp -->
+              <img src="./img/about-photo_Right.jpg" alt="" />
+            </picture>
+          </div>
+          <div class="bg bg--center bg-left">
+            <picture>
+              <!-- pc -->
+              <source
+                media="(min-width: 768px)"
+                srcset="./img/pc/about-photo_Left.jpg"
+              />
+              <!-- sp -->
+              <img src="./img/about-photo_Left.jpg" alt="" />
+            </picture>
+          </div>
+          <div class="bg-buttons">
+            <img src="./img/about-bg-buttons.png" alt="" />
+          </div>
+          <div class="bg-cloths">
+            <img src="./img/about-bg-cloths.png" alt="" />
+          </div>
+          <div class="bg-slope">
+            <img src="./img/about-bg-slope.png" alt="" />
+          </div>
+          <div class="bg-onomichi">
+            <img src="./img/about-img_onomichi.png" alt="" />
+          </div>
+          <div class="bg-pawpads">
+            <img src="./img/about-bg_pawpads.png" alt="" />
+          </div>
+          <div class="about__wrapper">
+            <div class="inner inner--flex">
+              <div class="section-head">
+                <span class="section-head__icon">
+                  <svg>
+                    <use href="./img/icons.svg#icon-about"></use>
+                  </svg>
+                </span>
+
+                <span class="section-head__en">About</span>
+
+                <h2 class="section-head__jp">キャンペーンについて</h2>
+              </div>
+              <div class="about__subtitle">
+                あなたの心が動いた尾道の瞬間を<br />
+                ＼ おしえてください！ ／
+              </div>
+              <div class="about__text">
+                <p>
+                  風情あふれる坂道に、静かに佇むお寺。<br />
+                  路地裏の角をまがれば<br />
+                  気ままにお昼寝する猫に出会え、<br />
+                  ふと振り返れば、美しい瀬戸内の海が。
+                </p>
+                <p>
+                  数々の映画の舞台にもなってきたこの街には<br />
+                  心がほどけるような、<br />
+                  レトロでやさしい風景が広がっています。
+                </p>
+                <p>
+                  あなたの見つけた尾道のなつかしい景色を、<br />
+                  ぜひおしえてください。
+                </p>
+                <p>
+                  尾道観光部<span class="underline">（@onomichi_retro）</span
+                  >を<br />
+                  フォロー&尾道で撮影した写真を、<br />
+                  ハッシュタグ<span class="bold">「#見つけて尾道レトロ」</span
+                  >を<br />
+                  つけてInstagramに投稿いただいた方の中から
+                </p>
+              </div>
+              <div class="about__message">
+                尾道のギフトを100名様にプレゼント！
+              </div>
+              <button class="about__button button button--middle">
+                参加の仕方はこちら
+              </button>
+            </div>
+          </div>
+          <div class="title__img title__img--left">
+            <img src="./img/about_pic1.png" alt="" />
+          </div>
+          <div class="title__img title__img--right">
+            <img src="./img/img_about_pic2.png" alt="" />
+          </div>
+        </section>
+        <section class="section section--swiper"></section>
+        <section class="section section--howto">
+          <div class="inner">
             <div class="section-head">
               <span class="section-head__icon">
                 <svg>
-                  <use href="./img/icons.svg#icon-about"></use>
+                  <use href="./img/icons.svg#icon-howto"></use>
                 </svg>
               </span>
-
-              <span class="section-head__en">About</span>
-
-              <h2 class="section-head__jp">キャンペーンについて</h2>
+              <span class="section-head__en">How to Enter</span>
+              <h2 class="section-head__jp">応募の仕方</h2>
             </div>
-            <div class="section__subtitle">
-              あなたの心が動いた尾道の瞬間を<br />
-              ＼ おしえてください！ ／
-            </div>
-            <div class="section__text">
-              <p>
-                風情あふれる坂道に、静かに佇むお寺。<br />
-                路地裏の角をまがれば<br />
-                気ままにお昼寝する猫に出会え、<br />
-                ふと振り返れば、美しい瀬戸内の海が。
-              </p>
-              <p>
-                数々の映画の舞台にもなってきたこの街には<br />
-                心がほどけるような、<br />
-                レトロでやさしい風景が広がっています。
-              </p>
-              <p>
-                あなたの見つけた尾道のなつかしい景色を、<br />
-                ぜひおしえてください。
-              </p>
-              <p>
-                尾道観光部<span class="underline">（@onomichi_retro）</span
-                >を<br />
-                フォロー&尾道で撮影した写真を、<br />
-                ハッシュタグ<span class="bold">「#見つけて尾道レトロ」</span
-                >を<br />
-                つけてInstagramに投稿いただいた方の中から
-              </p>
-            </div>
-            <div class="section__message">
-              尾道のギフトを100名様にプレゼント！
-            </div>
-            <button class="section__button button button--middle">
-              参加の仕方はこちら
+            <ol class="steps flex-layout">
+              <li class="step">
+                <div class="step__img">
+                  <img src="./img/howto-img-step1.png" alt="" />
+                </div>
+                <h3 class="step__title">アカウントをフォロー</h3>
+                <p class="step__text">
+                  Instagramアプリをダウンロードして、<br />
+                  公式アカウント尾道観光部<span class="underline"
+                    >(@onomichi_retro)</span
+                  >の<br />
+                  Instagramのアカウントをフォローしてにゃん。
+                </p>
+              </li>
+              <li class="step">
+                <div class="step__img">
+                  <img src="./img/howto-img-step2.png" alt="" />
+                </div>
+                <h3 class="step__title">尾道で撮影</h3>
+                <p class="step__text">
+                  尾道の旅で「レトロ」を感じられる<br />
+                  写真を撮影してほしいんだにゃ。<br />
+                  美しい景色、愛らしい猫、美味しい食べ物や<br />
+                  可愛いお土産など、なんでもOK！
+                </p>
+              </li>
+              <li class="step">
+                <div class="step__img">
+                  <img src="./img/howto-img-step3.png" alt="" />
+                </div>
+                <h3 class="step__title">ハッシュタグをつけて投稿！</h3>
+                <p class="step__text">
+                  ハッシュタグ「＃見つけて尾道レトロ」を<br />
+                  必ずつけて投稿してにゃん！<br />
+                  投稿して頂いた方の中から<br />
+                  100名様に尾道の豪華な商品をプレゼント！
+                </p>
+              </li>
+            </ol>
+            <button class="howto__button button button--middle">
+              #見つけて尾道レトロ の最新投稿を見る
             </button>
-
-            <p></p>
           </div>
         </section>
       </div>
