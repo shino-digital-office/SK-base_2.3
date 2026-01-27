@@ -616,6 +616,7 @@
 
 ===================================== */
 .section--howto {
+  padding-bottom: 20px;
   .section-head {
     margin-bottom: 32px;
   }
@@ -646,6 +647,300 @@
 .howto__button {
   display: block;
   margin: 0 auto;
+}
+
+/* =====================================
+   Section--prizes
+
+===================================== */
+.section--prizes .bg--prizes {
+  position: absolute;
+
+  /* inset:0 の思想を活かしつつ、上だけ解除 */
+  inset: auto auto 0 auto; // bottom:0 だけ有効
+
+  left: 50%;
+  transform: translateX(-50%); // 横だけ中央寄せ
+
+  width: 580px; // section max-width を超えない前提
+  height: auto;
+
+  z-index: -1;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* 微調整は transform or margin で */
+  // transform: translateX(-50%) translateY(20px);
+}
+
+.section--prizes {
+  padding-top: 17.67px;
+  padding-bottom: 216px;
+  .inner {
+    position: relative;
+    padding: 20px 20px 34.67px;
+    text-align: center;
+    .bg-prizes {
+      position: absolute;
+      inset: 82px 0 0 0;
+      background: $color-White;
+      border-radius: 24px;
+      z-index: -1;
+      &::before {
+        position: absolute;
+        content: "";
+
+        // 位置
+        top: -82px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        // サイズ
+        width: 237.6px;
+        height: 83px;
+
+        // 装飾
+        background: url("../img/prizes-deco.png") no-repeat center center /
+          contain;
+      }
+    }
+  }
+  p {
+    margin-bottom: 48px;
+  }
+}
+.section--prizes .cards {
+  gap: 39px 15px;
+  margin-bottom: 18px;
+}
+.section--prizes .card__wrapper {
+  position: relative;
+  .card__head {
+    position: absolute;
+
+    // 位置
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    // サイズ
+    width: 48px;
+    height: 26px;
+  }
+}
+.section--prizes .card--stack {
+  display: flex;
+  flex-direction: column;
+  border: none; //任意
+  border-radius: 8px; // 任意
+  overflow: hidden;
+  width: 100%;
+  max-width: 335px;
+  background: $color-Gray; // 背景色
+  position: relative;
+
+  /* 上段の画像 */
+  .card__media {
+    width: 100%;
+    display: block;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  /* 下段のテキスト */
+  .card__inner {
+    padding: 1rem; // 内側余白
+    text-align: center;
+
+    h3 {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+      color: #666;
+    }
+  }
+  &::after {
+    position: absolute;
+    content: "";
+
+    // 位置
+    bottom: 0;
+    right: 0;
+
+    // サイズ
+    width: 36px;
+    height: 36px;
+
+    // 装飾
+    background: url("../img/prizes-search.png") no-repeat center center /
+      contain;
+  }
+}
+
+/* =====================================
+   Section--faq
+
+===================================== */
+
+.faq-list.flex-layout {
+  flex-direction: column;
+  gap: 24px;
+}
+.faq-item {
+  border-radius: 12px;
+  border: 2px solid $color-Blown;
+  overflow: hidden;
+}
+.faq-question {
+  padding: 12px 16px;
+  //  padding-bottom: 0; //アコーディオン閉じたら消す
+
+  display: block;
+  background: $color-White;
+  width: 100%;
+  span {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    padding-left: calc(22px + 12px);
+    padding-right: calc(26.182px + 12px);
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-Blown;
+
+    &::before {
+      position: absolute;
+      content: "Q";
+
+      // 位置
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      // サイズ
+      width: 22px;
+      height: 22px;
+
+      // タイポグラフィー
+      color: var(--LP-Blue, #9ed0e0);
+
+      /* En/Josefin Sans-24px */
+      font-family: "Josefin Sans";
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 125%; /* 30px */
+    }
+    &::after {
+      position: absolute;
+      content: "";
+
+      // 位置
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      // サイズ
+      width: 26.182px;
+      height: 26.182px;
+
+      // 装飾
+      background: url("../img/prizes-close-icon.png") no-repeat center center /
+        contain;
+    }
+  }
+}
+.faq-question__text {
+}
+.faq-answer {
+  padding: 16px;
+  background: $color-Gray;
+
+  p {
+    position: relative;
+    padding-left: calc(22px + 12px);
+    margin-bottom: 0;
+    &::before {
+      position: absolute;
+      content: "A";
+
+      // 位置
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      // サイズ
+      width: 22px;
+      height: 22px;
+
+      // タイポグラフィー
+      color: var(--LP-Blue, #9ed0e0);
+
+      /* En/Josefin Sans-24px */
+      font-family: "Josefin Sans";
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 125%; /* 30px */
+    }
+  }
+}
+
+/* =====================================
+   Section--entry
+
+===================================== */
+
+.section--entry {
+  .entry__content {
+    padding: calc(24px - 8px) calc(23.5px - 8px);
+    border: 8px solid $color-White;
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+.entry__list {
+}
+.entry__item {
+  padding-bottom: 16px;
+  border-bottom: 1px solid $color-Dark-Gray;
+  margin-bottom: 12px;
+  .item__head {
+    position: relative;
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    padding-left: calc(8px + 8px);
+    margin-bottom: 8px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%; // 行の中央寄せ
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $color-Blue;
+    }
+  }
+  .item__text {
+    display: block;
+  }
 }
 
 /* ================================
