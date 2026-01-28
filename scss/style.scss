@@ -907,6 +907,10 @@
 ===================================== */
 
 .section--entry {
+  padding-bottom: 0px;
+  .section-head {
+    margin-bottom: 24px;
+  }
   .entry__content {
     padding: calc(24px - 8px) calc(23.5px - 8px);
     border: 8px solid $color-White;
@@ -919,6 +923,11 @@
   padding-bottom: 16px;
   border-bottom: 1px solid $color-Dark-Gray;
   margin-bottom: 12px;
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
   .item__head {
     position: relative;
     display: block;
@@ -942,16 +951,538 @@
     display: block;
   }
 }
+.entry-attention {
+  li {
+    position: relative;
+    padding-left: 15px; //「・」と本文の間隔
+    &::before {
+      content: "・";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+.section--entry .section__divider {
+  margin-top: 32px;
+  width: 100%;
+  aspect-ratio: 375 / 99; // ← カンプ基準
+  background: url("../img/entry-section-divider.jpg") center / cover no-repeat;
+}
+
+/* =====================================
+   Section--contact
+
+===================================== */
+
+.section--contact {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  background: $color-White;
+  .inner {
+    text-align: center;
+  }
+  .section-head {
+    margin-bottom: 24px;
+  }
+  p {
+    margin-bottom: 24px;
+  }
+}
+
+.contact__form {
+  @include mq(md) {
+    margin-top: 42px;
+  }
+}
+
+.contact__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  @include mq(md) {
+    gap: 24px;
+  }
+}
+
+.contact__field {
+  &:nth-last-of-type(1) {
+    .form-field__head {
+      @include mq(md) {
+        align-items: start;
+      }
+    }
+  }
+
+  @include mq(md) {
+  }
+}
+
+.contact__privacy {
+  margin-top: 25px;
+  text-align: center;
+  @include mq(md) {
+    margin-top: 41px;
+    font-size: 16px;
+  }
+}
+
+.contact__button {
+  margin-top: 24px;
+  text-align: center;
+
+  @include mq(md) {
+    margin-top: 40px;
+  }
+
+  input {
+  }
+}
+
+.form-field {
+  @include mq(md) {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+.form-field__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @include mq(md) {
+    width: 180px;
+    flex-shrink: 0;
+    justify-content: flex-start;
+  }
+}
+
+.form-field__label {
+  font-weight: 700;
+  font-size: 14px;
+  @include mq(md) {
+    font-size: 16px;
+  }
+}
+
+.form-field__tag {
+  display: inline-block;
+  border-radius: 4px;
+  background: $color-Red;
+  padding: 4px 8px;
+  color: $color-White;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-field__item {
+  margin-top: 8px;
+  flex-grow: 1;
+
+  @include mq(md) {
+    margin-top: 0;
+  }
+
+  // [type="text"],
+  // [type="email"] {
+  //   width: 100%;
+  //   border-radius: 5px;
+  //   border: 3px solid #111;
+  //   background: #fff;
+  //   padding: 15px 16px 14px;
+  // }
+
+  // [type="radio"] {
+  //   width: 1px;
+  //   height: 1px;
+  //   position: absolute;
+  //   clip: rect(0, 0, 0, 0);
+  //   overflow: hidden;
+
+  //   &:checked {
+  //     + .form-field__radio-text {
+  //       &::after {
+  //         opacity: 1;
+  //       }
+  //     }
+  //   }
+  // }
+
+  // select {
+  //   appearance: none;
+  //   width: 100%;
+  //   border-radius: 5px;
+  //   border: 3px solid #111;
+  //   background: #fff;
+  //   font-weight: 700;
+  //   padding: 15px 46px 14px 16px;
+  //   background: url(../img/select-arrow.png) no-repeat center right 16px /
+  //     13.217px 10.182px;
+  // }
+
+  // textarea {
+  //   border-radius: 5px;
+  //   border: 3px solid #111;
+  //   background: #fff;
+  //   width: 100%;
+  //   height: 180px;
+  //   padding: 16px;
+  // }
+}
+
+.form-text {
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  background: $color-Gray;
+  padding: calc(16px - 3px);
+  border: 3px solid transparent;
+  transition: border-color 0.3s;
+  font-size: 14px;
+  @include mq(md) {
+    font-size: 16px;
+  }
+  &::placeholder {
+    color: $color-Dark-Gray;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: $color-Blue;
+    background-color: $color-Light-Blue;
+    outline: none;
+  }
+}
+
+.form-radio {
+  line-height: calc(23 / 16);
+
+  &:hover {
+    .form-radio__text {
+      &::before {
+        border-color: $color-Blue;
+      }
+    }
+  }
+}
+
+.form-radio__input {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+
+  &:checked {
+    + .form-radio__text {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  // &:focus {
+  //   + .form-radio__text {
+  //     &::before {
+  //       border-color: #fabe00;
+  //     }
+  //   }
+  // }
+}
+
+.form-radio__text {
+  padding-left: calc(24px + 8px);
+  position: relative;
+  font-size: 14px;
+  @include mq(md) {
+    font-size: 16px;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+  }
+
+  &::before {
+    width: 24px;
+    height: 24px;
+    background-color: $color-Gray;
+    border: 3px solid transparent;
+    left: 0;
+    transition: border-color 0.3s;
+  }
+
+  &::after {
+    width: 10px;
+    height: 10px;
+    background: $color-Blue;
+    left: 10px;
+    opacity: 0;
+  }
+}
+.form-field__wrapper {
+  position: relative;
+  width: 100%;
+  // selectはafter要素が効かないのでwrapperを作成
+  &::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    content: "";
+    width: 52px;
+    height: 55px;
+    background: url(../img/control.png) no-repeat center center / contain;
+    border-radius: 0 8px 8px 0;
+  }
+}
+.form-select {
+  position: relative;
+  appearance: none;
+  width: 100%;
+  height: 56px;
+
+  font-weight: 400;
+  padding: calc(16px - 3px);
+  font-size: 14px;
+  background-image:
+    url(../img/contact-select-Icon.png),
+    linear-gradient(to left, #9ed0e0 52px, #f5f5f5 52px);
+  border: 3px solid transparent;
+  background-clip: padding-box; // ← これが効く！
+  border-radius: 8px;
+  overflow: hidden;
+  background-repeat: no-repeat, no-repeat;
+  background-position:
+    center right 10.5px,
+    center center;
+  background-size:
+    32px 32px,
+    cover;
+  transition: border-color 0.3s;
+  @include mq(md) {
+    font-size: 16px;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: $color-Blue;
+    outline: none;
+  }
+}
+
+.form-textarea {
+  border-radius: 5px;
+  border: 3px solid transparent;
+  background: $color-Gray;
+  width: 100%;
+  height: 160px;
+  padding: calc(16px - 3px);
+  transition: border-color 0.3s;
+  font-size: 14px;
+  font-family: "Noto Sans JP";
+  line-height: 1.6;
+  @include mq(md) {
+    font-size: 16px;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: $color-Blue;
+    background-color: $color-Light-Blue;
+    outline: none;
+  }
+  &::placeholder {
+    color: $color-Dark-Gray;
+  }
+}
+
+.form-field__radios {
+  display: flex;
+  gap: 24px;
+
+  @include mq(md) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.form-field__radio {
+}
+
+// .form-field__radio-text {
+//   font-weight: 700;
+//   padding-left: 28px;
+//   position: relative;
+
+//   &::before,
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     border-radius: 50%;
+//   }
+
+//   &::before {
+//     width: 24px;
+//     height: 24px;
+//     border: 3px solid #111;
+//     left: 0;
+//   }
+
+//   &::after {
+//     width: 10px;
+//     height: 10px;
+//     background: $color-main-Blue;
+//     left: 7px;
+//     opacity: 0;
+//   }
+// }
+
+.form-checkbox {
+  &:hover {
+    .form-checkbox__text {
+      &::before {
+        border-color: $color-Blue;
+      }
+    }
+  }
+}
+
+.form-checkbox__input {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+
+  &:checked {
+    + .form-checkbox__text {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:focus {
+    + .form-checkbox__text {
+      &::before {
+        border-color: $color-Blue;
+      }
+    }
+  }
+}
+
+.form-checkbox__text {
+  position: relative;
+  padding-left: calc(24px + 12px);
+  font-size: 14px;
+  @include mq(md) {
+    font-size: 16px;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s;
+    background: $color-Gray;
+
+    @include mq(md) {
+      margin-top: 2px;
+    }
+  }
+
+  &::after {
+    width: 14px;
+    height: 9px;
+    left: 5px;
+    margin-top: -1.2px;
+    background: url(../img/contact-check.png) no-repeat center center / contain;
+    opacity: 0;
+
+    @include mq(md) {
+      margin-top: 0.8px;
+    }
+  }
+
+  a {
+    text-decoration-line: underline;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-Blue;
+    }
+  }
+}
+
+/* テキスト系のエラー */
+.is-error-text {
+  background-color: #fff0f7;
+  border: 1px solid #ce2073;
+}
+/* セレクトも同じ見た目にする場合 */
+.is-error-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image:
+    url(../img/Icon-select.png),
+    linear-gradient(to left, #9ed0e0 52px, #fff0f7 52px);
+  border: 1px solid #ce2073;
+  // padding: 0.5em;
+  // color: #000; /* 文字色も調整 */
+  // border-radius: 4px; /* 必要に応じて */
+}
+
+/* チェックボックスラッパーのエラー */
+.is-error-checkbox {
+  background-color: #fff0f7;
+}
+
+/* ラベルの文字色エラー */
+.is-error-label {
+  color: #ce2073;
+}
 
 /* ================================
    footer
    ================================ */
 .site-footer {
+  padding-top: 40px;
   margin: 0 auto;
   max-width: $layout-max-width; //紙面型の場合はここを有効にする
   text-align: center;
   position: relative;
 
+  .inner {
+    text-align: center;
+  }
+  p {
+    font-size: 20px;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    font-family: "Josefin Sans", sans-serif;
+  }
   &__bg {
     // 背景専用レイヤー
     // inset:0 を基本とする
@@ -966,36 +1497,86 @@
       display: none;
     }
   }
-  &__main {
-    // 紙面型フッター
-    // レイアウト・余白・配色はここ
-    margin-bottom: 60px; // 下部余白（固定フッター分）
-  }
-
-  &__fixed {
-    // UI型フッター（モバイル専用）
-    // mainとは独立して制御する
-    position: fixed;
+  .bg-onomichi {
     width: 100%;
-    max-width: $layout-max-width; //紙面型の場合はここを有効にする
-    height: 60px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: $z-footer-fixed;
-
-    .bg {
-      background: #7fbce5;
-    }
-    .inner--flex {
+    img {
       width: 100%;
-      height: 100%;
-      justify-content: space-between;
-      align-items: center;
-      max-width: $layout-max-width;
+      height: auto;
     }
   }
 }
+.footer-icons {
+  display: flex;
+  max-width: 176px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  .icon {
+    margin: 0;
+    color: $color-Dark-Blue;
+  }
+}
+
+.footer-map {
+  border-radius: 16px;
+  overflow: hidden;
+}
+.map__img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 335 / 271;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+.map__address {
+  padding: 24px 23px;
+  background: $color-White;
+
+  .brand {
+    width: 153px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .info-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px;
+    text-align: left;
+
+    tr {
+    }
+
+    th,
+    td {
+      vertical-align: top;
+      font-size: 12px;
+    }
+
+    th {
+      width: 80px; // 項目名の列幅を固定
+      text-align: left;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    td {
+      line-height: 1.6;
+    }
+  }
+}
+
 /* ===============================
    md以上では固定フッターを非表示
 ================================ */
@@ -1118,7 +1699,7 @@
   text-align: center;
   padding-bottom: 12px;
 
-  .section-head__icon {
+  .icon {
     margin: 0 auto;
     display: block;
     width: 37.333px;
@@ -1177,7 +1758,21 @@
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
+  &:hover {
+    color: $color-Dark-Blue;
+  }
 }
 .bold {
   font-weight: 700;
+}
+.icon {
+  margin: 0 auto;
+  display: block;
+  width: 32px;
+  height: 32px;
+  color: $color-Blue;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 }
