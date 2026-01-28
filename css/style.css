@@ -1327,18 +1327,6 @@
   margin-bottom: 24px;
   font-family: "Josefin Sans", sans-serif;
 }
-.site-footer__bg {
-  background: #a4ceea;
-}
-.site-footer .bg--wave {
-  max-width: 1512px;
-}
-.site-footer .bg--wave::before {
-  max-width: 1512px;
-}
-.site-footer .bg--wave::after {
-  display: none;
-}
 .site-footer .bg-onomichi {
   width: 100%;
 }
@@ -1370,6 +1358,7 @@
 .footer-map {
   border-radius: 16px;
   overflow: hidden;
+  padding-bottom: 171.71px;
 }
 
 .map__img {
@@ -1410,10 +1399,24 @@
   font-size: 12px;
 }
 .map__address .info-table th {
+  position: relative;
+  padding-left: 16px;
   width: 80px;
   text-align: left;
   font-weight: 700;
   white-space: nowrap;
+}
+.map__address .info-table th::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #9ed0e0;
 }
 .map__address .info-table td {
   line-height: 1.6;
@@ -1422,22 +1425,48 @@
 /* ===============================
    md以上では固定フッターを非表示
 ================================ */
-@media screen and (min-width: 768px) {
-  .site-footer__main {
-    margin-bottom: 0;
-  }
-  .site-footer__fixed {
-    display: none;
-  }
+.footer-meta {
+  position: relative;
+  padding-bottom: 24px;
 }
-.footer-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-block: 12px;
+.footer-meta .bg--wave {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  background: #67b0c7;
+  background-size: cover;
+}
+.footer-meta .bg--wave::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  max-width: 1512px;
+  height: 45.714px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: 96px 45.714px;
+  z-index: -1;
+  /* ★位相調整 */
+  background-position: 48px top;
+}
+.footer-meta .bg--wave::before {
+  top: -45px;
+  height: 45.714px;
+  background-image: url("../img/bg_wave.png");
+}
+.footer-meta .bg--wave::after {
+  display: none;
+}
+.footer-meta .footer-copyright {
+  color: #fff;
 }
 
 /* =====================================
@@ -1446,11 +1475,13 @@
 ===================================== */
 .pagetop {
   position: fixed;
-  right: 10px;
-  bottom: 40px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 109.71px;
   z-index: 51;
-  width: 52px;
-  height: 52px;
+  width: 75px;
+  height: 78px;
   opacity: 1;
   visibility: hidden;
   -webkit-transition: opacity 0.3s, visibility 0.3s;
