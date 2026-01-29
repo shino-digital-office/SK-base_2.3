@@ -610,13 +610,52 @@
     transform: translateX(120px);
   }
 }
+/* =====================================
+   about__slider
+
+===================================== */
+.swiper-wrapper {
+  display: flex;
+}
+
+// アニメーションを滑らかにする設定。
+//js側でもなめらかにするための設定あり(→swiper-init.jsのコメントを見よ)
+#js-about-swiper .swiper-wrapper {
+  transition-timing-function: linear;
+}
+
+.about__slider {
+  margin-top: 0;
+  @include mq(md) {
+    margin-top: 208px;
+  }
+}
+.about__slide {
+  width: 100px !important;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  @include mq(md) {
+    width: 200px !important;
+    border-radius: 24px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+.about__prev,
+.about__next {
+  display: none;
+}
 
 /* =====================================
    Section--howto
 
 ===================================== */
 .section--howto {
-  padding-bottom: 20px;
+  padding-bottom: calc(32.8px + 32px);
   .section-head {
     margin-bottom: 32px;
   }
@@ -662,7 +701,7 @@
   left: 50%;
   transform: translateX(-50%); // 横だけ中央寄せ
 
-  width: 580px; // section max-width を超えない前提
+  width: 100%; // section max-width を超えない前提
   height: auto;
 
   z-index: -1;
@@ -787,6 +826,112 @@
     // 装飾
     background: url("../img/prizes-search.png") no-repeat center center /
       contain;
+  }
+}
+
+/* =====================================
+   Section--spots
+
+===================================== */
+.section--spots {
+  overflow: visible;
+  .bg--wave {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    background: $color-Dark-Blue;
+    background-size: cover;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 100%;
+      max-width: $layout-max-width;
+      height: 45.714px;
+
+      transform: translateX(-50%);
+
+      background-repeat: repeat-x;
+      background-position: left top;
+      background-size: 96px 45.714px; // ← ★波一個の単位の大きさをここで指定
+      z-index: -1;
+
+      /* ★位相調整 */
+      // background-position: 48px top; // ← 96px / 2
+    }
+    &::before {
+      top: -45px; //上装飾はみ出し分
+      height: 45.714px; //上装飾の高さ
+      background-image: url("../img/bg_wave.png");
+    }
+    &::after {
+      bottom: -45px; //下装飾はみ出し分
+      height: 45.714px; //下装飾の高さ
+      background-image: url("../img/bg_wave--down.png");
+    }
+  }
+}
+.section--spots {
+  padding-top: 0;
+  padding-bottom: 0;
+  .inner {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+    font-size: 11.444px;
+    color: $color-White;
+    margin-bottom: 24px;
+  }
+  .button {
+    margin: 0 auto;
+    margin-bottom: 19.84px;
+  }
+  .bg-onomichi {
+    margin: 0 auto;
+    margin-bottom: 26px;
+    max-width: 255px;
+    width: 100%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+.spots__title {
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  color: $color-White;
+  width: fit-content;
+  text-align: center;
+  font-family: "Kiwi Maru";
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.25;
+  padding-left: calc(35px + 8px);
+  &::before {
+    position: absolute;
+    content: "";
+
+    // 位置
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    // サイズ
+    width: 35px;
+    height: 35px;
+
+    // 装飾
+    background: url("../img/spots-Icon.png") no-repeat center center / contain;
   }
 }
 

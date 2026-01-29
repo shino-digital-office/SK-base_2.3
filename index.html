@@ -218,7 +218,61 @@
             <img src="./img/img_about_pic2.png" alt="" />
           </div>
         </section>
-        <section class="section section--swiper"></section>
+
+        <div class="about__slider">
+          <!-- Slider main container -->
+          <div id="js-about-swiper" class="swiper about__swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll1.jpg" alt="プレートごはん" />
+              </div>
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll2.jpg" alt="昼寝する猫" />
+              </div>
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll3.jpg" alt="建物" />
+              </div>
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll4.jpg" alt="スイーツ" />
+              </div>
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll5.jpg" alt="カフェ" />
+              </div>
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll6.jpg" alt="カフェとねこ" />
+              </div>
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll7.jpg" alt="テラス" />
+              </div>
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll8.jpg" alt="ドリンクサーバー" />
+              </div>
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll9.jpg" alt="神社" />
+              </div>
+              <div class="swiper-slide about__slide">
+                <img src="./img/img_about_scroll10.jpg" alt="昼寝する猫" />
+              </div>
+            </div>
+            <!-- If we need pagination -->
+            <!-- <div
+              id="js-about-pagination"
+              class="swiper-pagination about__pagination"
+            ></div> -->
+
+            <!-- If we need navigation buttons -->
+            <div
+              id="js-about-prev"
+              class="swiper-button-prev about__prev"
+            ></div>
+            <div
+              id="js-about-next"
+              class="swiper-button-next about__next"
+            ></div>
+          </div>
+        </div>
         <section class="section section--howto">
           <div class="inner">
             <div class="section-head">
@@ -393,7 +447,21 @@
             </button>
           </div>
         </section>
-        <section class="section section--spots"></section>
+        <section class="section section--spots">
+          <div class="bg--wave"></div>
+          <div class="inner">
+            <h2 class="spots__title">おすすめスポット</h2>
+            <div class="spots__slider"></div>
+
+            <div class="bg-onomichi">
+              <img src="./img/spots-img_onomichi.png" alt="" />
+            </div>
+            <p>レトロな景色に出会える人気の撮影スポットをピックアップ！</p>
+            <a href="#" class="button button--middle"
+              >#見つけて尾道レトロ の最新投稿を見る</a
+            >
+          </div>
+        </section>
         <section class="section section--faq">
           <div class="inner">
             <div class="section-head">
@@ -725,7 +793,6 @@
     </main>
 
     <footer class="site-footer">
-      <!-- 通常フッター -->
       <div class="inner">
         <p>\ Please Follow Us! /</p>
         <div class="footer-icons">
@@ -788,7 +855,7 @@
       <div class="footer-meta">
         <div class="bg--wave"></div>
         <small class="footer-copyright">
-          ©︎2020–2021 みなみ歯科クリニック
+          Copyright © Tourism campaign management office.
         </small>
       </div>
 
@@ -807,6 +874,8 @@
     <button class="pagetop" id="js-pagetop">
       <a href="#"><img src="./img/pagetop.png" alt="" /></a>
     </button>
+    <!-- java scriptでswiperを使えるようにする記述 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/entry.js" type="module"></script>
   </body>
 </html>
