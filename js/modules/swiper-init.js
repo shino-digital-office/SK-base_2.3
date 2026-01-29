@@ -1,4 +1,7 @@
-const swiperAbout = new Swiper("#js-about-swiper", {
+// 自動スクロールするスワイパーです。
+// 使い方
+// swiper　クラスに　js-auto-sliderを追加する
+const swiperAbout = new Swiper(".js-auto-slider", {
   /* =========================
    * 基本設定
    * ========================= */

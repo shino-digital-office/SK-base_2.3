@@ -934,6 +934,48 @@
     background: url("../img/spots-Icon.png") no-repeat center center / contain;
   }
 }
+.section--spots .card--stack {
+  display: flex;
+  flex-direction: column;
+  border: none; //任意
+  border-radius: 12px; // 任意
+  overflow: hidden;
+  width: 240px !important;
+  background: $color-White; // 背景色
+
+  /* 上段の画像 */
+  .card__media {
+    width: 100%;
+    display: block;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  /* 下段のテキスト */
+  .card__inner {
+    padding: 16px 24px; // 内側余白
+
+    display: block;
+    height: 222.16px;
+
+    h3 {
+      text-align: center;
+      margin: 0 0 16px 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    p {
+      text-align: left;
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+}
 
 /* =====================================
    Section--faq

@@ -870,6 +870,48 @@
   background: url("../img/spots-Icon.png") no-repeat center center/contain;
 }
 
+.section--spots .card--stack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 240px !important;
+  background: #fff;
+  /* 上段の画像 */
+  /* 下段のテキスト */
+}
+.section--spots .card--stack .card__media {
+  width: 100%;
+  display: block;
+}
+.section--spots .card--stack .card__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.section--spots .card--stack .card__inner {
+  padding: 16px 24px;
+  display: block;
+  height: 222.16px;
+}
+.section--spots .card--stack .card__inner h3 {
+  text-align: center;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+.section--spots .card--stack .card__inner p {
+  text-align: left;
+  margin: 0;
+  font-size: 12px;
+}
+
 /* =====================================
    Section--faq
 
