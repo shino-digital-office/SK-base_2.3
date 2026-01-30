@@ -569,7 +569,7 @@
   display: flex;
 }
 
-#js-about-swiper .swiper-wrapper {
+.js-divider-swiper .swiper-wrapper {
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
 }
@@ -610,6 +610,7 @@
 
 ===================================== */
 .section--howto {
+  padding-top: 64.8px;
   padding-bottom: 64.8px;
 }
 .section--howto .section-head {
@@ -619,6 +620,71 @@
   text-align: center;
 }
 
+.section--howto .bg--cat {
+  position: absolute;
+  inset: auto;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  width: 160px;
+  height: auto;
+  -webkit-transform: translate(50px, 64.8px);
+          transform: translate(50px, 64.8px);
+  /* 微調整が必要な場合は margin で offset */
+}
+.section--howto .bg--cat img {
+  width: 100%;
+  height: auto;
+}
+.section--howto .bg--map {
+  position: absolute;
+  inset: auto;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  width: 149px;
+  height: auto;
+  -webkit-transform: translate(-200px, 64.8px);
+          transform: translate(-200px, 64.8px);
+  /* 微調整が必要な場合は margin で offset */
+}
+.section--howto .bg--map img {
+  width: 100%;
+  height: auto;
+}
+.section--howto .bg--powpads1 {
+  position: absolute;
+  inset: auto;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  width: 55px;
+  height: auto;
+  -webkit-transform: translate(-200px, 614.35px);
+          transform: translate(-200px, 614.35px);
+  /* 微調整が必要な場合は margin で offset */
+}
+.section--howto .bg--powpads1 img {
+  width: 100%;
+  height: auto;
+}
+.section--howto .bg--pawpads2 {
+  position: absolute;
+  inset: auto;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  width: 55px;
+  height: auto;
+  -webkit-transform: translate(100px, 944.68px);
+          transform: translate(100px, 944.68px);
+  /* 微調整が必要な場合は margin で offset */
+}
+.section--howto .bg--pawpads2 img {
+  width: 100%;
+  height: auto;
+}
+
 .steps.flex-layout {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -626,26 +692,71 @@
           flex-direction: column;
   gap: 34px;
 }
-.steps.flex-layout .step {
+
+.step {
+  position: relative;
   text-align: center;
 }
-.steps.flex-layout .step .step__img {
+.step .step__img {
   width: 100%;
   max-width: 196px;
   margin: 0 auto;
   margin-bottom: 16px;
 }
-.steps.flex-layout .step h3 {
+.step h3 {
   font-weight: 700;
   margin-bottom: 16px;
 }
-.steps.flex-layout .step p {
+.step p {
   margin-bottom: 16px;
+}
+.step::after {
+  position: absolute;
+  content: "";
+  bottom: -34px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 7px;
+  height: 34px;
+  background: url("../img/step-waveline.png") no-repeat center center/contain;
+}
+.step:last-child::after {
+  display: none;
 }
 
 .howto__button {
   display: block;
   margin: 0 auto;
+}
+
+.step__link {
+  width: 100%;
+  max-width: 226px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  background: #fff;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+.step__link .icon {
+  margin: 0 auto;
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: #9ed0e0;
+}
+.step__link .icon svg {
+  width: 100%;
+  height: 100%;
+}
+.step__link .step__link-text {
+  font-size: 14px;
+  font-weight: 700;
 }
 
 /* =====================================
@@ -716,7 +827,7 @@
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 48px;
-  height: 26px;
+  height: 48px;
 }
 
 .section--prizes .card--stack {
@@ -785,7 +896,7 @@
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 100%;
-  max-width: 1200px;
+  max-width: 1512px;
   background: #67b0c7;
   background-size: cover;
 }
@@ -881,7 +992,9 @@
   border: none;
   border-radius: 12px;
   overflow: hidden;
-  width: 240px !important;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 240px;
   background: #fff;
   /* 上段の画像 */
   /* 下段のテキスト */
@@ -916,6 +1029,11 @@
    Section--faq
 
 ===================================== */
+.section--faq {
+  padding-top: 130.29px;
+  padding-bottom: 30.67px;
+}
+
 .faq-list.flex-layout {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -1015,6 +1133,7 @@
 
 ===================================== */
 .section--entry {
+  padding-top: 0;
   padding-bottom: 0px;
 }
 .section--entry .section-head {
@@ -1546,7 +1665,7 @@
 .footer-map {
   border-radius: 16px;
   overflow: hidden;
-  padding-bottom: 171.71px;
+  margin-bottom: 171.71px;
 }
 
 .map__img {
@@ -1563,7 +1682,7 @@
 }
 
 .map__address {
-  padding: 24px 23px;
+  padding: 24px 20px;
   background: #fff;
 }
 .map__address .brand {
@@ -1576,14 +1695,17 @@
   height: auto;
 }
 .map__address .info-table {
-  width: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   border-collapse: separate;
-  border-spacing: 8px;
+  border-spacing: 0px 8px;
   text-align: left;
+  margin: 0 auto;
 }
 .map__address .info-table th,
 .map__address .info-table td {
-  vertical-align: top;
+  vertical-align: middle;
   font-size: 12px;
 }
 .map__address .info-table th {
@@ -1625,7 +1747,7 @@
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 100%;
-  max-width: 1200px;
+  max-width: 1512px;
   background: #67b0c7;
   background-size: cover;
 }
@@ -1724,13 +1846,11 @@
   ----------------------------- */
 }
 .button--small {
-  height: 32px;
   padding: 4px 22px 6px;
   font-size: 14px;
   border-width: 2px;
 }
 .button--middle {
-  height: 40px;
   padding: 4px 22px 6px;
   font-size: 16px;
   border-width: 2px;
@@ -1738,7 +1858,6 @@
           font-feature-settings: "pref" on;
 }
 .button--large {
-  height: 56px;
   padding: 8px 38px 10px;
   font-size: 20px;
   border-width: 3px;

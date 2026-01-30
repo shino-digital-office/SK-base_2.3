@@ -620,7 +620,7 @@
 
 // アニメーションを滑らかにする設定。
 //js側でもなめらかにするための設定あり(→swiper-init.jsのコメントを見よ)
-#js-about-swiper .swiper-wrapper {
+.js-divider-swiper .swiper-wrapper {
   transition-timing-function: linear;
 }
 
@@ -655,6 +655,7 @@
 
 ===================================== */
 .section--howto {
+  padding-top: 64.8px;
   padding-bottom: calc(32.8px + 32px);
   .section-head {
     margin-bottom: 32px;
@@ -663,29 +664,159 @@
     text-align: center;
   }
 }
+//background
+.section--howto {
+  .bg--cat {
+    position: absolute;
+    inset: auto;
+    z-index: -1;
+
+    top: 0;
+    left: 50%;
+    width: 160px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+    height: auto;
+    transform: translate(50px, 64.8px);
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* 微調整が必要な場合は margin で offset */
+    // margin-top: -20px;
+    // margin-left: 10px;
+  }
+  .bg--map {
+    position: absolute;
+    inset: auto;
+    z-index: -1;
+
+    top: 0;
+    left: 50%;
+    width: 149px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+    height: auto;
+    transform: translate(-200px, 64.8px);
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* 微調整が必要な場合は margin で offset */
+    // margin-top: -20px;
+    // margin-left: 10px;
+  }
+  .bg--powpads1 {
+    position: absolute;
+    inset: auto;
+    z-index: -1;
+
+    top: 0;
+    left: 50%;
+    width: 55px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+    height: auto;
+    transform: translate(-200px, 614.35px);
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* 微調整が必要な場合は margin で offset */
+    // margin-top: -20px;
+    // margin-left: 10px;
+  }
+  .bg--pawpads2 {
+    position: absolute;
+    inset: auto;
+    z-index: -1;
+
+    top: 0;
+    left: 50%;
+    width: 55px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+    height: auto;
+    transform: translate(100px, 944.68px);
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* 微調整が必要な場合は margin で offset */
+    // margin-top: -20px;
+    // margin-left: 10px;
+  }
+}
 .steps.flex-layout {
   flex-direction: column;
   gap: 34px;
-  .step {
-    text-align: center;
-    .step__img {
-      width: 100%;
-      max-width: 196px;
-      margin: 0 auto;
-      margin-bottom: 16px;
-    }
-    h3 {
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    p {
-      margin-bottom: 16px;
+}
+.step {
+  position: relative;
+  text-align: center;
+  .step__img {
+    width: 100%;
+    max-width: 196px;
+    margin: 0 auto;
+    margin-bottom: 16px;
+  }
+  h3 {
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  p {
+    margin-bottom: 16px;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+
+    // 位置
+    bottom: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    // サイズ
+    width: 7px;
+    height: 34px;
+
+    // 装飾
+    background: url("../img/step-waveline.png") no-repeat center center /
+      contain;
+  }
+  &:last-child {
+    &::after {
+      display: none;
     }
   }
 }
 .howto__button {
   display: block;
   margin: 0 auto;
+}
+.step__link {
+  width: 100%;
+  max-width: 226px;
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  background: $color-White;
+  margin: 0 auto;
+  margin-bottom: 16px;
+
+  .icon {
+    margin: 0 auto;
+    display: block;
+    width: 20px;
+    height: 20px;
+    color: $color-Blue;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .step__link-text {
+    font-size: 14px;
+    font-weight: 700;
+  }
 }
 
 /* =====================================
@@ -768,7 +899,7 @@
 
     // サイズ
     width: 48px;
-    height: 26px;
+    height: 48px;
   }
 }
 .section--prizes .card--stack {
@@ -843,7 +974,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 1200px;
+    max-width: $layout-max-width;
     background: $color-Dark-Blue;
     background-size: cover;
 
@@ -934,13 +1065,15 @@
     background: url("../img/spots-Icon.png") no-repeat center center / contain;
   }
 }
+//section--spotsのslider
 .section--spots .card--stack {
   display: flex;
   flex-direction: column;
   border: none; //任意
   border-radius: 12px; // 任意
   overflow: hidden;
-  width: 240px !important;
+  flex-shrink: 0;
+  width: 240px;
   background: $color-White; // 背景色
 
   /* 上段の画像 */
@@ -981,7 +1114,10 @@
    Section--faq
 
 ===================================== */
-
+.section--faq {
+  padding-top: calc(90px + 40.29px);
+  padding-bottom: 30.67px;
+}
 .faq-list.flex-layout {
   flex-direction: column;
   gap: 24px;
@@ -1094,6 +1230,7 @@
 ===================================== */
 
 .section--entry {
+  padding-top: 0;
   padding-bottom: 0px;
   .section-head {
     margin-bottom: 24px;
@@ -1696,7 +1833,7 @@
 .footer-map {
   border-radius: 16px;
   overflow: hidden;
-  padding-bottom: 171.71px;
+  margin-bottom: 171.71px;
 }
 .map__img {
   position: relative;
@@ -1712,7 +1849,7 @@
   }
 }
 .map__address {
-  padding: 24px 23px;
+  padding: 24px 20px;
   background: $color-White;
 
   .brand {
@@ -1725,17 +1862,18 @@
     }
   }
   .info-table {
-    width: 100%;
+    width: fit-content;
     border-collapse: separate;
-    border-spacing: 8px;
+    border-spacing: 0px 8px;
     text-align: left;
+    margin: 0 auto;
 
     tr {
     }
 
     th,
     td {
-      vertical-align: top;
+      vertical-align: middle;
       font-size: 12px;
     }
 
@@ -1780,7 +1918,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 1200px;
+    max-width: $layout-max-width;
     background: $color-Dark-Blue;
     background-size: cover;
 
@@ -1875,7 +2013,7 @@
     size: small
   ----------------------------- */
   &--small {
-    height: 32px;
+    // height: 32px;
     padding: calc(6px - 2px) calc(24px - 2px) calc(8px - 2px);
     font-size: 14px;
     border-width: 2px;
@@ -1885,7 +2023,7 @@
     size: middle
   ----------------------------- */
   &--middle {
-    height: 40px;
+    // height: 40px;
     padding: calc(6px - 2px) calc(24px - 2px) calc(8px - 2px);
     font-size: 16px;
     border-width: 2px;
@@ -1897,7 +2035,7 @@
     size: large
   ----------------------------- */
   &--large {
-    height: 56px;
+    // height: 56px;
     padding: calc(10px - 2px) calc(40px - 2px) calc(12px - 2px);
     font-size: 20px;
     border-width: 3px;
