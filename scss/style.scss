@@ -472,72 +472,25 @@
 
 //section--aboutの背景装飾
 .section--about {
-  .bg--center {
+  position: relative;
+  .about-bg {
     position: absolute;
-    inset: auto 0;
-    z-index: -1;
+    inset: 0; // ← section と同サイズの紙
+    top: 22px;
 
-    top: 50%;
-    left: 50%;
-    width: 200px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
-    height: auto;
-    transform: translate(-50%, -50%);
-    img {
-      width: 100%;
-      height: auto;
-    }
-    @include mq(md) {
-      width: 480px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+    background-image: url("../img/about-bg.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 655px 935px;
 
-      transform: translate(-50%, -50%);
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
-  }
-  .bg--center.bg-right {
-    border-radius: 24px;
     overflow: hidden;
-    top: 305px;
-    transform: translateX(375px - 315px);
+    pointer-events: none; // おまけ（安心）
     @include mq(md) {
-      border-radius: 40px;
-      top: 110.07px;
-      transform: translateX(560px);
-      margin-top: 0;
-      margin-left: 0;
+      top: calc(131px - 174px);
+      background-image: url("../img/pc/about-bg.png");
+      background-position: 37% top;
+      background-size: 2416px 1218px;
     }
-  }
-  .bg--center.bg-left {
-    border-radius: 24px;
-    overflow: hidden;
-    top: 427px;
-    transform: translateX(-330px);
-    // /* 微調整が必要な場合は margin で offset */
-    // margin-top: 0px;
-    // margin-left: -230px;
-  }
-  .bg-buttons {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    bottom: 118px;
-    right: 22px;
-  }
-  .bg-cloths {
-    position: absolute;
-    width: 133px;
-    height: 65.003px;
-    bottom: 57px;
-    right: 57px;
-  }
-  .bg-slope {
-    position: absolute;
-    width: 138px;
-    height: 215px;
-    bottom: -38.8px;
-    left: 0;
   }
   .bg-onomichi {
     position: absolute;
@@ -557,42 +510,8 @@
       max-width: 890.604px;
     }
   }
-  .bg-pawpads {
-    position: absolute;
-    width: 54px;
-    height: 120px;
-    top: 22px;
-    right: 0;
-    @include mq(md) {
-      width: 100px;
-      height: 220px;
-      top: calc(177px - 200px);
 
-      right: 165.88px;
-    }
-  }
   @include mq(md) {
-    .bg-buttons {
-      width: 101px;
-      height: 100.047px;
-      top: 77%;
-      left: 85%;
-      transform: translate(-50%, -50%);
-    }
-    .bg-cloths {
-      width: 308px;
-      height: 150.604px;
-      top: 80%;
-      left: 63%;
-      transform: translate(-50%, -50%);
-    }
-    .bg-slope {
-      width: 427px;
-      height: 817px;
-      top: 95%;
-      left: 18%;
-      transform: translate(-50%, -50%);
-    }
   }
 }
 //section--aboutのコンテンツ
@@ -758,133 +677,157 @@
   }
   .inner {
     text-align: center;
+    max-width: calc(1024px + 20px * 2);
   }
 }
 //background
 .section--howto {
-  .bg--cat {
+  position: relative;
+  .howto-bg {
     position: absolute;
-    inset: auto;
-    z-index: -1;
+    inset: 0; // ← section と同サイズの紙
+    top: 64.8px;
 
-    top: 0;
-    left: 50%;
-    width: 160px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
-    height: auto;
-    transform: translate(58px, 64.8px);
-    img {
-      width: 100%;
-      height: auto;
+    background-image: url("../img/howto-bg.png");
+    background-repeat: no-repeat;
+    background-position: 4% top;
+    background-size: 406px 1000px;
+
+    overflow: hidden;
+    pointer-events: none; // おまけ（安心）
+    @include mq(md) {
+      top: 60px;
+      background-image: url("../img/pc/howto-bg.png");
+      background-position: center top;
+      background-size: 1440px 860px;
     }
-
-    /* 微調整が必要な場合は margin で offset */
-    // margin-top: -20px;
-    // margin-left: 10px;
   }
-  .bg--map {
+  .bg-onomichi {
     position: absolute;
-    inset: auto;
-    z-index: -1;
-
-    top: 0;
-    left: 50%;
-    width: 149px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
+    max-width: 354.642px;
     height: auto;
-    transform: translate(-188px, 64.8px);
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     img {
       width: 100%;
       height: auto;
     }
-
-    /* 微調整が必要な場合は margin で offset */
-    // margin-top: -20px;
-    // margin-left: 10px;
+    @include mq(md) {
+      width: 100%;
+      height: auto;
+      max-width: 890.604px;
+    }
   }
-  .bg--powpads1 {
-    position: absolute;
-    inset: auto;
-    z-index: -1;
 
-    top: 0;
-    left: 50%;
-    width: 55px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
-    height: auto;
-    transform: translate(-168px, 614.35px);
-    img {
-      width: 100%;
-      height: auto;
-    }
-
-    /* 微調整が必要な場合は margin で offset */
-    // margin-top: -20px;
-    // margin-left: 10px;
-  }
-  .bg--pawpads2 {
-    position: absolute;
-    inset: auto;
-    z-index: -1;
-
-    top: 0;
-    left: 50%;
-    width: 55px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
-    height: auto;
-    transform: translate(112px, 944.68px);
-    img {
-      width: 100%;
-      height: auto;
-    }
-
-    /* 微調整が必要な場合は margin で offset */
-    // margin-top: -20px;
-    // margin-left: 10px;
+  @include mq(md) {
   }
 }
 .steps.flex-layout {
   flex-direction: column;
   gap: 34px;
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    justify-items: center;
+    margin-bottom: 40px;
+  }
 }
 .step {
   position: relative;
   text-align: center;
+
+  &:nth-child(2) {
+    @include mq(md) {
+      margin-top: 69px;
+    }
+  }
   .step__img {
     width: 100%;
     max-width: 196px;
     margin: 0 auto;
     margin-bottom: 16px;
+    @include mq(md) {
+      max-width: 280px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
   }
   h3 {
     font-weight: 700;
     margin-bottom: 16px;
+    @include mq(md) {
+      font-size: 20px;
+    }
   }
   p {
     margin-bottom: 16px;
+    @include mq(md) {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
   }
-  &::after {
-    position: absolute;
-    content: "";
-
-    // 位置
-    bottom: -34px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    // サイズ
-    width: 7px;
-    height: 34px;
-
-    // 装飾
-    background: url("../img/step-waveline.png") no-repeat center center /
-      contain;
-  }
-  &:last-child {
+  &:nth-child(2) {
+    &::before,
     &::after {
-      display: none;
+      position: absolute;
+      content: "";
+      // 装飾
+      background: url("../img/step-waveline.png") no-repeat center center /
+        contain;
+
+      // 位置
+      left: 50%;
+      transform: translateX(-50%);
+
+      // サイズ
+      width: 7px;
+      height: 34px;
+
+      @include mq(md) {
+        // 位置
+        top: 50%;
+        transform: translateY(-50%);
+
+        // サイズ
+        width: 113px;
+        height: 24px;
+
+        // 装飾
+        background: url("../img/pc/step-waveline.png") no-repeat center center /
+          contain;
+      }
+    }
+    &::before {
+      top: -34px;
+      @include mq(md) {
+        left: -100px;
+        top: 30%;
+        transform: translateY(-50%);
+      }
+    }
+    &::after {
+      bottom: -34px;
+      @include mq(md) {
+        left: auto; //left50%をリセット
+        right: -57px;
+        top: 30%;
+        transform: translateY(-50%);
+      }
     }
   }
 }
 .howto__button {
   display: block;
   margin: 0 auto;
+  @include mq(md) {
+    // height: 56px;
+    padding: calc(10px - 2px) calc(40px - 2px) calc(12px - 2px);
+    font-size: 20px;
+    border-width: 3px;
+  }
 }
 .step__link {
   width: 100%;
@@ -912,6 +855,9 @@
   .step__link-text {
     font-size: 14px;
     font-weight: 700;
+    @include mq(md) {
+      margin-top: 16px;
+    }
   }
 }
 

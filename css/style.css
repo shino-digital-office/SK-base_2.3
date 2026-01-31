@@ -445,76 +445,27 @@
    Section--about
 
 ===================================== */
-.section--about .bg--center {
-  position: absolute;
-  inset: auto 0;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  height: auto;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+.section--about {
+  position: relative;
 }
-.section--about .bg--center img {
-  width: 100%;
-  height: auto;
+.section--about .about-bg {
+  position: absolute;
+  inset: 0;
+  top: 22px;
+  background-image: url("../img/about-bg.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 655px 935px;
+  overflow: hidden;
+  pointer-events: none;
 }
 @media screen and (min-width: 768px) {
-  .section--about .bg--center {
-    width: 480px;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+  .section--about .about-bg {
+    top: -43px;
+    background-image: url("../img/pc/about-bg.png");
+    background-position: 37% top;
+    background-size: 2416px 1218px;
   }
-  .section--about .bg--center img {
-    width: 100%;
-    height: auto;
-  }
-}
-.section--about .bg--center.bg-right {
-  border-radius: 24px;
-  overflow: hidden;
-  top: 305px;
-  -webkit-transform: translateX(60px);
-          transform: translateX(60px);
-}
-@media screen and (min-width: 768px) {
-  .section--about .bg--center.bg-right {
-    border-radius: 40px;
-    top: 110.07px;
-    -webkit-transform: translateX(560px);
-            transform: translateX(560px);
-    margin-top: 0;
-    margin-left: 0;
-  }
-}
-.section--about .bg--center.bg-left {
-  border-radius: 24px;
-  overflow: hidden;
-  top: 427px;
-  -webkit-transform: translateX(-330px);
-          transform: translateX(-330px);
-}
-.section--about .bg-buttons {
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  bottom: 118px;
-  right: 22px;
-}
-.section--about .bg-cloths {
-  position: absolute;
-  width: 133px;
-  height: 65.003px;
-  bottom: 57px;
-  right: 57px;
-}
-.section--about .bg-slope {
-  position: absolute;
-  width: 138px;
-  height: 215px;
-  bottom: -38.8px;
-  left: 0;
 }
 .section--about .bg-onomichi {
   position: absolute;
@@ -537,48 +488,6 @@
     max-width: 890.604px;
   }
 }
-.section--about .bg-pawpads {
-  position: absolute;
-  width: 54px;
-  height: 120px;
-  top: 22px;
-  right: 0;
-}
-@media screen and (min-width: 768px) {
-  .section--about .bg-pawpads {
-    width: 100px;
-    height: 220px;
-    top: -23px;
-    right: 165.88px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .section--about .bg-buttons {
-    width: 101px;
-    height: 100.047px;
-    top: 77%;
-    left: 85%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-  }
-  .section--about .bg-cloths {
-    width: 308px;
-    height: 150.604px;
-    top: 80%;
-    left: 63%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-  }
-  .section--about .bg-slope {
-    width: 427px;
-    height: 817px;
-    top: 95%;
-    left: 18%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-  }
-}
-
 .section--about {
   padding-top: 32px;
   padding-bottom: 176.87px;
@@ -750,73 +659,52 @@
 }
 .section--howto .inner {
   text-align: center;
+  max-width: 1064px;
 }
 
-.section--howto .bg--cat {
-  position: absolute;
-  inset: auto;
-  z-index: -1;
-  top: 0;
-  left: 50%;
-  width: 160px;
-  height: auto;
-  -webkit-transform: translate(58px, 64.8px);
-          transform: translate(58px, 64.8px);
-  /* 微調整が必要な場合は margin で offset */
+.section--howto {
+  position: relative;
 }
-.section--howto .bg--cat img {
+.section--howto .howto-bg {
+  position: absolute;
+  inset: 0;
+  top: 64.8px;
+  background-image: url("../img/howto-bg.png");
+  background-repeat: no-repeat;
+  background-position: 4% top;
+  background-size: 406px 1000px;
+  overflow: hidden;
+  pointer-events: none;
+}
+@media screen and (min-width: 768px) {
+  .section--howto .howto-bg {
+    top: 60px;
+    background-image: url("../img/pc/howto-bg.png");
+    background-position: center top;
+    background-size: 1440px 860px;
+  }
+}
+.section--howto .bg-onomichi {
+  position: absolute;
+  max-width: 354.642px;
+  height: auto;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.section--howto .bg-onomichi img {
   width: 100%;
   height: auto;
 }
-.section--howto .bg--map {
-  position: absolute;
-  inset: auto;
-  z-index: -1;
-  top: 0;
-  left: 50%;
-  width: 149px;
-  height: auto;
-  -webkit-transform: translate(-188px, 64.8px);
-          transform: translate(-188px, 64.8px);
-  /* 微調整が必要な場合は margin で offset */
+@media screen and (min-width: 768px) {
+  .section--howto .bg-onomichi {
+    width: 100%;
+    height: auto;
+    max-width: 890.604px;
+  }
 }
-.section--howto .bg--map img {
-  width: 100%;
-  height: auto;
-}
-.section--howto .bg--powpads1 {
-  position: absolute;
-  inset: auto;
-  z-index: -1;
-  top: 0;
-  left: 50%;
-  width: 55px;
-  height: auto;
-  -webkit-transform: translate(-168px, 614.35px);
-          transform: translate(-168px, 614.35px);
-  /* 微調整が必要な場合は margin で offset */
-}
-.section--howto .bg--powpads1 img {
-  width: 100%;
-  height: auto;
-}
-.section--howto .bg--pawpads2 {
-  position: absolute;
-  inset: auto;
-  z-index: -1;
-  top: 0;
-  left: 50%;
-  width: 55px;
-  height: auto;
-  -webkit-transform: translate(112px, 944.68px);
-          transform: translate(112px, 944.68px);
-  /* 微調整が必要な場合は margin で offset */
-}
-.section--howto .bg--pawpads2 img {
-  width: 100%;
-  height: auto;
-}
-
 .steps.flex-layout {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -824,10 +712,24 @@
           flex-direction: column;
   gap: 34px;
 }
+@media screen and (min-width: 768px) {
+  .steps.flex-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    justify-items: center;
+    margin-bottom: 40px;
+  }
+}
 
 .step {
   position: relative;
   text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .step:nth-child(2) {
+    margin-top: 69px;
+  }
 }
 .step .step__img {
   width: 100%;
@@ -835,31 +737,85 @@
   margin: 0 auto;
   margin-bottom: 16px;
 }
+@media screen and (min-width: 768px) {
+  .step .step__img {
+    max-width: 280px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+}
 .step h3 {
   font-weight: 700;
   margin-bottom: 16px;
 }
+@media screen and (min-width: 768px) {
+  .step h3 {
+    font-size: 20px;
+  }
+}
 .step p {
   margin-bottom: 16px;
 }
-.step::after {
+@media screen and (min-width: 768px) {
+  .step p {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+}
+.step:nth-child(2)::before, .step:nth-child(2)::after {
   position: absolute;
   content: "";
-  bottom: -34px;
+  background: url("../img/step-waveline.png") no-repeat center center/contain;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 7px;
   height: 34px;
-  background: url("../img/step-waveline.png") no-repeat center center/contain;
 }
-.step:last-child::after {
-  display: none;
+@media screen and (min-width: 768px) {
+  .step:nth-child(2)::before, .step:nth-child(2)::after {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: 113px;
+    height: 24px;
+    background: url("../img/pc/step-waveline.png") no-repeat center center/contain;
+  }
+}
+.step:nth-child(2)::before {
+  top: -34px;
+}
+@media screen and (min-width: 768px) {
+  .step:nth-child(2)::before {
+    left: -100px;
+    top: 30%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+}
+.step:nth-child(2)::after {
+  bottom: -34px;
+}
+@media screen and (min-width: 768px) {
+  .step:nth-child(2)::after {
+    left: auto;
+    right: -57px;
+    top: 30%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
 }
 
 .howto__button {
   display: block;
   margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .howto__button {
+    padding: 8px 38px 10px;
+    font-size: 20px;
+    border-width: 3px;
+  }
 }
 
 .step__link {
@@ -889,6 +845,11 @@
 .step__link .step__link-text {
   font-size: 14px;
   font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  .step__link .step__link-text {
+    margin-top: 16px;
+  }
 }
 
 /* =====================================
