@@ -240,12 +240,16 @@
   padding-top: 17px;
   inset: auto;
 }
+.fv__frame h1 {
+  margin-bottom: 10px;
+}
 
 .fv__caption {
   text-align: center;
   font-family: "Kiwi Maru", serif;
   font-size: 14px;
   margin-bottom: 20px;
+  line-height: 1.25;
 }
 
 .fv-title_img {
@@ -279,7 +283,7 @@
 
 .ui-apply {
   position: absolute;
-  top: 70%;
+  top: 69%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -308,6 +312,7 @@
   margin-bottom: 3.2px;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 5px;
 }
 .ui-apply .ui-period__title::after {
   position: absolute;
@@ -331,6 +336,7 @@
 .ui-apply .ui-button {
   display: block;
   margin: 0 auto;
+  padding: 2px 22px 4px;
 }
 
 /* ================================
@@ -368,30 +374,30 @@
 .section--about .bg--center.bg-right {
   border-radius: 24px;
   overflow: hidden;
-  /* 微調整が必要な場合は margin で offset */
-  margin-top: -100px;
-  margin-left: 230px;
+  top: 305px;
+  -webkit-transform: translateX(60px);
+          transform: translateX(60px);
 }
 .section--about .bg--center.bg-left {
   border-radius: 24px;
   overflow: hidden;
-  /* 微調整が必要な場合は margin で offset */
-  margin-top: 0px;
-  margin-left: -230px;
+  top: 427px;
+  -webkit-transform: translateX(-330px);
+          transform: translateX(-330px);
 }
 .section--about .bg-buttons {
   position: absolute;
   width: 48px;
   height: 48px;
   bottom: 118px;
-  right: 0;
+  right: 22px;
 }
 .section--about .bg-cloths {
   position: absolute;
   width: 133px;
   height: 65.003px;
-  bottom: 77px;
-  right: 53px;
+  bottom: 57px;
+  right: 57px;
 }
 .section--about .bg-slope {
   position: absolute;
@@ -508,15 +514,25 @@
     max-width: 848px;
   }
 }
+.section--about .section-head {
+  padding-bottom: 0;
+}
 .section--about .about__subtitle {
   font-weight: 700;
   font-size: 14px;
 }
+.section--about .about__text p {
+  margin-bottom: 18px;
+}
+.section--about .about__text p:last-child {
+  margin-bottom: 0;
+}
 .section--about .about__message {
-  padding-block: 8px;
+  padding-top: 8px;
+  padding-bottom: 6px;
   font-size: 14px;
   font-weight: 700;
-  border-bottom: 2px dashed var(--LP-Blue, #9ed0e0);
+  border-bottom: 2px dashed #9ed0e0;
 }
 .section--about .about__wrapper {
   position: relative;
@@ -543,20 +559,20 @@
 
 .title__img {
   position: absolute;
-  width: 80px;
-  height: 60px;
+  width: 85px;
+  height: auto;
 }
 .title__img--left {
-  top: 60px;
+  top: 65px;
   left: 50%;
-  -webkit-transform: translateX(-120px);
-          transform: translateX(-120px);
+  -webkit-transform: translateX(-135px);
+          transform: translateX(-135px);
 }
 .title__img--right {
   top: 60px;
   right: 50%;
-  -webkit-transform: translateX(120px);
-          transform: translateX(120px);
+  -webkit-transform: translateX(147px);
+          transform: translateX(147px);
 }
 
 /* =====================================
@@ -611,7 +627,7 @@
 ===================================== */
 .section--howto {
   padding-top: 64.8px;
-  padding-bottom: 64.8px;
+  padding-bottom: 20px;
 }
 .section--howto .section-head {
   margin-bottom: 32px;
@@ -628,8 +644,8 @@
   left: 50%;
   width: 160px;
   height: auto;
-  -webkit-transform: translate(50px, 64.8px);
-          transform: translate(50px, 64.8px);
+  -webkit-transform: translate(58px, 64.8px);
+          transform: translate(58px, 64.8px);
   /* 微調整が必要な場合は margin で offset */
 }
 .section--howto .bg--cat img {
@@ -644,8 +660,8 @@
   left: 50%;
   width: 149px;
   height: auto;
-  -webkit-transform: translate(-200px, 64.8px);
-          transform: translate(-200px, 64.8px);
+  -webkit-transform: translate(-188px, 64.8px);
+          transform: translate(-188px, 64.8px);
   /* 微調整が必要な場合は margin で offset */
 }
 .section--howto .bg--map img {
@@ -660,8 +676,8 @@
   left: 50%;
   width: 55px;
   height: auto;
-  -webkit-transform: translate(-200px, 614.35px);
-          transform: translate(-200px, 614.35px);
+  -webkit-transform: translate(-168px, 614.35px);
+          transform: translate(-168px, 614.35px);
   /* 微調整が必要な場合は margin で offset */
 }
 .section--howto .bg--powpads1 img {
@@ -676,8 +692,8 @@
   left: 50%;
   width: 55px;
   height: auto;
-  -webkit-transform: translate(100px, 944.68px);
-          transform: translate(100px, 944.68px);
+  -webkit-transform: translate(112px, 944.68px);
+          transform: translate(112px, 944.68px);
   /* 微調整が必要な場合は margin で offset */
 }
 .section--howto .bg--pawpads2 img {
@@ -789,6 +805,7 @@
   position: relative;
   padding: 20px 20px 34.67px;
   text-align: center;
+  max-width: 375px;
 }
 .section--prizes .inner .bg-prizes {
   position: absolute;
@@ -807,6 +824,9 @@
   width: 237.6px;
   height: 83px;
   background: url("../img/prizes-deco.png") no-repeat center center/contain;
+}
+.section--prizes .section-head {
+  margin-bottom: 16px;
 }
 .section--prizes p {
   margin-bottom: 48px;
@@ -842,7 +862,8 @@
   border-radius: 8px;
   overflow: hidden;
   width: 100%;
-  max-width: 335px;
+  max-width: 160px;
+  aspect-ratio: 160/196;
   background: #f5f5f5;
   position: relative;
   /* 上段の画像 */
@@ -858,7 +879,7 @@
   display: block;
 }
 .section--prizes .card--stack .card__inner {
-  padding: 1rem;
+  padding: 9px;
   text-align: center;
 }
 .section--prizes .card--stack .card__inner h3 {
@@ -945,7 +966,7 @@
 }
 .section--spots .bg-onomichi {
   margin: 0 auto;
-  margin-bottom: 26px;
+  margin-bottom: 16px;
   max-width: 255px;
   width: 100%;
 }
@@ -1030,8 +1051,11 @@
 
 ===================================== */
 .section--faq {
-  padding-top: 130.29px;
+  padding-top: 86px;
   padding-bottom: 30.67px;
+}
+.section--faq .section-head {
+  margin-bottom: 24px;
 }
 
 .faq-list.flex-layout {
@@ -1049,7 +1073,7 @@
 }
 
 .faq-question {
-  padding: 12px 16px;
+  padding: 10px 14px 12px;
   display: block;
   background: #fff;
   width: 100%;
@@ -1077,8 +1101,8 @@
   content: "Q";
   left: 0;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -webkit-transform: translateY(-66%);
+          transform: translateY(-66%);
   width: 22px;
   height: 22px;
   color: var(--LP-Blue, #9ed0e0);
@@ -1102,10 +1126,10 @@
 }
 
 .faq-answer {
-  padding: 16px;
   background: #f5f5f5;
 }
 .faq-answer p {
+  font-size: 14px;
   position: relative;
   padding-left: 34px;
   margin-bottom: 0;
@@ -1126,6 +1150,15 @@
   font-style: normal;
   font-weight: 400;
   line-height: 125%; /* 30px */
+}
+
+.faq-answer__inner {
+  padding: 16px 14px 14px 14px;
+}
+
+.section--faq .js-accordion-content {
+  -webkit-transition: height 0.3s ease;
+  transition: height 0.3s ease;
 }
 
 /* =====================================
@@ -1881,7 +1914,7 @@
   gap: 6px;
   padding-inline: 15px;
   text-align: center;
-  padding-bottom: 12px;
+  line-height: 1.25;
 }
 .section-head .icon {
   margin: 0 auto;

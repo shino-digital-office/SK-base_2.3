@@ -279,12 +279,16 @@
   display: block;
   padding-top: 17px;
   inset: auto;
+  h1 {
+    margin-bottom: 10px;
+  }
 }
 .fv__caption {
   text-align: center;
   font-family: "Kiwi Maru", serif;
   font-size: 14px;
   margin-bottom: 20px;
+  line-height: 1.25;
 }
 .fv-title_img {
   position: relative;
@@ -318,7 +322,7 @@
 
 .ui-apply {
   position: absolute;
-  top: 70%;
+  top: 69%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
@@ -350,6 +354,7 @@
     margin-bottom: 3.2px;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 5px;
     &::after {
       position: absolute;
       content: "";
@@ -379,6 +384,7 @@
   .ui-button {
     display: block;
     margin: 0 auto;
+    padding: 2px 22px 4px;
   }
 }
 
@@ -421,30 +427,34 @@
   .bg--center.bg-right {
     border-radius: 24px;
     overflow: hidden;
-    /* 微調整が必要な場合は margin で offset */
-    margin-top: -100px;
-    margin-left: 230px;
+    top: 305px;
+    transform: translateX(375px - 315px);
+    // /* 微調整が必要な場合は margin で offset */
+    // margin-top: -100px;
+    // margin-left: 230px;
   }
   .bg--center.bg-left {
     border-radius: 24px;
     overflow: hidden;
-    /* 微調整が必要な場合は margin で offset */
-    margin-top: 0px;
-    margin-left: -230px;
+    top: 427px;
+    transform: translateX(-330px);
+    // /* 微調整が必要な場合は margin で offset */
+    // margin-top: 0px;
+    // margin-left: -230px;
   }
   .bg-buttons {
     position: absolute;
     width: 48px;
     height: 48px;
     bottom: 118px;
-    right: 0;
+    right: 22px;
   }
   .bg-cloths {
     position: absolute;
     width: 133px;
     height: 65.003px;
-    bottom: 77px;
-    right: 53px;
+    bottom: 57px;
+    right: 57px;
   }
   .bg-slope {
     position: absolute;
@@ -550,19 +560,28 @@
       max-width: 848px;
     }
   }
-
+  .section-head {
+    padding-bottom: 0;
+  }
   .about__subtitle {
     font-weight: 700;
     font-size: 14px;
   }
   .about__text {
+    p {
+      margin-bottom: 18px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
   .about__message {
-    padding-block: 8px;
+    padding-top: 8px;
+    padding-bottom: calc(8px - 2px);
     font-size: 14px;
     font-weight: 700;
 
-    border-bottom: 2px dashed var(--LP-Blue, #9ed0e0);
+    border-bottom: 2px dashed $color-Blue;
   }
   .about__button {
   }
@@ -597,17 +616,17 @@
 //section--aboutのタイトル横画像
 .title__img {
   position: absolute;
-  width: 80px;
-  height: 60px;
+  width: 85px;
+  height: auto;
   &--left {
-    top: 60px;
+    top: 65px;
     left: 50%;
-    transform: translateX(-120px);
+    transform: translateX(-135px);
   }
   &--right {
     top: 60px;
     right: 50%;
-    transform: translateX(120px);
+    transform: translateX(147px);
   }
 }
 /* =====================================
@@ -656,7 +675,7 @@
 ===================================== */
 .section--howto {
   padding-top: 64.8px;
-  padding-bottom: calc(32.8px + 32px);
+  padding-bottom: 20px;
   .section-head {
     margin-bottom: 32px;
   }
@@ -675,7 +694,7 @@
     left: 50%;
     width: 160px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
     height: auto;
-    transform: translate(50px, 64.8px);
+    transform: translate(58px, 64.8px);
     img {
       width: 100%;
       height: auto;
@@ -694,7 +713,7 @@
     left: 50%;
     width: 149px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
     height: auto;
-    transform: translate(-200px, 64.8px);
+    transform: translate(-188px, 64.8px);
     img {
       width: 100%;
       height: auto;
@@ -713,7 +732,7 @@
     left: 50%;
     width: 55px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
     height: auto;
-    transform: translate(-200px, 614.35px);
+    transform: translate(-168px, 614.35px);
     img {
       width: 100%;
       height: auto;
@@ -732,7 +751,7 @@
     left: 50%;
     width: 55px; // 背景の大きさに応じて変更。section幅の最大値を超えて設定してはいけない。
     height: auto;
-    transform: translate(100px, 944.68px);
+    transform: translate(112px, 944.68px);
     img {
       width: 100%;
       height: auto;
@@ -854,6 +873,7 @@
     position: relative;
     padding: 20px 20px 34.67px;
     text-align: center;
+    max-width: 375px;
     .bg-prizes {
       position: absolute;
       inset: 82px 0 0 0;
@@ -878,6 +898,9 @@
           contain;
       }
     }
+  }
+  .section-head {
+    margin-bottom: 16px;
   }
   p {
     margin-bottom: 48px;
@@ -909,7 +932,8 @@
   border-radius: 8px; // 任意
   overflow: hidden;
   width: 100%;
-  max-width: 335px;
+  max-width: 160px;
+  aspect-ratio: 160 / 196;
   background: $color-Gray; // 背景色
   position: relative;
 
@@ -927,7 +951,7 @@
 
   /* 下段のテキスト */
   .card__inner {
-    padding: 1rem; // 内側余白
+    padding: 9px; // 内側余白
     text-align: center;
 
     h3 {
@@ -1027,7 +1051,7 @@
   }
   .bg-onomichi {
     margin: 0 auto;
-    margin-bottom: 26px;
+    margin-bottom: 16px;
     max-width: 255px;
     width: 100%;
     img {
@@ -1115,8 +1139,11 @@
 
 ===================================== */
 .section--faq {
-  padding-top: calc(90px + 40.29px);
+  padding-top: calc(46px + 40px);
   padding-bottom: 30.67px;
+  .section-head {
+    margin-bottom: 24px;
+  }
 }
 .faq-list.flex-layout {
   flex-direction: column;
@@ -1128,7 +1155,8 @@
   overflow: hidden;
 }
 .faq-question {
-  padding: 12px 16px;
+  padding: calc(12px - 2px) calc(16px - 2px) 12px;
+
   //  padding-bottom: 0; //アコーディオン閉じたら消す
 
   display: block;
@@ -1153,7 +1181,7 @@
       // 位置
       left: 0;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-66%);
 
       // サイズ
       width: 22px;
@@ -1191,10 +1219,10 @@
 .faq-question__text {
 }
 .faq-answer {
-  padding: 16px;
   background: $color-Gray;
 
   p {
+    font-size: 14px;
     position: relative;
     padding-left: calc(22px + 12px);
     margin-bottom: 0;
@@ -1222,6 +1250,12 @@
       line-height: 125%; /* 30px */
     }
   }
+}
+.faq-answer__inner {
+  padding: 16px 14px 14px 14px;
+}
+.section--faq .js-accordion-content {
+  transition: height 0.3s ease;
 }
 
 /* =====================================
@@ -2056,7 +2090,8 @@
   gap: 6px;
   padding-inline: 15px;
   text-align: center;
-  padding-bottom: 12px;
+  // padding-bottom: 12px;
+  line-height: 1.25;
 
   .icon {
     margin: 0 auto;
