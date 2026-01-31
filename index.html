@@ -25,23 +25,17 @@
         <a class="brand" href="#"><img src="./img/img_logo.png" alt="" /></a>
 
         <!-- Desktop navigation -->
-        <nav class="desktop-nav">
+        <nav class="desktop-nav flex-layout">
           <div class="nav-content flex-layout">
             <div class="nav-menu">
-              <a href="#home" class="nav-unit nav-unit--link">
-                キャンペーンについて
-              </a>
-              <a href="#home" class="nav-unit nav-unit--link">
-                キャンペーン特典
-              </a>
-              <a href="#home" class="nav-unit nav-unit--link">
-                おすすめスポット
-              </a>
-              <a href="#home" class="nav-unit nav-unit--link"> よくある質問 </a>
-              <a href="#home" class="nav-unit nav-unit--link"> 参加要項 </a>
-              <a href="#home" class="nav-unit nav-unit--link"> お問い合わせ </a>
+              <a href="#about" class="nav-unit"> キャンペーンについて </a>
+              <a href="#prizes" class="nav-unit"> キャンペーン特典 </a>
+              <a href="#home" class="nav-unit"> おすすめスポット </a>
+              <a href="#faq" class="nav-unit"> よくある質問 </a>
+              <a href="#entry" class="nav-unit"> 参加要項 </a>
+              <a href="#contact" class="nav-unit"> お問い合わせ </a>
             </div>
-            <button class="button button--middle"></button>
+            <a href="#howto" class="button button--small">応募してみる</a>
           </div>
         </nav>
 
@@ -58,14 +52,14 @@
         <nav class="drawer-nav inner--flex">
           <div class="nav-content flex-layout">
             <div class="nav-menu">
-              <a href="#home"> キャンペーンについて </a>
-              <a href="#home"> キャンペーン特典 </a>
-              <a href="#home"> おすすめスポット </a>
-              <a href="#home"> よくある質問 </a>
-              <a href="#home"> 参加要項 </a>
-              <a href="#home"> お問い合わせ </a>
+              <a href="#about"> キャンペーンについて </a>
+              <a href="#prizes"> キャンペーン特典 </a>
+              <a href="#spots"> おすすめスポット </a>
+              <a href="#faq"> よくある質問 </a>
+              <a href="#entry"> 参加要項 </a>
+              <a href="#contact"> お問い合わせ </a>
             </div>
-            <button class="button button--middle">応募してみる</button>
+            <a href="#howto" class="button button--middle">応募してみる</a>
           </div>
         </nav>
       </div>
@@ -101,7 +95,16 @@
             </h1>
           </div>
           <div class="fv__bottom-img">
-            <img src="./img/fv_img-bottom.png" alt="スマホの画像" />
+            <picture>
+              <!-- pc -->
+              <source
+                media="(min-width: 768px)"
+                srcset="./img/pc/fv_img-bottom.png"
+              />
+              <!-- sp -->
+              <img src="./img/fv_img-bottom.png" alt="スマホの画像" />
+            </picture>
+
             <section class="ui-apply">
               <h2 class="ui-title">#見つけて尾道レトロ</h2>
               <p class="ui-period__title">応募期間</p>
@@ -111,9 +114,9 @@
                   >2/28/(日)</time
                 >
               </p>
-              <button class="button ui-button button--small">
+              <a href="#" class="button ui-button button--small">
                 応募してみる
-              </button>
+              </a>
             </section>
           </div>
         </section>
@@ -175,19 +178,24 @@
                 <h2 class="section-head__jp">キャンペーンについて</h2>
               </div>
               <div class="about__subtitle">
-                あなたの心が動いた尾道の瞬間を<br />
-                ＼ おしえてください！ ／
+                <span class="sp-only"
+                  >あなたの心が動いた尾道の瞬間を<br />
+                  ＼ おしえてください！ ／</span
+                >
+                <span class="pc-only"
+                  >＼ あなたの心が動いた尾道の瞬間をおしえてください！ ／</span
+                >
               </div>
               <div class="about__text">
                 <p>
                   風情あふれる坂道に、静かに佇むお寺。<br />
-                  路地裏の角をまがれば<br />
+                  路地裏の角をまがれば<br class="sp-only" />
                   気ままにお昼寝する猫に出会え、<br />
                   ふと振り返れば、美しい瀬戸内の海が。
                 </p>
                 <p>
                   数々の映画の舞台にもなってきたこの街には<br />
-                  心がほどけるような、<br />
+                  心がほどけるような、<br class="sp-only" />
                   レトロでやさしい風景が広がっています。
                 </p>
                 <p>
@@ -196,11 +204,15 @@
                 </p>
                 <p>
                   尾道観光部<a href="#" class="underline">（@onomichi_retro）</a
-                  >を<br />
-                  フォロー&尾道で撮影した写真を、<br />
+                  >を<br class="sp-only" />
+                  フォロー&<br class="pc-only" />尾道で撮影した写真を、<br
+                    class="sp-only"
+                  />
                   ハッシュタグ<span class="bold">「#見つけて尾道レトロ」</span
-                  >を<br />
-                  つけてInstagramに投稿いただいた方の中から
+                  >を<br class="sp-only" />
+                  つけて<br
+                    class="pc-only"
+                  />Instagramに投稿いただいた方の中から
                 </p>
               </div>
               <div class="about__message">
@@ -273,7 +285,7 @@
             ></div>
           </div>
         </div>
-        <section class="section section--howto">
+        <section id="howto" class="section section--howto">
           <div class="bg bg--center bg--cat">
             <img src="./img/howto-cat.png" alt="" />
           </div>
@@ -350,7 +362,7 @@
             </button>
           </div>
         </section>
-        <section class="section section--prizes">
+        <section id="prizes" class="section section--prizes">
           <div class="bg bg--center bg--prizes">
             <img src="./img/prizes-bg_bottom.jpg" alt="" />
           </div>
@@ -469,7 +481,7 @@
             </button>
           </div>
         </section>
-        <section class="section section--spots">
+        <section id="spots" class="section section--spots">
           <div class="bg--wave"></div>
           <div class="inner">
             <h2 class="spots__title">おすすめスポット</h2>
@@ -593,7 +605,7 @@
             >
           </div>
         </section>
-        <section class="section section--faq">
+        <section id="faq" class="section section--faq">
           <div class="inner">
             <div class="section-head">
               <span class="icon">
@@ -673,7 +685,7 @@
             </div>
           </div>
         </section>
-        <section class="section section--entry">
+        <section id="entry" class="section section--entry">
           <div class="inner">
             <div class="entry__content">
               <div class="section-head">
@@ -770,7 +782,7 @@
           </div>
           <div class="section__divider"></div>
         </section>
-        <section class="section section--contact">
+        <section id="contact" class="section section--contact">
           <div class="inner">
             <div class="section-head">
               <span class="icon">
