@@ -1301,12 +1301,29 @@
   .spots__slide {
     overflow: hidden;
     margin-right: 0;
-    padding-left: 344px;
+    padding-left: 244px;
     display: flex;
+    align-items: flex-start; // タイトルとスライダーを上揃えに
+    position: relative;
+    gap: 40px;
+
+    // 左側を覆うオーバーレイ（タイトルの「裏側」）
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 332px; // タイトル領域と一致
+      background: $color-Dark-Blue; // セクション背景と同じ色で覆う
+      z-index: 2; // スライダーより上、タイトルより下
+      pointer-events: none;
+    }
   }
   .spots__title {
     position: relative;
     writing-mode: vertical-lr;
+    z-index: 3; // スライダーより手前に表示
     font-size: 40px;
     color: $color-White;
     font-family: "Kiwi Maru";
@@ -1329,6 +1346,18 @@
       // 装飾
       background: url("../img/spots-Icon.png") no-repeat center center / contain;
     }
+  }
+
+  /* スライダーを左パディング領域へ潜らせる */
+  .js-spots-slider {
+    margin-left: -332px; // 親の padding-left とあわせる
+    z-index: 1;
+    width: calc(100% + 332px);
+  }
+  .js-spots-slider .swiper-slide {
+    width: 344px; /* 固定幅にして snap を安定化 */
+    flex-shrink: 0;
+    box-sizing: border-box;
   }
 }
 

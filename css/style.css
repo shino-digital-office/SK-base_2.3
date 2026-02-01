@@ -1265,16 +1265,33 @@
   .spots__slide {
     overflow: hidden;
     margin-right: 0;
-    padding-left: 344px;
+    padding-left: 244px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    position: relative;
+    gap: 40px;
+  }
+  .spots__slide::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 332px;
+    background: #67b0c7;
+    z-index: 2;
+    pointer-events: none;
   }
   .spots__title {
     position: relative;
     -webkit-writing-mode: vertical-lr;
         -ms-writing-mode: tb-lr;
             writing-mode: vertical-lr;
+    z-index: 3;
     font-size: 40px;
     color: #fff;
     font-family: "Kiwi Maru";
@@ -1293,6 +1310,19 @@
     width: 56px;
     height: 56px;
     background: url("../img/spots-Icon.png") no-repeat center center/contain;
+  }
+  /* スライダーを左パディング領域へ潜らせる */
+  .js-spots-slider {
+    margin-left: -332px;
+    z-index: 1;
+    width: calc(100% + 332px);
+  }
+  .js-spots-slider .swiper-slide {
+    width: 344px; /* 固定幅にして snap を安定化 */
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
 }
 .spots__swiper {
