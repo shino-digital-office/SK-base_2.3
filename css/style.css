@@ -1148,6 +1148,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
+  pointer-events: none;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -1157,6 +1158,7 @@
   background-size: cover;
 }
 .section--spots .bg--wave::before, .section--spots .bg--wave::after {
+  pointer-events: none;
   content: "";
   position: absolute;
   left: 50%;
@@ -1230,47 +1232,80 @@
   height: auto;
 }
 
-.spots__title {
-  position: relative;
-  margin: 0 auto;
-  margin-bottom: 24px;
-  color: #fff;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  text-align: center;
-  font-family: "Kiwi Maru";
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1.25;
-  padding-left: 43px;
-}
-.spots__title::before {
-  position: absolute;
-  content: "";
-  top: 50%;
-  left: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  width: 35px;
-  height: 35px;
-  background: url("../img/spots-Icon.png") no-repeat center center/contain;
+@media screen and (max-width: 767px) {
+  .spots__title {
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 24px;
+    color: #fff;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    text-align: center;
+    font-family: "Kiwi Maru";
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.25;
+    padding-left: 43px;
+  }
+  .spots__title::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    background: url("../img/spots-Icon.png") no-repeat center center/contain;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .spots__slide {
     overflow: hidden;
     margin-right: 0;
-    margin-left: 332px;
+    padding-left: 344px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .spots__title {
+    position: relative;
+    -webkit-writing-mode: vertical-lr;
+        -ms-writing-mode: tb-lr;
+            writing-mode: vertical-lr;
+    font-size: 40px;
+    color: #fff;
+    font-family: "Kiwi Maru";
+    line-height: 125%;
+    -webkit-font-feature-settings: "pwid" on;
+            font-feature-settings: "pwid" on;
+    padding-top: 64px;
+  }
+  .spots__title::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 56px;
+    height: 56px;
+    background: url("../img/spots-Icon.png") no-repeat center center/contain;
   }
 }
-
 .spots__swiper {
   position: relative;
 }
 
 .spots__swiper .swiper-wrapper {
   padding-left: 48px;
+}
+@media screen and (min-width: 768px) {
+  .spots__swiper .swiper-wrapper {
+    padding-left: 0;
+  }
 }
 
 .spots__swiper-button {
@@ -1289,6 +1324,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   pointer-events: none;
+  z-index: 10;
 }
 @media screen and (max-width: 767px) {
   .spots__swiper-button {
@@ -1302,6 +1338,7 @@
   -ms-flex-negative: 0;
       flex-shrink: 0;
   pointer-events: auto;
+  z-index: 20;
 }
 .spots__swiper-button .spots__prev {
   background: url("../img/pc/spots-swiper-prev.png") no-repeat center center/contain;
@@ -2114,6 +2151,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
+  pointer-events: none;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -2129,6 +2167,7 @@
   width: 100%;
   max-width: 1512px;
   height: 45.714px;
+  pointer-events: none;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   background-repeat: repeat-x;

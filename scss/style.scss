@@ -1181,6 +1181,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
+    pointer-events: none;
 
     left: 50%;
     transform: translateX(-50%);
@@ -1191,6 +1192,7 @@
 
     &::before,
     &::after {
+      pointer-events: none;
       content: "";
       position: absolute;
       left: 50%;
@@ -1264,50 +1266,81 @@
 }
 
 .spots__title {
-  position: relative;
-  margin: 0 auto;
-  margin-bottom: 24px;
-  color: $color-White;
-  width: fit-content;
-  text-align: center;
-  font-family: "Kiwi Maru";
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1.25;
-  padding-left: calc(35px + 8px);
+  @include mq(sp) {
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 24px;
+    color: $color-White;
+    width: fit-content;
+    text-align: center;
+    font-family: "Kiwi Maru";
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.25;
+    padding-left: calc(35px + 8px);
 
-  &::before {
-    position: absolute;
-    content: "";
+    &::before {
+      position: absolute;
+      content: "";
 
-    // 位置
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+      // 位置
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
 
-    // サイズ
-    width: 35px;
-    height: 35px;
+      // サイズ
+      width: 35px;
+      height: 35px;
 
-    // 装飾
-    background: url("../img/spots-Icon.png") no-repeat center center / contain;
+      // 装飾
+      background: url("../img/spots-Icon.png") no-repeat center center / contain;
+    }
   }
 }
-
-//swiper
-.spots__slide {
-  @include mq(md) {
+@include mq(md) {
+  .spots__slide {
     overflow: hidden;
     margin-right: 0;
-    margin-left: 332px;
+    padding-left: 344px;
+    display: flex;
+  }
+  .spots__title {
+    position: relative;
+    writing-mode: vertical-lr;
+    font-size: 40px;
+    color: $color-White;
+    font-family: "Kiwi Maru";
+    line-height: 125%;
+    font-feature-settings: "pwid" on;
+    padding-top: calc(56px + 8px);
+    &::before {
+      position: absolute;
+      content: "";
+
+      // 位置
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      // サイズ
+      width: 56px;
+      height: 56px;
+
+      // 装飾
+      background: url("../img/spots-Icon.png") no-repeat center center / contain;
+    }
   }
 }
+
 .spots__swiper {
   position: relative;
 }
 
 .spots__swiper .swiper-wrapper {
   padding-left: 48px;
+  @include mq(md) {
+    padding-left: 0; // wrapper 自体は余白なし
+  }
 }
 .spots__swiper-button {
   @include mq(sp) {
@@ -1325,6 +1358,7 @@
   display: flex;
   justify-content: space-between;
   pointer-events: none; // ラッパー自体は無効
+  z-index: 10;
 
   .spots__prev,
   .spots__next {
@@ -1332,6 +1366,7 @@
     height: 80px;
     flex-shrink: 0;
     pointer-events: auto; // ボタンだけ有効
+    z-index: 20;
   }
   .spots__prev {
     background: url("../img/pc/spots-swiper-prev.png") no-repeat center center /
@@ -2223,6 +2258,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
+    pointer-events: none;
 
     left: 50%;
     transform: translateX(-50%);
@@ -2238,6 +2274,7 @@
       width: 100%;
       max-width: $layout-max-width;
       height: 45.714px;
+      pointer-events: none;
 
       transform: translateX(-50%);
 

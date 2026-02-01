@@ -78,7 +78,7 @@ const swiperSpots = new Swiper(".js-spots-slider", {
     768: {
       spaceBetween: 32, // PC時のスライド間余白
       allowTouchMove: false, // ← PCではスワイプ禁止
-      slidesOffsetBefore: 0, // ← 左端余白を確保
+      slidesOffsetBefore: 332, // ← 左端余白を確保
 
       // PC
       allowTouchMove: false,
