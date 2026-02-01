@@ -244,14 +244,14 @@
             ></div> -->
 
             <!-- If we need navigation buttons -->
-            <div
+            <!-- <div
               id="js-about-prev"
               class="swiper-button-prev about__prev"
             ></div>
             <div
               id="js-about-next"
               class="swiper-button-next about__next"
-            ></div>
+            ></div> -->
           </div>
         </div>
         <section id="howto" class="section section--howto">
@@ -325,6 +325,7 @@
             <img src="./img/prizes-bg_bottom.jpg" alt="" />
           </div>
           <div class="inner">
+            <div class="bg bg-triangle"></div>
             <div class="bg-prizes"></div>
             <div class="section-head">
               <span class="icon">
@@ -340,7 +341,7 @@
             <p>
               キャンペーンにご参加いただたい方の中から100名様に、尾道で人気のお土産セットやオリジナルグッズをプレゼント！
             </p>
-            <div class="cards cards--last-child">
+            <div class="cards">
               <div class="card__wrapper">
                 <div class="card--stack">
                   <div class="card__media">
@@ -441,13 +442,14 @@
         </section>
         <section id="spots" class="section section--spots">
           <div class="bg--wave"></div>
-          <div class="inner">
-            <h2 class="spots__title">おすすめスポット</h2>
-            <div class="js-spots-slider swiper about__swiper">
+
+          <h2 class="spots__title">おすすめスポット</h2>
+
+          <div class="spots__slide">
+            <div class="js-spots-slider swiper spots__swiper">
               <!-- Additional required wrapper -->
               <div class="swiper-wrapper">
                 <!-- Slides -->
-
                 <div class="swiper-slide card--stack">
                   <div class="card__media">
                     <img src="./img/spots1.jpg" alt="サンプル画像" />
@@ -539,28 +541,34 @@
               </div>
               <!-- If we need pagination -->
               <!-- <div
-              id="js-about-pagination"
-              class="swiper-pagination about__pagination"
-            ></div> -->
-
-              <!-- If we need navigation buttons -->
-              <div
-                id="js-spots-prev"
-                class="swiper-button-prev spots__prev"
-              ></div>
-              <div
-                id="js-spots-next"
-                class="swiper-button-next spots__next"
-              ></div>
+                  id="js-about-pagination"
+                  class="swiper-pagination about__pagination"
+                ></div> -->
             </div>
+          </div>
+          <!-- If we need navigation buttons -->
+          <div class="spots__swiper-button">
+            <button
+              id="js-spots-prev"
+              class="swiper-button-prev spots__prev"
+            ></button>
+            <button
+              id="js-spots-next"
+              class="swiper-button-next spots__next"
+            ></button>
+          </div>
 
+          <div class="spots-bottom__wrapper">
             <div class="bg-onomichi">
               <img src="./img/spots-img_onomichi.png" alt="" />
             </div>
-            <p>レトロな景色に出会える人気の撮影スポットをピックアップ！</p>
-            <a href="#" class="button button--middle"
-              >#見つけて尾道レトロ の最新投稿を見る</a
-            >
+
+            <div class="spot-act__button">
+              <p>レトロな景色に出会える人気の撮影スポットをピックアップ！</p>
+              <a href="#" class="button button--middle"
+                >#見つけて尾道レトロ の最新投稿を見る</a
+              >
+            </div>
           </div>
         </section>
         <section id="faq" class="section section--faq">

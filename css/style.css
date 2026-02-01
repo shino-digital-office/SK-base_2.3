@@ -14,7 +14,6 @@
   top: 0;
   z-index: 60;
   margin: 0 auto;
-  max-width: 1512px;
   color: #4a3636;
 }
 .site-header .bg {
@@ -436,7 +435,6 @@
 }
 @media screen and (min-width: 768px) {
   .main-body {
-    max-width: 1512px;
     margin: 0 auto;
   }
 }
@@ -614,6 +612,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-left: 48px;
 }
 
 .js-divider-swiper .swiper-wrapper {
@@ -715,7 +714,7 @@
 @media screen and (min-width: 768px) {
   .steps.flex-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     justify-items: center;
     margin-bottom: 40px;
@@ -878,11 +877,39 @@
   padding-top: 17.67px;
   padding-bottom: 216px;
 }
+@media screen and (min-width: 768px) {
+  .section--prizes {
+    padding-top: 100px;
+    padding-bottom: 640px;
+  }
+}
 .section--prizes .inner {
   position: relative;
   padding: 20px 20px 34.67px;
   text-align: center;
   max-width: 375px;
+}
+@media screen and (min-width: 768px) {
+  .section--prizes .inner {
+    max-width: 1024px;
+    padding: 28px 56px 53px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .section--prizes .inner .bg-triangle {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .section--prizes .inner .bg-triangle {
+    position: absolute;
+    inset: 0;
+    height: 86px;
+    top: 28px;
+    background-image: url("../img/pc/prizes-bg_triangle.png");
+    background-position: center top;
+    background-size: 1024px 86px;
+  }
 }
 .section--prizes .inner .bg-prizes {
   position: absolute;
@@ -890,6 +917,11 @@
   background: #fff;
   border-radius: 24px;
   z-index: -1;
+}
+@media screen and (min-width: 768px) {
+  .section--prizes .inner .bg-prizes {
+    inset: 149px 0 0 0;
+  }
 }
 .section--prizes .inner .bg-prizes::before {
   position: absolute;
@@ -902,29 +934,155 @@
   height: 83px;
   background: url("../img/prizes-deco.png") no-repeat center center/contain;
 }
+@media screen and (min-width: 768px) {
+  .section--prizes .inner .bg-prizes::before {
+    top: -149px;
+    width: 366px;
+    height: 150px;
+    background: url("../img/pc/prizes-deco.png") no-repeat center center/contain;
+  }
+}
 .section--prizes .section-head {
   margin-bottom: 16px;
+}
+@media screen and (min-width: 768px) {
+  .section--prizes .section-head {
+    margin-bottom: 40px;
+  }
 }
 .section--prizes p {
   margin-bottom: 48px;
 }
-
-.section--prizes .cards {
-  gap: 39px 15px;
-  margin-bottom: 18px;
+@media screen and (min-width: 768px) {
+  .section--prizes p {
+    font-size: 16px;
+    margin-bottom: 82px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .section--prizes .button {
+    padding: 8px 38px 10px;
+    font-size: 20px;
+    border-width: 3px;
+  }
 }
 
-.section--prizes .card__wrapper {
-  position: relative;
+@media screen and (max-width: 767px) {
+  .section--prizes .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 39px 15px;
+    margin-bottom: 18px;
+  }
+  .section--prizes .cards > :last-child:nth-child(2n+1) {
+    grid-column: 1/span 2;
+    max-width: 50%;
+    justify-self: center;
+  }
 }
-.section--prizes .card__wrapper .card__head {
-  position: absolute;
-  top: -24px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 48px;
-  height: 48px;
+@media screen and (min-width: 768px) {
+  .section--prizes .cards {
+    display: grid;
+    gap: 80px 20px;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+    margin-bottom: 40px;
+    /* 1段目：2枚（1/2幅） */
+    /* 2段目以降：3枚（1/3幅） */
+  }
+  .section--prizes .cards > :nth-child(-n+2) {
+    grid-column: span 3;
+  }
+  .section--prizes .cards > :nth-child(n+3) {
+    grid-column: span 2;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section--prizes .card__wrapper {
+    position: relative;
+    max-width: 160px;
+    aspect-ratio: 160/196;
+  }
+  .section--prizes .card__wrapper .card__head {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .section--prizes .card__wrapper {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: auto;
+    max-width: none;
+  }
+  .section--prizes .card__wrapper:nth-child(1), .section--prizes .card__wrapper:nth-child(2) {
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 440/460;
+  }
+  .section--prizes .card__wrapper:nth-child(1) .card__head, .section--prizes .card__wrapper:nth-child(2) .card__head {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+  }
+  .section--prizes .card__wrapper:nth-child(1) .card--stack, .section--prizes .card__wrapper:nth-child(2) .card--stack {
+    border-radius: 24px;
+  }
+  .section--prizes .card__wrapper:nth-child(1) .card--stack .card__media img, .section--prizes .card__wrapper:nth-child(2) .card--stack .card__media img {
+    aspect-ratio: 440/340;
+  }
+  .section--prizes .card__wrapper:nth-child(1) .card--stack .card__inner, .section--prizes .card__wrapper:nth-child(2) .card--stack .card__inner {
+    padding: 28px;
+  }
+  .section--prizes .card__wrapper:nth-child(1) .card--stack .card__inner h3, .section--prizes .card__wrapper:nth-child(2) .card--stack .card__inner h3 {
+    font-size: 20px;
+  }
+  .section--prizes .card__wrapper:nth-child(1) .card--stack::after, .section--prizes .card__wrapper:nth-child(2) .card--stack::after {
+    width: 100px;
+    height: 100px;
+  }
+  .section--prizes .card__wrapper:nth-child(3), .section--prizes .card__wrapper:nth-child(4), .section--prizes .card__wrapper:nth-child(5) {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 280/320;
+  }
+  .section--prizes .card__wrapper:nth-child(3) .card__head, .section--prizes .card__wrapper:nth-child(4) .card__head, .section--prizes .card__wrapper:nth-child(5) .card__head {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+  }
+  .section--prizes .card__wrapper:nth-child(3) .card--stack, .section--prizes .card__wrapper:nth-child(4) .card--stack, .section--prizes .card__wrapper:nth-child(5) .card--stack {
+    border-radius: 16px;
+  }
+  .section--prizes .card__wrapper:nth-child(3) .card--stack .card__media img, .section--prizes .card__wrapper:nth-child(4) .card--stack .card__media img, .section--prizes .card__wrapper:nth-child(5) .card--stack .card__media img {
+    aspect-ratio: 280/240;
+  }
+  .section--prizes .card__wrapper:nth-child(3) .card--stack .card__inner, .section--prizes .card__wrapper:nth-child(4) .card--stack .card__inner, .section--prizes .card__wrapper:nth-child(5) .card--stack .card__inner {
+    padding: 14px;
+  }
+  .section--prizes .card__wrapper:nth-child(3) .card--stack .card__inner h3, .section--prizes .card__wrapper:nth-child(4) .card--stack .card__inner h3, .section--prizes .card__wrapper:nth-child(5) .card--stack .card__inner h3 {
+    font-size: 16px;
+  }
+  .section--prizes .card__wrapper:nth-child(3) .card--stack::after, .section--prizes .card__wrapper:nth-child(4) .card--stack::after, .section--prizes .card__wrapper:nth-child(5) .card--stack::after {
+    width: 64px;
+    height: 64px;
+  }
 }
 
 .section--prizes .card--stack {
@@ -939,10 +1097,10 @@
   border-radius: 8px;
   overflow: hidden;
   width: 100%;
-  max-width: 160px;
-  aspect-ratio: 160/196;
+  height: 100%;
   background: #f5f5f5;
   position: relative;
+  max-width: none;
   /* 上段の画像 */
   /* 下段のテキスト */
 }
@@ -994,7 +1152,7 @@
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 100%;
-  max-width: 1512px;
+  max-width: none;
   background: #67b0c7;
   background-size: cover;
 }
@@ -1003,7 +1161,7 @@
   position: absolute;
   left: 50%;
   width: 100%;
-  max-width: 1512px;
+  max-width: none;
   height: 45.714px;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -1013,15 +1171,35 @@
   z-index: -1;
   /* ★位相調整 */
 }
+@media screen and (min-width: 768px) {
+  .section--spots .bg--wave::before, .section--spots .bg--wave::after {
+    height: 120px;
+    background-size: 252px 120px;
+  }
+}
 .section--spots .bg--wave::before {
   top: -45px;
-  height: 45.714px;
+  height: 45px;
   background-image: url("../img/bg_wave.png");
+}
+@media screen and (min-width: 768px) {
+  .section--spots .bg--wave::before {
+    top: -118px;
+    height: 120px;
+    background-image: url("../img/bg_wave.png");
+  }
 }
 .section--spots .bg--wave::after {
   bottom: -45px;
-  height: 45.714px;
+  height: 46px;
   background-image: url("../img/bg_wave--down.png");
+}
+@media screen and (min-width: 768px) {
+  .section--spots .bg--wave::after {
+    bottom: -120px;
+    height: 120px;
+    background-image: url("../img/bg_wave--down.png");
+  }
 }
 
 .section--spots {
@@ -1079,6 +1257,59 @@
   background: url("../img/spots-Icon.png") no-repeat center center/contain;
 }
 
+@media screen and (min-width: 768px) {
+  .spots__slide {
+    overflow: hidden;
+    margin-right: 0;
+    margin-left: 332px;
+  }
+}
+
+.spots__swiper {
+  position: relative;
+}
+
+.spots__swiper .swiper-wrapper {
+  padding-left: 48px;
+}
+
+.spots__swiper-button {
+  position: absolute;
+  top: 486px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  max-width: 1024px;
+  padding-inline: 20px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  pointer-events: none;
+}
+@media screen and (max-width: 767px) {
+  .spots__swiper-button {
+    display: none;
+  }
+}
+.spots__swiper-button .spots__prev,
+.spots__swiper-button .spots__next {
+  width: 80px;
+  height: 80px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  pointer-events: auto;
+}
+.spots__swiper-button .spots__prev {
+  background: url("../img/pc/spots-swiper-prev.png") no-repeat center center/contain;
+}
+.spots__swiper-button .spots__next {
+  background: url("../img/pc/spots-swiper-next.png") no-repeat center center/contain;
+}
+
 .section--spots .card--stack {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1097,6 +1328,13 @@
   /* 上段の画像 */
   /* 下段のテキスト */
 }
+@media screen and (min-width: 768px) {
+  .section--spots .card--stack {
+    border-radius: 24px;
+    width: 344px;
+    max-width: none;
+  }
+}
 .section--spots .card--stack .card__media {
   width: 100%;
   display: block;
@@ -1106,10 +1344,21 @@
   height: auto;
   display: block;
 }
+@media screen and (min-width: 768px) {
+  .section--spots .card--stack .card__media img {
+    aspect-ratio: 344/240;
+  }
+}
 .section--spots .card--stack .card__inner {
   padding: 16px 24px;
   display: block;
   height: 222.16px;
+}
+@media screen and (min-width: 768px) {
+  .section--spots .card--stack .card__inner {
+    padding: 24px 32px;
+    height: 302px;
+  }
 }
 .section--spots .card--stack .card__inner h3 {
   text-align: center;
@@ -1117,10 +1366,21 @@
   font-size: 16px;
   font-weight: 700;
 }
+@media screen and (min-width: 768px) {
+  .section--spots .card--stack .card__inner h3 {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+}
 .section--spots .card--stack .card__inner p {
   text-align: left;
   margin: 0;
   font-size: 12px;
+}
+@media screen and (min-width: 768px) {
+  .section--spots .card--stack .card__inner p {
+    font-size: 16px;
+  }
 }
 
 /* =====================================

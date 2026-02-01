@@ -59,7 +59,7 @@
   z-index: $z-header;
 
   margin: 0 auto;
-  max-width: $layout-max-width; // 紙面型の場合に有効
+  // max-width: $layout-max-width; // 紙面型の場合に有効
   color: $color-Blown;
   .bg {
     background: $color-White;
@@ -460,7 +460,7 @@
 .main-body {
   position: relative;
   @include mq(md) {
-    max-width: $layout-max-width; //紙面幅の指定。無効化すればfvが画面幅いっぱいに広がる。
+    // max-width: $layout-max-width; //紙面幅の指定。無効化すればbgが画面幅いっぱいに広がる。
     margin: 0 auto;
   }
 }
@@ -632,6 +632,7 @@
 ===================================== */
 .swiper-wrapper {
   display: flex;
+  padding-left: 48px;
 }
 
 // アニメーションを滑らかにする設定。
@@ -729,7 +730,7 @@
   gap: 34px;
   @include mq(md) {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     justify-items: center;
     margin-bottom: 40px;
@@ -865,6 +866,7 @@
    Section--prizes
 
 ===================================== */
+
 .section--prizes .bg--prizes {
   position: absolute;
 
@@ -892,17 +894,44 @@
 .section--prizes {
   padding-top: 17.67px;
   padding-bottom: 216px;
+  @include mq(md) {
+    padding-top: 100px;
+    padding-bottom: 640px;
+  }
   .inner {
     position: relative;
     padding: 20px 20px 34.67px;
     text-align: center;
     max-width: 375px;
+    @include mq(md) {
+      max-width: 1024px;
+      padding: 28px 56px 53px;
+    }
+    .bg-triangle {
+      @include mq(sp) {
+        display: none;
+      }
+
+      @include mq(md) {
+        position: absolute;
+        inset: 0;
+        height: 86px;
+
+        top: 28px;
+        background-image: url("../img/pc/prizes-bg_triangle.png");
+        background-position: center top;
+        background-size: 1024px 86px;
+      }
+    }
     .bg-prizes {
       position: absolute;
       inset: 82px 0 0 0;
       background: $color-White;
       border-radius: 24px;
       z-index: -1;
+      @include mq(md) {
+        inset: 149px 0 0 0;
+      }
       &::before {
         position: absolute;
         content: "";
@@ -919,33 +948,167 @@
         // 装飾
         background: url("../img/prizes-deco.png") no-repeat center center /
           contain;
+        @include mq(md) {
+          top: -149px;
+          width: 366px;
+          height: 150px;
+
+          background: url("../img/pc/prizes-deco.png") no-repeat center center /
+            contain;
+        }
       }
     }
   }
   .section-head {
     margin-bottom: 16px;
+    @include mq(md) {
+      margin-bottom: 40px;
+    }
   }
   p {
     margin-bottom: 48px;
+    @include mq(md) {
+      font-size: 16px;
+      margin-bottom: calc(32px + 50px);
+    }
+  }
+  .button {
+    @include mq(md) {
+      // height: 56px;
+      padding: calc(10px - 2px) calc(40px - 2px) calc(12px - 2px);
+      font-size: 20px;
+      border-width: 3px;
+    }
   }
 }
 .section--prizes .cards {
-  gap: 39px 15px;
-  margin-bottom: 18px;
+  @include mq(sp) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // SP：2カラム
+    gap: 39px 15px;
+    margin-bottom: 18px;
+    > :last-child:nth-child(2n + 1) {
+      grid-column: 1 / span 2; // 見た目中央
+      max-width: 50%;
+      justify-self: center;
+    }
+  }
+
+  @include mq(md) {
+    display: grid;
+    gap: 80px 20px;
+    grid-template-columns: repeat(6, 1fr); // 6分割ベース
+    justify-items: center;
+    margin-bottom: 40px;
+
+    /* 1段目：2枚（1/2幅） */
+    > :nth-child(-n + 2) {
+      grid-column: span 3; // 3 / 6 = 1/2
+    }
+
+    /* 2段目以降：3枚（1/3幅） */
+    > :nth-child(n + 3) {
+      grid-column: span 2; // 2 / 6 = 1/3
+    }
+  }
 }
 .section--prizes .card__wrapper {
-  position: relative;
-  .card__head {
-    position: absolute;
+  @include mq(sp) {
+    position: relative;
+    max-width: 160px;
+    aspect-ratio: 160 / 196;
+    .card__head {
+      position: absolute;
 
-    // 位置
-    top: -24px;
-    left: 50%;
-    transform: translateX(-50%);
+      // 位置
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
 
-    // サイズ
-    width: 48px;
-    height: 48px;
+      // サイズ
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  @include mq(md) {
+    position: relative;
+    display: flex;
+    width: auto; // 100%をやめる
+    max-width: none; // 念のためリセット
+    &:nth-child(1),
+    &:nth-child(2) {
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 440 /460;
+      .card__head {
+        position: absolute;
+
+        // 位置
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        // サイズ
+        width: 100px;
+        height: 100px;
+      }
+      .card--stack {
+        border-radius: 24px;
+        .card__media {
+          img {
+            aspect-ratio: 440 / 340;
+          }
+        }
+        .card__inner {
+          padding: 28px;
+          h3 {
+            font-size: 20px;
+          }
+        }
+        &::after {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5) {
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 280 / 320;
+      .card__head {
+        position: absolute;
+
+        // 位置
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        // サイズ
+        width: 80px;
+        height: 80px;
+      }
+      .card--stack {
+        border-radius: 16px;
+        .card__media {
+          img {
+            aspect-ratio: 280 / 240;
+          }
+        }
+        .card__inner {
+          padding: 14px;
+          h3 {
+            font-size: 16px;
+          }
+        }
+        &::after {
+          width: 64px;
+          height: 64px;
+        }
+      }
+    }
   }
 }
 .section--prizes .card--stack {
@@ -955,10 +1118,11 @@
   border-radius: 8px; // 任意
   overflow: hidden;
   width: 100%;
-  max-width: 160px;
-  aspect-ratio: 160 / 196;
+  height: 100%;
+
   background: $color-Gray; // 背景色
   position: relative;
+  max-width: none;
 
   /* 上段の画像 */
   .card__media {
@@ -1021,7 +1185,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: $layout-max-width;
+    max-width: none;
     background: $color-Dark-Blue;
     background-size: cover;
 
@@ -1031,7 +1195,7 @@
       position: absolute;
       left: 50%;
       width: 100%;
-      max-width: $layout-max-width;
+      max-width: none;
       height: 45.714px;
 
       transform: translateX(-50%);
@@ -1043,16 +1207,31 @@
 
       /* ★位相調整 */
       // background-position: 48px top; // ← 96px / 2
+
+      @include mq(md) {
+        height: 120px;
+        background-size: 252px 120px; // ← ★波一個の単位の大きさをここで指定
+      }
     }
     &::before {
       top: -45px; //上装飾はみ出し分
-      height: 45.714px; //上装飾の高さ
+      height: 45px; //上装飾の高さ
       background-image: url("../img/bg_wave.png");
+      @include mq(md) {
+        top: -118px; //上装飾はみ出し分 (すきま調整済み)
+        height: 120px; //上装飾の高さ
+        background-image: url("../img/bg_wave.png");
+      }
     }
     &::after {
       bottom: -45px; //下装飾はみ出し分
-      height: 45.714px; //下装飾の高さ
+      height: 46px; //下装飾の高さ(すきま調整済み)
       background-image: url("../img/bg_wave--down.png");
+      @include mq(md) {
+        bottom: -120px; //下装飾はみ出し分
+        height: 120px; //下装飾の高さ
+        background-image: url("../img/bg_wave--down.png");
+      }
     }
   }
 }
@@ -1083,6 +1262,7 @@
     }
   }
 }
+
 .spots__title {
   position: relative;
   margin: 0 auto;
@@ -1095,6 +1275,7 @@
   font-weight: 500;
   line-height: 1.25;
   padding-left: calc(35px + 8px);
+
   &::before {
     position: absolute;
     content: "";
@@ -1112,6 +1293,56 @@
     background: url("../img/spots-Icon.png") no-repeat center center / contain;
   }
 }
+
+//swiper
+.spots__slide {
+  @include mq(md) {
+    overflow: hidden;
+    margin-right: 0;
+    margin-left: 332px;
+  }
+}
+.spots__swiper {
+  position: relative;
+}
+
+.spots__swiper .swiper-wrapper {
+  padding-left: 48px;
+}
+.spots__swiper-button {
+  @include mq(sp) {
+    display: none;
+  }
+  position: absolute;
+  top: 486px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(944px + 40px * 2);
+
+  padding-inline: 20px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none; // ラッパー自体は無効
+
+  .spots__prev,
+  .spots__next {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    pointer-events: auto; // ボタンだけ有効
+  }
+  .spots__prev {
+    background: url("../img/pc/spots-swiper-prev.png") no-repeat center center /
+      contain;
+  }
+  .spots__next {
+    background: url("../img/pc/spots-swiper-next.png") no-repeat center center /
+      contain;
+  }
+}
+
 //section--spotsのslider
 .section--spots .card--stack {
   display: flex;
@@ -1122,6 +1353,11 @@
   flex-shrink: 0;
   width: 240px;
   background: $color-White; // 背景色
+  @include mq(md) {
+    border-radius: 24px;
+    width: 344px;
+    max-width: none;
+  }
 
   /* 上段の画像 */
   .card__media {
@@ -1132,6 +1368,9 @@
       width: 100%;
       height: auto;
       display: block;
+      @include mq(md) {
+        aspect-ratio: 344 / 240;
+      }
     }
   }
 
@@ -1141,18 +1380,29 @@
 
     display: block;
     height: 222.16px;
+    @include mq(md) {
+      padding: 24px 32px;
+      height: 302px;
+    }
 
     h3 {
       text-align: center;
       margin: 0 0 16px 0;
       font-size: 16px;
       font-weight: 700;
+      @include mq(md) {
+        font-size: 20px;
+        margin-bottom: 24px;
+      }
     }
 
     p {
       text-align: left;
       margin: 0;
       font-size: 12px;
+      @include mq(md) {
+        font-size: 16px;
+      }
     }
   }
 }

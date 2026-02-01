@@ -41,14 +41,14 @@ const swiperDivider = new Swiper(".js-divider-swiper", {
   /* =========================
    * ナビゲーション（必要な場合のみ使用）
    * ========================= */
-  pagination: {
-    el: "#js-divider-pagination",
-  },
+  // pagination: {
+  //   el: "#js-divider-pagination",
+  // },
 
-  navigation: {
-    nextEl: "#js-divider-next",
-    prevEl: "#js-divider-prev",
-  },
+  // navigation: {
+  //   nextEl: "#js-divider-next",
+  //   prevEl: "#js-divider-prev",
+  // },
 });
 
 // section--spotsにボタンでスライドするスワイパを実装した。
@@ -78,11 +78,15 @@ const swiperSpots = new Swiper(".js-spots-slider", {
     768: {
       spaceBetween: 32, // PC時のスライド間余白
       allowTouchMove: false, // ← PCではスワイプ禁止
+      slidesOffsetBefore: 0, // ← 左端余白を確保
 
       // PC
       allowTouchMove: false,
       freeMode: false,
       speed: 600, // ボタン用
+
+      // 左端余白
+      centeredSlides: false,
     },
   },
 
