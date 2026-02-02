@@ -608,13 +608,6 @@
    about__slider
 
 ===================================== */
-.swiper-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 48px;
-}
-
 .js-divider-swiper .swiper-wrapper {
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
@@ -1137,6 +1130,10 @@
   background: url("../img/prizes-search.png") no-repeat center center/contain;
 }
 
+.section-test {
+  height: 500px;
+}
+
 /* =====================================
    Section--spots
 
@@ -1218,6 +1215,7 @@
   margin-bottom: 24px;
 }
 .section--spots .button {
+  display: block;
   margin: 0 auto;
   margin-bottom: 19.84px;
 }
@@ -1262,10 +1260,10 @@
 }
 
 @media screen and (min-width: 768px) {
-  .spots__slide {
+  .spots-top__wrapper {
     overflow: hidden;
     margin-right: 0;
-    padding-left: 244px;
+    padding-left: 16.67%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1273,18 +1271,9 @@
         -ms-flex-align: start;
             align-items: flex-start;
     position: relative;
-    gap: 40px;
-  }
-  .spots__slide::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 332px;
-    background: #67b0c7;
-    z-index: 2;
-    pointer-events: none;
+    gap: 32px;
+    padding-bottom: 24px;
+    margin-bottom: 40px;
   }
   .spots__title {
     position: relative;
@@ -1299,6 +1288,7 @@
     -webkit-font-feature-settings: "pwid" on;
             font-feature-settings: "pwid" on;
     padding-top: 64px;
+    letter-spacing: 10px;
   }
   .spots__title::before {
     position: absolute;
@@ -1311,24 +1301,7 @@
     height: 56px;
     background: url("../img/spots-Icon.png") no-repeat center center/contain;
   }
-  /* スライダーを左パディング領域へ潜らせる */
-  .js-spots-slider {
-    margin-left: -332px;
-    z-index: 1;
-    width: calc(100% + 332px);
-  }
-  .js-spots-slider .swiper-slide {
-    width: 344px; /* 固定幅にして snap を安定化 */
-    -ms-flex-negative: 0;
-        flex-shrink: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-  }
 }
-.spots__swiper {
-  position: relative;
-}
-
 .spots__swiper .swiper-wrapper {
   padding-left: 48px;
 }
@@ -1338,14 +1311,14 @@
   }
 }
 
-.spots__swiper-button {
+.spots__buttons {
   position: absolute;
   top: 486px;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   max-width: 1024px;
-  padding-inline: 20px;
+  padding-inline: 40px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1357,23 +1330,27 @@
   z-index: 10;
 }
 @media screen and (max-width: 767px) {
-  .spots__swiper-button {
+  .spots__buttons {
     display: none;
   }
 }
-.spots__swiper-button .spots__prev,
-.spots__swiper-button .spots__next {
+.spots__buttons .spots2__prev,
+.spots__buttons .spots2__next {
+  background: none; /* 背景を消す */
+  color: transparent; /* テキスト色を透明に */
+  position: static;
   width: 80px;
   height: 80px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   pointer-events: auto;
   z-index: 20;
+  margin-top: 0;
 }
-.spots__swiper-button .spots__prev {
+.spots__buttons .spots2__prev {
   background: url("../img/pc/spots-swiper-prev.png") no-repeat center center/contain;
 }
-.spots__swiper-button .spots__next {
+.spots__buttons .spots2__next {
   background: url("../img/pc/spots-swiper-next.png") no-repeat center center/contain;
 }
 
@@ -1450,6 +1427,48 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .spots-bottom__wrapper .inner {
+    max-width: 1064px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .spots-bottom__wrapper .bg-onomichi {
+    max-width: 495px;
+    margin: 0;
+  }
+  .spots-bottom__wrapper .spot-act__button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .spots-bottom__wrapper .spot-act__button p {
+    font-size: 16px;
+  }
+  .spots-bottom__wrapper .spot-act__button .button {
+    margin: 0;
+    padding: 8px 38px 10px;
+    font-size: 20px;
+    border-width: 3px;
+  }
+  .spots-bottom__wrapper .spot-act__button .button:hover {
+    background: #ffee56;
+  }
+}
 /* =====================================
    Section--faq
 
@@ -2264,6 +2283,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   border-radius: 40px;
   background: #fff;
   color: #4a3636;

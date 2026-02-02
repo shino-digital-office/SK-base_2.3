@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SnapOnomichi</title>
 
+    <!-- swiper用のcssの読み込み -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
     <!-- cssの読み込み entry(母艦)→style(案件用・ぐちゃOK)→ページ固有の上書き の順に読み込む -->
     <link rel="stylesheet" href="css/entry.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -440,18 +445,22 @@
             </button>
           </div>
         </section>
-        <section id="spots" class="section section--spots">
+
+        <section id="spots2" class="section section--spots">
           <div class="bg--wave"></div>
 
-          <div class="spots__slide">
+          <div class="spots-top__wrapper">
             <h2 class="spots__title">おすすめスポット</h2>
-            <div class="js-spots-slider swiper spots__swiper">
+
+            <!-- Slider main container -->
+            <div class="swiper js-spots2-swiper spots2__swiper">
               <!-- Additional required wrapper -->
               <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide card--stack">
+
+                <div class="swiper-slide spots2__slide card--stack">
                   <div class="card__media">
-                    <img src="./img/spots1.jpg" alt="サンプル画像" />
+                    <img src="./img/spots1.jpg" alt="天寧寺　海雲塔" />
                   </div>
                   <div class="card__inner">
                     <h3>天寧寺　海雲塔</h3>
@@ -460,9 +469,9 @@
                     </p>
                   </div>
                 </div>
-                <div class="swiper-slide card--stack">
+                <div class="swiper-slide spots2__slide card--stack">
                   <div class="card__media">
-                    <img src="./img/spots2.jpg" alt="サンプル画像" />
+                    <img src="./img/spots2.jpg" alt="猫の細道" />
                   </div>
                   <div class="card__inner">
                     <h3>猫の細道</h3>
@@ -471,7 +480,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="swiper-slide card--stack">
+                <div class="swiper-slide spots2__slide card--stack">
                   <div class="card__media">
                     <img src="./img/spots3.jpg" alt="サンプル画像" />
                   </div>
@@ -482,9 +491,9 @@
                     </p>
                   </div>
                 </div>
-                <div class="swiper-slide card--stack">
+                <div class="swiper-slide spots2__slide card--stack">
                   <div class="card__media">
-                    <img src="./img/spots4.jpg" alt="サンプル画像" />
+                    <img src="./img/spots4.jpg" alt="工房尾道帆布" />
                   </div>
                   <div class="card__inner">
                     <h3>工房尾道帆布</h3>
@@ -493,9 +502,9 @@
                     </p>
                   </div>
                 </div>
-                <div class="swiper-slide card--stack">
+                <div class="swiper-slide spots2__slide card--stack">
                   <div class="card__media">
-                    <img src="./img/spots5.jpg" alt="サンプル画像" />
+                    <img src="./img/spots5.jpg" alt="ゆーゆー" />
                   </div>
                   <div class="card__inner">
                     <h3>ゆーゆー</h3>
@@ -504,9 +513,9 @@
                     </p>
                   </div>
                 </div>
-                <div class="swiper-slide card--stack">
+                <div class="swiper-slide spots2__slide card--stack">
                   <div class="card__media">
-                    <img src="./img/spots6.jpg" alt="サンプル画像" />
+                    <img src="./img/spots6.jpg" alt="AIRSHIP COFFEE" />
                   </div>
                   <div class="card__inner">
                     <h3>AIRSHIP COFFEE</h3>
@@ -515,9 +524,9 @@
                     </p>
                   </div>
                 </div>
-                <div class="swiper-slide card--stack">
+                <div class="swiper-slide spots2__slide card--stack">
                   <div class="card__media">
-                    <img src="./img/spots7.jpg" alt="サンプル画像" />
+                    <img src="./img/spots7.jpg" alt="日暮亭（ひぐらしてい）" />
                   </div>
                   <div class="card__inner">
                     <h3>日暮亭（ひぐらしてい）</h3>
@@ -526,47 +535,26 @@
                     </p>
                   </div>
                 </div>
-                <div class="swiper-slide card--stack">
-                  <div class="card__media">
-                    <img src="./img/spots1.jpg" alt="サンプル画像" />
-                  </div>
-                  <div class="card__inner">
-                    <h3>天寧寺　海雲塔</h3>
-                    <p>
-                      尾道のシンボルともいえる三重の塔。海雲塔ごしに見える坂と海のパノラマは、まさに絶景そのもの。
-                    </p>
-                  </div>
-                </div>
               </div>
-              <!-- If we need pagination -->
-              <!-- <div
-                  id="js-about-pagination"
-                  class="swiper-pagination about__pagination"
-                ></div> -->
             </div>
           </div>
           <!-- If we need navigation buttons -->
-          <div class="spots__swiper-button">
-            <button
-              id="js-spots-prev"
-              class="swiper-button-prev spots__prev"
-            ></button>
-            <button
-              id="js-spots-next"
-              class="swiper-button-next spots__next"
-            ></button>
+
+          <div class="spots__buttons">
+            <div class="swiper-button-prev spots2__prev"></div>
+            <div class="swiper-button-next spots2__next"></div>
           </div>
-
           <div class="spots-bottom__wrapper">
-            <div class="bg-onomichi">
-              <img src="./img/spots-img_onomichi.png" alt="" />
-            </div>
-
-            <div class="spot-act__button">
-              <p>レトロな景色に出会える人気の撮影スポットをピックアップ！</p>
-              <a href="#" class="button button--middle"
-                >#見つけて尾道レトロ の最新投稿を見る</a
-              >
+            <div class="inner">
+              <div class="bg-onomichi">
+                <img src="./img/spots-img_onomichi.png" alt="" />
+              </div>
+              <div class="spot-act__button">
+                <p>レトロな景色に出会える人気の撮影スポットをピックアップ！</p>
+                <a href="#" class="button button--middle"
+                  >#見つけて尾道レトロ の最新投稿を見る</a
+                >
+              </div>
             </div>
           </div>
         </section>
@@ -991,7 +979,7 @@
       <a href="#"><img src="./img/pagetop.png" alt="" /></a>
     </button>
     <!-- java scriptでswiperを使えるようにする記述 -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="./js/entry.js" type="module"></script>
   </body>
 </html>

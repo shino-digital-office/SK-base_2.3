@@ -630,10 +630,10 @@
    about__slider
 
 ===================================== */
-.swiper-wrapper {
-  display: flex;
-  padding-left: 48px;
-}
+// .swiper-wrapper {
+//   display: flex;
+//   padding-left: 48px;
+// }
 
 // アニメーションを滑らかにする設定。
 //js側でもなめらかにするための設定あり(→swiper-init.jsのコメントを見よ)
@@ -1171,12 +1171,17 @@
   }
 }
 
+.section-test {
+  height: 500px;
+}
+
 /* =====================================
    Section--spots
 
 ===================================== */
 .section--spots {
   overflow: visible;
+
   .bg--wave {
     position: absolute;
     inset: 0;
@@ -1250,6 +1255,7 @@
     margin-bottom: 24px;
   }
   .button {
+    display: block;
     margin: 0 auto;
     margin-bottom: 19.84px;
   }
@@ -1298,27 +1304,16 @@
   }
 }
 @include mq(md) {
-  .spots__slide {
+  .spots-top__wrapper {
     overflow: hidden;
     margin-right: 0;
-    padding-left: 244px;
+    padding-left: 16.67%;
     display: flex;
     align-items: flex-start; // タイトルとスライダーを上揃えに
     position: relative;
-    gap: 40px;
-
-    // 左側を覆うオーバーレイ（タイトルの「裏側」）
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 332px; // タイトル領域と一致
-      background: $color-Dark-Blue; // セクション背景と同じ色で覆う
-      z-index: 2; // スライダーより上、タイトルより下
-      pointer-events: none;
-    }
+    gap: 32px;
+    padding-bottom: 24px;
+    margin-bottom: 40px;
   }
   .spots__title {
     position: relative;
@@ -1330,6 +1325,7 @@
     line-height: 125%;
     font-feature-settings: "pwid" on;
     padding-top: calc(56px + 8px);
+    letter-spacing: 10px;
     &::before {
       position: absolute;
       content: "";
@@ -1347,22 +1343,6 @@
       background: url("../img/spots-Icon.png") no-repeat center center / contain;
     }
   }
-
-  /* スライダーを左パディング領域へ潜らせる */
-  .js-spots-slider {
-    margin-left: -332px; // 親の padding-left とあわせる
-    z-index: 1;
-    width: calc(100% + 332px);
-  }
-  .js-spots-slider .swiper-slide {
-    width: 344px; /* 固定幅にして snap を安定化 */
-    flex-shrink: 0;
-    box-sizing: border-box;
-  }
-}
-
-.spots__swiper {
-  position: relative;
 }
 
 .spots__swiper .swiper-wrapper {
@@ -1371,7 +1351,7 @@
     padding-left: 0; // wrapper 自体は余白なし
   }
 }
-.spots__swiper-button {
+.spots__buttons {
   @include mq(sp) {
     display: none;
   }
@@ -1381,7 +1361,7 @@
   transform: translateX(-50%);
   max-width: calc(944px + 40px * 2);
 
-  padding-inline: 20px;
+  padding-inline: 40px;
   width: 100%;
 
   display: flex;
@@ -1389,19 +1369,25 @@
   pointer-events: none; // ラッパー自体は無効
   z-index: 10;
 
-  .spots__prev,
-  .spots__next {
+  .spots2__prev,
+  .spots2__next {
+    // デフォルトのボタンデザインを消す
+    background: none; /* 背景を消す */
+    color: transparent; /* テキスト色を透明に */
+
+    position: static;
     width: 80px;
     height: 80px;
     flex-shrink: 0;
     pointer-events: auto; // ボタンだけ有効
     z-index: 20;
+    margin-top: 0;
   }
-  .spots__prev {
+  .spots2__prev {
     background: url("../img/pc/spots-swiper-prev.png") no-repeat center center /
       contain;
   }
-  .spots__next {
+  .spots2__next {
     background: url("../img/pc/spots-swiper-next.png") no-repeat center center /
       contain;
   }
@@ -1466,6 +1452,40 @@
       font-size: 12px;
       @include mq(md) {
         font-size: 16px;
+      }
+    }
+  }
+}
+@include mq(md) {
+  .spots-bottom__wrapper {
+    .inner {
+      max-width: calc(1024px + 20px * 2);
+      display: flex;
+      justify-content: space-between;
+    }
+    .bg-onomichi {
+      max-width: 495px;
+      margin: 0;
+    }
+    .spot-act__button {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      p {
+        font-size: 16px;
+      }
+      .button {
+        margin: 0;
+
+        // height: 56px;
+        padding: calc(10px - 2px) calc(40px - 2px) calc(12px - 2px);
+        font-size: 20px;
+        border-width: 3px;
+
+        &:hover {
+          background: $color-Yellow;
+        }
       }
     }
   }
@@ -2370,6 +2390,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  width: fit-content;
 
   border-radius: 40px;
   background: $color-White;
