@@ -1498,27 +1498,45 @@
 .section--faq {
   padding-top: calc(46px + 40px);
   padding-bottom: 30.67px;
+  @include mq(md) {
+    padding-top: calc(120px + 120px);
+    padding-bottom: 120px;
+    .inner {
+      max-width: calc(1024px + 20px * 2);
+    }
+  }
   .section-head {
     margin-bottom: 24px;
+    @include mq(md) {
+      margin-bottom: 40px;
+    }
   }
 }
 .faq-list.flex-layout {
   flex-direction: column;
   gap: 12px;
+  @include mq(md) {
+    gap: 24px;
+  }
 }
 .faq-item {
   border-radius: 12px;
   border: 2px solid $color-Blown;
   overflow: hidden;
+  @include mq(md) {
+    border-radius: 16px;
+  }
 }
 .faq-question {
   padding: calc(12px - 2px) calc(16px - 2px) calc(12px - 2px);
-
-  //  padding-bottom: 0; //アコーディオン閉じたら消す
-
   display: block;
   background: $color-White;
   width: 100%;
+  @include mq(md) {
+    padding: calc(30px - 2px) calc(24px - 2px);
+  }
+  //faq-questionはボタンタグで作っています。
+  //ゆえに、中にdivタグが使えないのでspanタグで実装します。
   span {
     display: flex;
     justify-content: start;
@@ -1530,6 +1548,11 @@
     font-size: 14px;
     font-weight: 700;
     color: $color-Blown;
+    @include mq(md) {
+      padding-left: calc(29px + 16px);
+      padding-right: calc(48px + 14px);
+      font-size: 20px;
+    }
 
     &::before {
       position: absolute;
@@ -1538,11 +1561,11 @@
       // 位置
       left: 0;
       top: 50%;
-      transform: translateY(-66%);
+      transform: translateY(-50%);
 
       // サイズ
       width: 22px;
-      height: 22px;
+      height: 30px;
 
       // タイポグラフィー
       color: var(--LP-Blue, #9ed0e0);
@@ -1553,6 +1576,12 @@
       font-style: normal;
       font-weight: 400;
       line-height: 125%; /* 30px */
+      @include mq(md) {
+        // サイズ
+        width: 29px;
+        height: 35px;
+        font-size: 32px;
+      }
     }
     &::after {
       position: absolute;
@@ -1570,6 +1599,11 @@
       // 装飾
       background: url("../img/prizes-close-icon.png") no-repeat center center /
         contain;
+      @include mq(md) {
+        // サイズ
+        width: 48px;
+        height: 48px;
+      }
     }
   }
 }
@@ -1583,6 +1617,10 @@
     position: relative;
     padding-left: calc(22px + 12px);
     margin-bottom: 0;
+    @include mq(md) {
+      padding-left: calc(23px + 16px);
+      font-size: 16px;
+    }
     &::before {
       position: absolute;
       content: "A";
@@ -1605,11 +1643,20 @@
       font-style: normal;
       font-weight: 400;
       line-height: 125%; /* 30px */
+      @include mq(md) {
+        // サイズ
+        width: 23px;
+        height: 40px;
+        font-size: 32px;
+      }
     }
   }
 }
 .faq-answer__inner {
   padding: 16px 14px 14px 14px;
+  @include mq(md) {
+    padding: 31px 20px 29px 20px;
+  }
 }
 .section--faq .js-accordion-content {
   transition: height 0.3s ease;
@@ -1623,13 +1670,25 @@
 .section--entry {
   padding-top: 0;
   padding-bottom: 0px;
+  @include mq(md) {
+    .inner {
+      max-width: calc(1024px + 20px * 2);
+    }
+  }
+
   .section-head {
     margin-bottom: 24px;
+    @include mq(md) {
+      margin-bottom: 40px;
+    }
   }
   .entry__content {
     padding: calc(24px - 8px) calc(23.5px - 8px);
     border: 8px solid $color-White;
     background: rgba(255, 255, 255, 0.5);
+    @include mq(md) {
+      padding: calc(40px - 8px) calc(56px - 8px);
+    }
   }
 }
 .entry__list {
@@ -1638,6 +1697,12 @@
   padding-bottom: calc(16px - 1px);
   border-bottom: 1px solid $color-Dark-Gray;
   margin-bottom: calc(12px - 1px);
+  @include mq(md) {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: calc(12px - 1px);
+    margin-bottom: 12px;
+  }
   &:last-child {
     border-bottom: none;
     margin-bottom: 0;
@@ -1650,6 +1715,12 @@
     font-weight: 700;
     padding-left: calc(8px + 8px);
     margin-bottom: 8px;
+    @include mq(md) {
+      flex-basis: 240px;
+      font-size: 16px;
+      padding-left: 32px;
+      margin-bottom: 0;
+    }
     &::before {
       content: "";
       position: absolute;
@@ -1660,10 +1731,17 @@
       height: 8px;
       border-radius: 50%;
       background-color: $color-Blue;
+      @include mq(md) {
+        left: 16px;
+      }
     }
   }
   .item__text {
     display: block;
+    @include mq(md) {
+      flex-basis: 672px;
+      font-size: 16px;
+    }
   }
 }
 .entry-attention {
@@ -1683,6 +1761,9 @@
   width: 100%;
   aspect-ratio: 375 / 99; // ← カンプ基準
   background: url("../img/entry-section-divider.jpg") center / cover no-repeat;
+  @include mq(md) {
+    margin-top: 120px;
+  }
 }
 
 /* =====================================
