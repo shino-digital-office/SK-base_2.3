@@ -1200,6 +1200,17 @@
     background-image: url("../img/bg_wave--down.png");
   }
 }
+.section--spots .bg-powpads {
+  position: absolute;
+  width: 100px;
+  height: 220px;
+  bottom: 0px;
+  left: 36px;
+  background-image: url("../img/about-bg_pawpads.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
 
 .section--spots {
   padding-top: 0;
@@ -2483,9 +2494,15 @@
   }
 }
 .footer-meta .bg--wave::before {
-  top: -118px;
-  height: 120px;
+  top: -45px;
+  height: 45px;
   background-image: url("../img/bg_wave.png");
+}
+@media screen and (min-width: 768px) {
+  .footer-meta .bg--wave::before {
+    top: -118px;
+    height: 120px;
+  }
 }
 .footer-meta .bg--wave::after {
   display: none;
