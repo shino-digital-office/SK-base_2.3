@@ -1776,14 +1776,27 @@
   padding-bottom: 40px;
 
   background: $color-White;
+  @include mq(md) {
+    padding-block: 120px;
+  }
   .inner {
     text-align: center;
+    @include mq(md) {
+      max-width: calc(848px + 20px * 2);
+    }
   }
   .section-head {
     margin-bottom: 24px;
+    @include mq(md) {
+      margin-bottom: 32px;
+    }
   }
   p {
     margin-bottom: 24px;
+    @include mq(md) {
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
   }
 }
 
@@ -1801,6 +1814,7 @@
 
   @include mq(md) {
     gap: 24px;
+    margin-bottom: 40px;
   }
 }
 
@@ -1821,7 +1835,8 @@
   margin-top: 25px;
   text-align: center;
   @include mq(md) {
-    margin-top: 41px;
+    margin-top: 0px;
+    margin-bottom: 40px;
     font-size: 16px;
   }
 }
@@ -1832,6 +1847,9 @@
 
   @include mq(md) {
     margin-top: 40px;
+    input {
+      padding-inline: calc(40px - 2px);
+    }
   }
 
   input {
@@ -1855,6 +1873,7 @@
     width: 180px;
     flex-shrink: 0;
     justify-content: flex-start;
+    margin-bottom: 0;
   }
 }
 
@@ -1934,7 +1953,7 @@
   width: 100%;
   border-radius: 8px;
   background: $color-Gray;
-  padding: calc(16px - 2px);
+  padding: 14px 14px 12px 14px;
   border: 3px solid transparent;
   line-height: 1.6;
   transition: border-color 0.3s;
@@ -2268,22 +2287,50 @@
 .site-footer {
   padding-top: 40px;
   margin: 0 auto;
-  max-width: $layout-max-width; //紙面型の場合はここを有効にする
+  // max-width: $layout-max-width; //紙面型の場合はここを有効にする
   text-align: center;
   position: relative;
+  @include mq(md) {
+    padding-top: 120px;
+  }
+
+  .bg-pawpad {
+    position: absolute;
+    // inset: 0; // ← section と同サイズの紙
+    width: 100px;
+    height: 220px;
+    top: 80px;
+    right: 80px;
+
+    background-image: url("../img/about-bg_pawpads.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
 
   .inner {
     text-align: center;
+    @include mq(md) {
+      max-width: calc(1024px + 20px * 2);
+    }
   }
   p {
     font-size: 20px;
     line-height: 1.25;
     margin-bottom: 24px;
     font-family: "Josefin Sans", sans-serif;
+    @include mq(md) {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
   }
 
   .bg-onomichi {
     width: 100%;
+    @include mq(md) {
+      max-width: 755px;
+      margin-inline: auto;
+    }
     img {
       width: 100%;
       height: auto;
@@ -2298,9 +2345,17 @@
   gap: 40px;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 41px;
+  @include mq(md) {
+    max-width: 200px;
+  }
   .icon {
     margin: 0;
     color: $color-Dark-Blue;
+    @include mq(md) {
+      width: 40px;
+      font: 40px;
+    }
   }
 }
 
@@ -2308,11 +2363,20 @@
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 171.71px;
+  @include mq(md) {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: calc(120px + 120px);
+  }
 }
 .map__img {
   position: relative;
   width: 100%;
   aspect-ratio: 335 / 271;
+  @include mq(md) {
+    aspect-ratio: 512 / 400;
+    flex-basis: 50%;
+  }
 
   iframe {
     position: absolute;
@@ -2325,11 +2389,27 @@
 .map__address {
   padding: 24px 20px;
   background: $color-White;
+  @include mq(md) {
+    flex-basis: 50%;
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .address__inner {
+      width: fit-content;
+    }
+  }
 
   .brand {
     width: 153px;
     margin: 0 auto;
     margin-bottom: 24px;
+    @include mq(md) {
+      width: 183px;
+      margin-left: 0;
+      margin-right: auto;
+    }
     img {
       width: 100%;
       height: auto;
@@ -2349,6 +2429,9 @@
     td {
       vertical-align: middle;
       font-size: 12px;
+      @include mq(md) {
+        font-size: 16px;
+      }
     }
 
     th {
@@ -2377,12 +2460,12 @@
   }
 }
 
-/* ===============================
-   md以上では固定フッターを非表示
-================================ */
 .footer-meta {
   position: relative;
   padding-bottom: 24px;
+  @include mq(md) {
+    padding-bottom: 32px;
+  }
 
   .bg--wave {
     position: absolute;
@@ -2393,7 +2476,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: $layout-max-width;
+    max-width: none;
     background: $color-Dark-Blue;
     background-size: cover;
 
@@ -2402,7 +2485,7 @@
       position: absolute;
       left: 50%;
       width: 100%;
-      max-width: $layout-max-width;
+      max-width: none;
       height: 45.714px;
       pointer-events: none;
 
@@ -2415,10 +2498,15 @@
 
       /* ★位相調整 */
       background-position: 48px top; // ← 96px / 2
+      @include mq(md) {
+        height: 120px;
+        background-size: 252px 120px; // ← ★波一個の単位の大きさをここで指定
+        // background-position: 126px top; // ← 252px / 2
+      }
     }
     &::before {
-      top: -45px; //上装飾はみ出し分
-      height: 45.714px; //上装飾の高さ
+      top: -118px; //上装飾はみ出し分
+      height: 120px; //上装飾の高さ
       background-image: url("../img/bg_wave.png");
     }
     &::after {
@@ -2427,6 +2515,9 @@
   }
   .footer-copyright {
     color: $color-White;
+    @include mq(md) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -2445,6 +2536,7 @@
   z-index: $z-footer-fixed + 1; // 固定フッターより上に表示。デザインによって変更可。
   width: 75px;
   height: 78px;
+
   img {
     width: 100%;
   }
@@ -2458,8 +2550,12 @@
     visibility: visible;
   }
   @include mq(md) {
-    right: 20px;
+    width: 100px;
+    height: 104px;
+    left: auto;
+    right: 40px;
     bottom: 40px;
+    transform: translateX(0%);
   }
 }
 
