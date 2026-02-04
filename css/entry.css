@@ -129,6 +129,7 @@ button {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 64px;
 }
 
 /* 共通リセット（最小限） */

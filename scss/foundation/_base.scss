@@ -16,6 +16,7 @@
 
 html {
   scroll-behavior: smooth; // ページ内リンクのスクロールをスムーズに
+  scroll-padding-top: 64px; //ヘッダー分の高さを考慮してスクロール
 }
 
 /* 共通リセット（最小限） */
